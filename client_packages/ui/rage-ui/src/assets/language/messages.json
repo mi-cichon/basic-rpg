@@ -1,0 +1,86 @@
+{
+    "pl": {
+        "login":{
+            "loginTitle": "Logowanie",
+            "usernamePlaceholder": "Nazwa użytkownika",
+            "passwordPlaceholder": "Hasło",
+            "loginButton": "Login",
+            "registerText": "Nie masz konta?",
+            "registerClick": "Zarejestruj się!",
+            "wrongCredentials": "Niepoprawne dane logowania!"
+        },
+        "register": {
+            "registerTitle": "Rejestracja",
+            "repeatPasswordPlaceholder": "Powtórz hasło",
+            "registerClick": "Zarejestruj",
+            "userExists": "Użytkownik z podaną nazwą już istnieje!",
+            "maxAccounts": "Stworzono już maksymalną ilość kont!",
+            "successful": "Zarejestrowano pomyślnie!"
+        },
+        "notifications": {
+            "success": "Sukces",
+            "infomation": "Informacja",
+            "warning": "Ostrzeżenie",
+            "fail": "Niepowodzenie",
+            "error": "Błąd krytyczny"
+        },
+        "errors":{
+            "critical": "Wystąpił nieznany błąd. Zgłoś go administracji."
+        },
+        "chat":{
+            "transferReceivedTitle": "Przelew",
+            "transferReceivedText": "przesyła Ci",
+            "infoTitle": "Informacja",
+            "privateFrom": "Od",
+            "privateTo": "Do",
+            "penaltyTitle": "Ukarano gracza",
+            "penaltyKickText": "Gracz {player} został wyrzucony przez {by}, powód: {reason}.",
+            "penaltyBanText": "Gracz {player} został zbanowany ({time}) przez {by}, powód: {reason}.",
+            "penaltyLicenceText": "Gracz {player} stacił możliwość prowadzenie pojazdów ({time}) przez {by}, powód: {reason}.",
+            "penaltyMuteText": "Gracz {player} został wyciszony ({time}) przez {by}, powód: {reason}."
+        },
+        "info":{
+            "discordInfo": "Zapraszamy na Discord naszego serwera pod discord.gg/basicrpg"
+        }
+    },
+
+    "en": {
+        "login":{
+            "loginTitle": "Login",
+            "usernamePlaceholder": "Username",
+            "passwordPlaceholder": "Password",
+            "loginButton": "Login",
+            "registerText": "Not registered?",
+            "registerClick": "Do it now!",
+            "wrongCredentials": "Given credentials are invialid!"
+        },
+        "register": {
+            "registerTitle": "Register",
+            "repeatPasswordPlaceholder": "Repeat password",
+            "registerClick": "Register",
+            "userExists": "User with given name already exists!",
+            "maxAccounts": "You have already created maximum amount of accounts!",
+            "successful": "Account created successfully!"
+        },
+        "notifications": {
+            "success": "Success",
+            "infomation": "Info",
+            "warning": "Warning",
+            "fail": "Fail",
+            "error": "Critical error"
+        },
+        "errors":{
+            "critical": "There was an error! Contact staff immedietaly!"
+        },
+        "chat":{
+            "transferReceivedTitle": "Transfer",
+            "transferReceivedText": "sent you",
+            "infoTitle": "Info",
+            "privateFrom": "From",
+            "privateTo": "To"
+        },
+        "info":{
+            "discordInfo": "You are welcome on our discord server at discord.gg/basicrpg"
+        }
+    }
+}

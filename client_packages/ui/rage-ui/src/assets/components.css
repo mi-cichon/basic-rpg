@@ -1,0 +1,56 @@
+@font-face{ 
+	font-family: 'Sen';
+	src: url('./fonts/sen_bold_macroman/sen-bold-webfont.woff') format('woff');
+}
+
+@font-face{ 
+	font-family: 'Sono';
+	src: url('./fonts/sono-regular/Sono-Regular.ttf') format('truetype');
+}
+
+@font-face{ 
+	font-family: 'Dosis';
+	src: url('./fonts/dosis_regular/Dosis-Regular.ttf') format('truetype');
+}
+
+@font-face{ 
+	font-family: 'Roboto';
+	src: url('./fonts/roboto-regular/Roboto-Regular.ttf') format('truetype');
+}
+
+@keyframes disappear {
+	0% {
+	  opacity: 1;
+	}
+	25%{
+		opacity: 0.75;
+	}
+	50% {
+	  opacity: 0.5;
+	}
+	75% {
+		opacity: 0.25;
+	}
+	100% {
+	  display: none;
+	  opacity: 0;
+	}
+  }
+  
+  .disappear > * {
+	animation-name: disappear;
+	animation-duration: 400ms;
+	animation-fill-mode: forwards;
+  }
+
+  .global-logo {
+	position: absolute;
+	top: 0;
+	right: 2rem;
+	width: 10rem;
+	height: 10rem;
+	background-image: url("./../assets/images/logo.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 100%;
+  }
