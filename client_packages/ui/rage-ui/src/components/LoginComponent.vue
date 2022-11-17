@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts">
-//import rpc from "rage-rpc";
+import rpc from "rage-rpc";
 
 export default {
   data() {
@@ -60,7 +60,7 @@ export default {
       if (this.passwordError || this.usernameError) {
         return;
       }
-      //rpc.callClient("client_tryLogin", [this.username, this.password]);
+      rpc.callClient("client_tryLogin", [this.username, this.password]);
     },
     disappearClick() {
       this.disappear = true;

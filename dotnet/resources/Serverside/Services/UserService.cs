@@ -3,14 +3,8 @@ using Backend.Entities.DbSettings;
 using GTANetworkAPI;
 using Serverside.Config;
 using Serverside.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Serverside.Users
+namespace Serverside.Services
 {
     public static class UserService
     {
@@ -19,10 +13,10 @@ namespace Serverside.Users
             var id = Guid.Parse(player.GetSharedData<string>("player_id"));
 
             using var context = new RageDBContext();
-            
+
             var user = context.Users.FirstOrDefault(x => x.Id == id);
 
-            if(user == null)
+            if (user == null)
             {
                 ShowGenericError(player);
                 return null;
@@ -45,7 +39,7 @@ namespace Serverside.Users
         {
             var user = GetUserEntity(player);
 
-            if(user == null)
+            if (user == null)
             {
                 ShowGenericError(player);
                 return;
@@ -69,11 +63,11 @@ namespace Serverside.Users
 
             var request = new
             {
-                money = money,
-                name = name,
-                experience = experience,
-                nextLevelExperience = nextLevelExperience,
-                level = level
+                money,
+                name,
+                experience,
+                nextLevelExperience,
+                level
             };
 
             player.TriggerEvent("client_updateHudValues", request);
@@ -83,7 +77,7 @@ namespace Serverside.Users
         {
             var currentLevel = player.GetSharedData<int>("player_level");
 
-            if(ConfigurationService.LevelsConfig.LevelSteps.TryGetValue(currentLevel + 1, out var nextLevel))
+            if (ConfigurationService.LevelsConfig.LevelSteps.TryGetValue(currentLevel + 1, out var nextLevel))
             {
                 return nextLevel;
             }

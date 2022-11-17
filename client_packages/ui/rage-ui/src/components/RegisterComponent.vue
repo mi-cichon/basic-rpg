@@ -38,7 +38,7 @@
 </template>
 
 <script lang="ts">
-//import rpc from "rage-rpc";
+import rpc from "rage-rpc";
 
 export default {
   data() {
@@ -84,7 +84,7 @@ export default {
         return;
       }
 
-      //rpc.callClient("client_tryRegister", [this.username, this.password]);
+      rpc.callClient("client_tryRegister", [this.username, this.password]);
     },
     disappearClick() {
       this.disappear = true;
@@ -98,9 +98,9 @@ export default {
     },
   },
   created() {
-    // rpc.register("ui_registerSuccessful", () => {
-    //   this.disappearClick();
-    // });
+    rpc.register("ui_registerSuccessful", () => {
+      this.disappearClick();
+    });
   },
 };
 </script>

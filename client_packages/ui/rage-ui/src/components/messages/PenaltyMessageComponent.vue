@@ -15,7 +15,7 @@
         {{
           $t(getPenaltyText(message.type), {
             player: message.name,
-            by: message.by,
+            by: message.from,
             time: message.time,
             reason: message.message,
           })

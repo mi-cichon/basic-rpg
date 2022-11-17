@@ -1,11 +1,10 @@
 ﻿using Backend.Entities;
 using Backend.Entities.DbSettings;
 using GTANetworkAPI;
-using Serverside.Users;
 using System.Text;
 using XSystem.Security.Cryptography;
 
-namespace Backend.Users
+namespace Serverside.Services
 {
     public static class LoginService
     {
@@ -21,7 +20,7 @@ namespace Backend.Users
 
             var user = context.Users.Where(x => x.Name == username && x.Password == encPassword).SingleOrDefault();
 
-            if(user == null)
+            if (user == null)
             {
                 throw new ArgumentException("login.wrongCredentials");
             }
@@ -39,15 +38,15 @@ namespace Backend.Users
             using var context = new RageDBContext();
 
             var usersCreated = context.Users.Where(x => x.CreatedBy == player.SocialClubId).Count();
-           
-            if(usersCreated >= 2)
+
+            if (usersCreated >= 2)
             {
                 throw new ArgumentException("register.maxAccounts");
             }
 
             var sameUsername = context.Users.Where(x => x.Name == username).SingleOrDefault();
 
-            if(sameUsername != null)
+            if (sameUsername != null)
             {
                 throw new ArgumentException("register.userExists");
             }
@@ -74,7 +73,7 @@ namespace Backend.Users
         private static string ToSHA256(string randomString)
         {
             var crypt = new SHA256Managed();
-            string hash = String.Empty;
+            string hash = string.Empty;
             byte[] crypto = crypt.ComputeHash(Encoding.ASCII.GetBytes(randomString));
             foreach (byte theByte in crypto)
             {

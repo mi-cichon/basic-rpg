@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-//import rpc from "rage-rpc";
+import rpc from "rage-rpc";
 
 export default {
   props: {
@@ -46,9 +46,9 @@ export default {
     },
   },
   created() {
-    // rpc.register("ui_updateHudValues", (values) => {
-    //   this.hudValues = values;
-    // });
+    rpc.register("ui_updateHudValues", (values) => {
+      this.hudValues = values;
+    });
   },
 };
 </script>

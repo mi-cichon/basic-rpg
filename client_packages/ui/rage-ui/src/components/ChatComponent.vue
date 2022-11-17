@@ -1,53 +1,59 @@
 <template>
   <div class="body">
-    <div class="message" v-for="message in messages" :key="message.id">
-      <div class="avatar"></div>
-      <div class="content">
-        <RegularMessageComponent
-          v-if="message.type == 0 || message.type == 1 || message.type == 2"
-          :message="message"
-          :type-color="getTypeColor(message.type)"
-          :type-icon="getTypeIcon(message.type)"
-          :permission-color="getPermissionColor(message.type)"
-        ></RegularMessageComponent>
+    <div class="scroll" ref="chatScroll">
+      <div class="message" v-for="message in messages" :key="message.id">
+        <div class="avatar"></div>
+        <div class="content">
+          <RegularMessageComponent
+            v-if="message.type == 0 || message.type == 1 || message.type == 2"
+            :message="message"
+            :type-color="getTypeColor(message.type)"
+            :type-icon="getTypeIcon(message.type)"
+            :permission-color="getPermissionColor(message.type)"
+          ></RegularMessageComponent>
 
-        <TransferMessageComponent
-          v-if="message.type == 3"
-          :message="message"
-          :type-color="getTypeColor(message.type)"
-          :type-icon="getTypeIcon(message.type)"
-          :permission-color="getPermissionColor(message.type)"
-        ></TransferMessageComponent>
+          <TransferMessageComponent
+            v-if="message.type == 3"
+            :message="message"
+            :type-color="getTypeColor(message.type)"
+            :type-icon="getTypeIcon(message.type)"
+            :permission-color="getPermissionColor(message.type)"
+          ></TransferMessageComponent>
 
-        <InfoMessageComponent
-          v-if="message.type == 9"
-          :message="message"
-          :type-color="getTypeColor(message.type)"
-          :type-icon="getTypeIcon(message.type)"
-        ></InfoMessageComponent>
+          <InfoMessageComponent
+            v-if="message.type == 9"
+            :message="message"
+            :type-color="getTypeColor(message.type)"
+            :type-icon="getTypeIcon(message.type)"
+          ></InfoMessageComponent>
 
-        <PrivateMessageComponent
-          v-if="message.type == 4"
-          :message="message"
-          :type-color="getTypeColor(message.type)"
-          :type-icon="getTypeIcon(message.type)"
-          :permission-color="getPermissionColor(message.type)"
-        ></PrivateMessageComponent>
+          <PrivateMessageComponent
+            v-if="message.type == 4"
+            :message="message"
+            :type-color="getTypeColor(message.type)"
+            :type-icon="getTypeIcon(message.type)"
+            :permission-color="getPermissionColor(message.type)"
+          ></PrivateMessageComponent>
 
-        <PenaltyMessageComponent
-          v-if="
-            message.type == 5 ||
-            message.type == 6 ||
-            message.type == 7 ||
-            message.type == 8
-          "
-          :message="message"
-          :type-color="getTypeColor(message.type)"
-          :type-icon="getTypeIcon(message.type)"
-          :permission-color="getPermissionColor(message.type)"
-        ></PenaltyMessageComponent>
+          <PenaltyMessageComponent
+            v-if="
+              message.type == 5 ||
+              message.type == 6 ||
+              message.type == 7 ||
+              message.type == 8
+            "
+            :message="message"
+            :type-color="getTypeColor(message.type)"
+            :type-icon="getTypeIcon(message.type)"
+            :permission-color="getPermissionColor(message.type)"
+          ></PenaltyMessageComponent>
+        </div>
       </div>
     </div>
+    <ChatInputComponent
+      v-if="showInput"
+      @message-sent="$emit('chatMessageSent')"
+    ></ChatInputComponent>
   </div>
 </template>
 
@@ -57,63 +63,21 @@ import TransferMessageComponent from "./messages/TransferMessageComponent.vue";
 import InfoMessageComponent from "./messages/InfoMessageComponent.vue";
 import PrivateMessageComponent from "./messages/PrivateMessageComponent.vue";
 import PenaltyMessageComponent from "./messages/PenaltyMessageComponent.vue";
+import ChatInputComponent from "./messages/ChatInputComponent.vue";
 
+declare interface Message {
+  id: number;
+  name: string;
+  message: string;
+  type: number;
+  permission: number;
+  from: boolean;
+  time: string;
+}
 export default {
   data() {
     return {
-      messages: [
-        {
-          id: 0,
-          name: "MeHow",
-          message: "1000",
-          type: 3,
-          permission: 1,
-          from: false,
-          by: "",
-          time: "12.12.12 2022",
-        },
-        {
-          id: 0,
-          name: "MeHow",
-          message:
-            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis p",
-          type: 0,
-          permission: 0,
-          from: false,
-          by: "",
-          time: "12.12.12 2022",
-        },
-        {
-          id: 0,
-          name: "MeHow",
-          message: "info.discordInfo",
-          type: 9,
-          permission: 0,
-          from: false,
-          by: "",
-          time: "12.12.12 2022",
-        },
-        {
-          id: 12,
-          name: "JaniaX",
-          message: "Siema z rana",
-          type: 4,
-          permission: 2,
-          from: false,
-          by: "",
-          time: "12.12.12 2022",
-        },
-        {
-          id: 12,
-          name: "JaniaX",
-          message: "głupi chuj",
-          type: 5,
-          permission: 2,
-          from: false,
-          by: "MeHow",
-          time: "60min",
-        },
-      ],
+      messages: [] as Message[],
     };
   },
   methods: {
@@ -179,6 +143,13 @@ export default {
           return "#3cff2e";
       }
     },
+    addMessage(message: any) {
+      this.messages.push(message);
+      var scroll = this.$refs.chatScroll as any;
+      this.$nextTick(() => {
+        scroll.scrollTop = scroll.scrollHeight;
+      });
+    },
   },
   components: {
     RegularMessageComponent,
@@ -186,18 +157,36 @@ export default {
     InfoMessageComponent,
     PrivateMessageComponent,
     PenaltyMessageComponent,
+    ChatInputComponent,
   },
+  props: ["showInput"],
 };
 </script>
 
 <style scoped>
 .body {
   width: 55rem;
-  height: 35rem;
-  position: absolute;
+  height: 30rem;
+  position: relative;
   left: 1rem;
   top: 1rem;
   font-family: "Roboto";
+}
+
+.scroll {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scroll {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .message {
@@ -242,7 +231,7 @@ export default {
 }
 
 .chat_messageContent {
-  background-color: #12192c;
+  background-color: rgb(18, 25, 44, 0.9);
   display: flex;
   flex-direction: column;
   justify-content: center;
