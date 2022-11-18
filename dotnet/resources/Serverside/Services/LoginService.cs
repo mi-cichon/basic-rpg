@@ -68,6 +68,7 @@ namespace Serverside.Services
             player.SetSharedData("player_id", user.Id);
             player.Position = new Vector3(-1659.993, -128.399, 59.954);
             player.Name = user.Name;
+            player.Dimension = 0;
         }
 
         private static string ToSHA256(string randomString)
