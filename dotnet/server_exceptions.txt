@@ -2194,3 +2194,169 @@ Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving 
 Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
  ---> System.InvalidCastException: Cannot write DateTime with Kind=Local to PostgreSQL type 'timestamp with time zone', only UTC is supported. Note that it's not possible to mix DateTimes with different Kinds in an array/range. See the Npgsql.EnableLegacyTimestampBehavior AppContext switch to enable legacy behavior.
    at int Npgsql.Internal.TypeHandlers.DateTimeHandlers.TimestampTzHandler.ValidateAndGetLength(DateTime value, NpgsqlParameter parameter)
+==================[18.11.2022 17:27:40]==================
+System.IO.FileNotFoundException: Could not load file or assembly 'Bootstrapper.XmlSerializers, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null, processorArchitecture=AMD64'. Nie można odnaleźć określonego pliku.
+File name: 'Bootstrapper.XmlSerializers, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null, processorArchitecture=AMD64'
+   at void System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, bool throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+=========================================================
+
+==================[18.11.2022 17:27:40]==================
+System.IO.FileNotFoundException: Could not load file or assembly 'Bootstrapper.XmlSerializers, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null, processorArchitecture=AMD64'. Nie można odnaleźć określonego pliku.
+File name: 'Bootstrapper.XmlSerializers, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null, processorArchitecture=AMD64'
+   at void System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, bool throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+=========================================================
+
+==================[18.11.2022 17:27:57]==================
+System.Net.Internals.SocketExceptionFactory+ExtendedSocketException (10035): Operacja nie blokująca gniazda nie mogła być natychmiast ukończona. [::1]:5432
+   at void System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+=========================================================
+
+==================[18.11.2022 17:28:14]==================
+System.NotImplementedException: This type of argument is not implemented yet
+   at T Serverside.Command.CommandHelper.MapArgument<T>(string argument) in E:/BasicRPG/dotnet/resources/Serverside/Command/CommandHelper.cs:line 95
+=========================================================
+
+==================[18.11.2022 17:28:14]==================
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.NotImplementedException: This type of argument is not implemented yet
+   at T Serverside.Command.CommandHelper.MapArgument<T>(string argument) in E:/BasicRPG/dotnet/resources/Serverside/Command/CommandHelper.cs:line 95
+   --- End of inner exception stack trace ---
+   at object RuntimeMethodHandle.InvokeMethod(object target, in Span<object> arguments, Signature sig, bool constructor, bool wrapExceptions)
+   at object System.Reflection.RuntimeMethodInfo.Invoke(object obj, BindingFlags invokeAttr, Binder binder, object[] parameters, CultureInfo culture)
+=========================================================
+
+==================[18.11.2022 17:28:14]==================
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.NotImplementedException: This type of argument is not implemented yet
+   at T Serverside.Command.CommandHelper.MapArgument<T>(string argument) in E:/BasicRPG/dotnet/resources/Serverside/Command/CommandHelper.cs:line 95
+   --- End of inner exception stack trace ---
+   at object RuntimeMethodHandle.InvokeMethod(object target, in Span<object> arguments, Signature sig, bool constructor, bool wrapExceptions)
+   at object System.Reflection.RuntimeMethodInfo.Invoke(object obj, BindingFlags invokeAttr, Binder binder, object[] parameters, CultureInfo culture)
+   at object System.Reflection.MethodBase.Invoke(object obj, object[] parameters)
+   at List<object> Serverside.Command.CommandHelper.ParseArguments(List<string> arguments, List<Type> types) in E:/BasicRPG/dotnet/resources/Serverside/Command/Com
+==================[18.11.2022 17:48:00]==================
+System.IO.FileNotFoundException: Could not load file or assembly 'Bootstrapper.XmlSerializers, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null, processorArchitecture=AMD64'. Nie można odnaleźć określonego pliku.
+File name: 'Bootstrapper.XmlSerializers, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null, processorArchitecture=AMD64'
+   at void System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, bool throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+=========================================================
+
+==================[18.11.2022 17:48:00]==================
+System.IO.FileNotFoundException: Could not load file or assembly 'Bootstrapper.XmlSerializers, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null, processorArchitecture=AMD64'. Nie można odnaleźć określonego pliku.
+File name: 'Bootstrapper.XmlSerializers, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null, processorArchitecture=AMD64'
+   at void System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, bool throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+=========================================================
+
+==================[18.11.2022 17:48:20]==================
+System.Net.Internals.SocketExceptionFactory+ExtendedSocketException (10035): Operacja nie blokująca gniazda nie mogła być natychmiast ukończona. [::1]:5432
+   at void System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+=========================================================
+
+==================[18.11.2022 17:48:38]==================
+System.NotImplementedException: This type of argument is not implemented yet
+   at T Serverside.Command.CommandHelper.MapArgument<T>(string argument) in E:/BasicRPG/dotnet/resources/Serverside/Command/CommandHelper.cs:line 120
+=========================================================
+
+==================[18.11.2022 17:48:38]==================
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.NotImplementedException: This type of argument is not implemented yet
+   at T Serverside.Command.CommandHelper.MapArgument<T>(string argument) in E:/BasicRPG/dotnet/resources/Serverside/Command/CommandHelper.cs:line 120
+   --- End of inner exception stack trace ---
+   at object RuntimeMethodHandle.InvokeMethod(object target, in Span<object> arguments, Signature sig, bool constructor, bool wrapExceptions)
+   at object System.Reflection.RuntimeMethodInfo.Invoke(object obj, BindingFlags invokeAttr, Binder binder, object[] parameters, CultureInfo culture)
+=========================================================
+
+==================[18.11.2022 17:48:38]==================
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.NotImplementedException: This type of argument is not implemented yet
+   at T Serverside.Command.CommandHelper.MapArgument<T>(string argument) in E:/BasicRPG/dotnet/resources/Serverside/Command/CommandHelper.cs:line 120
+   --- End of inner exception stack trace ---
+   at object RuntimeMethodHandle.InvokeMethod(object target, in Span<object> arguments, Signature sig, bool constructor, bool wrapExceptions)
+   at object System.Reflection.RuntimeMethodInfo.Invoke(object obj, BindingFlags invokeAttr, Binder binder, object[] parameters, CultureInfo culture)
+   at object System.Reflection.MethodBase.Invoke(object obj, object[] parameters)
+   at List<object> Serverside.Command.CommandHelper.ParseArguments(List<string> arguments, List<Type> types) in E:/BasicRPG/dotnet/resources/Serverside/Command/
+==================[18.11.2022 18:05:42]==================
+System.IO.FileNotFoundException: Could not load file or assembly 'Bootstrapper.XmlSerializers, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null, processorArchitecture=AMD64'. Nie można odnaleźć określonego pliku.
+File name: 'Bootstrapper.XmlSerializers, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null, processorArchitecture=AMD64'
+   at void System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, bool throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+=========================================================
+
+==================[18.11.2022 18:05:44]==================
+System.IO.FileNotFoundException: Could not load file or assembly 'Bootstrapper.XmlSerializers, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null, processorArchitecture=AMD64'. Nie można odnaleźć określonego pliku.
+File name: 'Bootstrapper.XmlSerializers, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null, processorArchitecture=AMD64'
+   at void System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, bool throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+=========================================================
+
+==================[18.11.2022 18:06:02]==================
+System.Net.Internals.SocketExceptionFactory+ExtendedSocketException (10035): Operacja nie blokująca gniazda nie mogła być natychmiast ukończona. [::1]:5432
+   at void System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+=========================================================
+
+==================[18.11.2022 18:06:24]==================
+System.ArgumentException: Player not found
+   at T Serverside.Command.CommandHelper.MapArgument<T>(string argument) in E:/BasicRPG/dotnet/resources/Serverside/Command/CommandHelper.cs:line 131
+=========================================================
+
+==================[18.11.2022 18:06:30]==================
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.ArgumentException: Player not found
+   at T Serverside.Command.CommandHelper.MapArgument<T>(string argument) in E:/BasicRPG/dotnet/resources/Serverside/Command/CommandHelper.cs:line 131
+   --- End of inner exception stack trace ---
+   at object RuntimeMethodHandle.InvokeMethod(object target, in Span<object> arguments, Signature sig, bool constructor, bool wrapExceptions)
+   at object System.Reflection.RuntimeMethodInfo.Invoke(object obj, BindingFlags invokeAttr, Binder binder, object[] parameters, CultureInfo culture)
+=========================================================
+
+==================[18.11.2022 18:06:31]==================
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.ArgumentException: Player not found
+   at T Serverside.Command.CommandHelper.MapArgument<T>(string argument) in E:/BasicRPG/dotnet/resources/Serverside/Command/CommandHelper.cs:line 131
+   --- End of inner exception stack trace ---
+   at object RuntimeMethodHandle.InvokeMethod(object target, in Span<object> arguments, Signature sig, bool constructor, bool wrapExceptions)
+   at object System.Reflection.RuntimeMethodInfo.Invoke(object obj, BindingFlags invokeAttr, Binder binder, object[] parameters, CultureInfo culture)
+   at object System.Reflection.MethodBase.Invoke(object obj, object[] parameters)
+   at List<object> Serverside.Command.CommandHelper.ParseArguments(List<string> arguments, List<Type> types) in E:/BasicRPG/dotnet/resources/Serverside/Command/CommandHelper.cs:line 85
+   at Dictionary<string, object> Serverside.Command.CommandHelper.ValidateAr
+==================[18.11.2022 18:10:50]==================
+System.IO.FileNotFoundException: Could not load file or assembly 'Bootstrapper.XmlSerializers, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null, processorArchitecture=AMD64'. Nie można odnaleźć określonego pliku.
+File name: 'Bootstrapper.XmlSerializers, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null, processorArchitecture=AMD64'
+   at void System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, bool throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+=========================================================
+
+==================[18.11.2022 18:10:50]==================
+System.IO.FileNotFoundException: Could not load file or assembly 'Bootstrapper.XmlSerializers, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null, processorArchitecture=AMD64'. Nie można odnaleźć określonego pliku.
+File name: 'Bootstrapper.XmlSerializers, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null, processorArchitecture=AMD64'
+   at void System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, bool throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+=========================================================
+
+==================[18.11.2022 18:11:06]==================
+System.Net.Internals.SocketExceptionFactory+ExtendedSocketException (10035): Operacja nie blokująca gniazda nie mogła być natychmiast ukończona. [::1]:5432
+   at void System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+=========================================================
+
+==================[18.11.2022 18:11:57]==================
+System.ArgumentException: Player not found
+   at T Serverside.Command.CommandHelper.MapArgument<T>(string argument) in E:/BasicRPG/dotnet/resources/Serverside/Command/CommandHelper.cs:line 145
+=========================================================
+
+==================[18.11.2022 18:11:57]==================
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.ArgumentException: Player not found
+   at T Serverside.Command.CommandHelper.MapArgument<T>(string argument) in E:/BasicRPG/dotnet/resources/Serverside/Command/CommandHelper.cs:line 145
+   --- End of inner exception stack trace ---
+   at object RuntimeMethodHandle.InvokeMethod(object target, in Span<object> arguments, Signature sig, bool constructor, bool wrapExceptions)
+   at object System.Reflection.RuntimeMethodInfo.Invoke(object obj, BindingFlags invokeAttr, Binder binder, object[] parameters, CultureInfo culture)
+=========================================================
+
+==================[18.11.2022 18:11:57]==================
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.ArgumentException: Player not found
+   at T Serverside.Command.CommandHelper.MapArgument<T>(string argument) in E:/BasicRPG/dotnet/resources/Serverside/Command/CommandHelper.cs:line 145
+   --- End of inner exception stack trace ---
+   at object RuntimeMethodHandle.InvokeMethod(object target, in Span<object> arguments, Signature sig, bool constructor, bool wrapExceptions)
+   at object System.Reflection.RuntimeMethodInfo.Invoke(object obj, BindingFlags invokeAttr, Binder binder, object[] parameters, CultureInfo culture)
+   at object System.Reflection.MethodBase.Invoke(object obj, object[] parameters)
+   at List<object> Serverside.Command.CommandHelper.ParseArguments(List<string> arguments, List<Type> types) in E:/BasicRPG/dotnet/resources/Serverside/Command/CommandHelper.cs:line 94
+   at Dictionary<string, object> Serverside.Command.CommandHelper.ValidateAr

@@ -9,7 +9,7 @@
             :message="message"
             :type-color="getTypeColor(message.type)"
             :type-icon="getTypeIcon(message.type)"
-            :permission-color="getPermissionColor(message.type)"
+            :permission-color="getPermissionColor(message.permission)"
           ></RegularMessageComponent>
 
           <TransferMessageComponent
@@ -17,7 +17,7 @@
             :message="message"
             :type-color="getTypeColor(message.type)"
             :type-icon="getTypeIcon(message.type)"
-            :permission-color="getPermissionColor(message.type)"
+            :permission-color="getPermissionColor(message.permission)"
           ></TransferMessageComponent>
 
           <InfoMessageComponent
@@ -32,7 +32,7 @@
             :message="message"
             :type-color="getTypeColor(message.type)"
             :type-icon="getTypeIcon(message.type)"
-            :permission-color="getPermissionColor(message.type)"
+            :permission-color="getPermissionColor(message.permission)"
           ></PrivateMessageComponent>
 
           <PenaltyMessageComponent
@@ -45,7 +45,7 @@
             :message="message"
             :type-color="getTypeColor(message.type)"
             :type-icon="getTypeIcon(message.type)"
-            :permission-color="getPermissionColor(message.type)"
+            :permission-color="getPermissionColor(message.permission)"
           ></PenaltyMessageComponent>
         </div>
       </div>
@@ -242,6 +242,7 @@ export default {
   padding-left: 0.5rem;
   padding-bottom: 0.2rem;
 }
+
 .chat_meta {
   height: 1.5rem;
   display: flex;
@@ -261,6 +262,7 @@ export default {
   border-bottom-right-radius: 2rem;
   box-sizing: border-box;
   min-height: 1.2rem;
+  word-break: break-word;
 }
 
 .chat_bar {

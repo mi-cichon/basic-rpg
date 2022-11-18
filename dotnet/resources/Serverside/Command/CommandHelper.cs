@@ -1,10 +1,12 @@
-﻿using System;
+﻿using GTANetworkAPI;
+using Serverside.Services;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Reflection;
 
-namespace ServerBackend.Commands
+namespace Serverside.Command
 {
     public static class CommandHelper
     {
@@ -16,8 +18,15 @@ namespace ServerBackend.Commands
 
             if (argTypes != null && argTypes.Count > 0)
             {
-                argsList = MapArgumentsToList(args, argTypes.Count);
-                arguments = ParseArguments(argsList, argTypes.Select(x => x.Value).ToList());
+                try
+                {
+                    argsList = MapArgumentsToList(argTypes, args);
+                    arguments = ParseArguments(argsList, argTypes.Select(x => x.Value).ToList());
+                }
+                catch (ArgumentException ex)
+                {
+                    throw new ArgumentException(ex.Message);
+                }
             }
 
             if(arguments == null || arguments.Count == 0)
@@ -30,7 +39,7 @@ namespace ServerBackend.Commands
         }
 
         //Gets string of arguments and splits it into the List object
-        private static List<string> MapArgumentsToList(string args, int argsCount)
+        private static List<string> MapArgumentsToList(Dictionary<string, Type> argTypes, string args)
         {
             if (args == null || args.Length == 0 || args.Trim().Split(' ').Length == 0)
             {
@@ -39,12 +48,37 @@ namespace ServerBackend.Commands
 
             List<string> arguments = args.Trim().Split(' ').ToList();
 
-            if (arguments.Count != argsCount)
+            var isMessageBased = argTypes.Any(x => x.Value == typeof(CommandMessage));
+
+            if (arguments.Count != argTypes.Count && !isMessageBased)
             {
-                throw new ArgumentException($"You passed wrong amount of arguments (Expected: {argsCount})");
+                throw new ArgumentException($"You passed wrong amount of arguments (Expected: {argTypes.Count})");
+            }
+
+            if(arguments.Count < argTypes.Count && isMessageBased)
+            {
+                throw new ArgumentException($"You passed wrong amount of arguments (Expected: {argTypes.Count})");
+            }
+
+            if (isMessageBased)
+            {
+                arguments = MapToMessageBased(arguments, argTypes.Count);
             }
 
             return arguments;
+        }
+
+        private static List<string> MapToMessageBased(List<string> arguments, int argsCount)
+        {
+            var messageBasedArgs = arguments.GetRange(argsCount - 1, arguments.Count - 1);
+
+            var regularArgs = arguments.GetRange(0, argsCount - 1);
+
+            var joinedMessageArgs = string.Join(' ', messageBasedArgs);
+
+            regularArgs.Add(joinedMessageArgs);
+
+            return regularArgs;
         }
 
         //Validates the given list of arguments, and converts it into objects
@@ -55,12 +89,19 @@ namespace ServerBackend.Commands
 
             foreach (var arg in args)
             {
-                var mappedArg = typeof(CommandHelper)
+                try
+                {
+                    var mappedArg = typeof(CommandHelper)
                     .GetMethod(nameof(MapArgument))
                     .MakeGenericMethod(arg.Type)
                     .Invoke(null, new object[] { arg.Value });
 
-                parsedArguments.Add(mappedArg);
+                    parsedArguments.Add(mappedArg);
+                }
+                catch(ArgumentException ex)
+                {
+                    throw new ArgumentException(ex.Message);
+                }
             }
 
             return parsedArguments;
@@ -91,6 +132,27 @@ namespace ServerBackend.Commands
                         throw new ArgumentException("Given argument was not valid");
                     }
                     return (T)Convert.ChangeType(argUInt, typeof(T));
+
+                case var t when t == typeof(Player):
+                    if (argument.Length == 0)
+                    {
+                        throw new ArgumentException("Given argument was not valid");
+                    }
+                    var player = UserService.GetPlayerByRemoteIdOrName(argument);
+
+                    if(player == null)
+                    {
+                        throw new ArgumentException("Player not found");
+                    }
+
+                    return (T)(player as object);
+                
+                case var t when t == typeof(CommandMessage):
+                    if(argument.Length == 0)
+                    {
+                        throw new ArgumentException("Given argument was not valid");
+                    }
+                    return (T)Convert.ChangeType(new CommandMessage { Message = argument }, typeof(T));
 
                 default: throw new NotImplementedException("This type of argument is not implemented yet");
             }

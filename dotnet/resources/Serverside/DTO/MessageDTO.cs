@@ -14,7 +14,7 @@ namespace Serverside.DTO
         public string? message { get; set; }
         public MessageType? type { get; set; }
         public Permissions? permission { get; set; }
-        public string? from { get; set; }
+        public bool? from { get; set; }
         public string? time { get; set; }
     }
 }

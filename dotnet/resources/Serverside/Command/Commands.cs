@@ -6,13 +6,13 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Threading;
 
-namespace ServerBackend.Commands
+namespace Serverside.Command
 {
     public static partial class Commands
     {
         private static List<Command> AllCommands { get; set; } = new List<Command>();
 
-        public static void ExecuteCommand(Player player, string message)
+        public static void ExecuteCommand(Player? player, string message)
         {
             var split = message.Split(' ');
 
@@ -71,7 +71,7 @@ namespace ServerBackend.Commands
                     {
                         ExecuteCommand(null, text);
                     }
-                    catch(Exception e)
+                    catch (Exception e)
                     {
                         Console.WriteLine($"Exception while executing command: {e.InnerException?.Message}");
                     }
@@ -87,7 +87,7 @@ namespace ServerBackend.Commands
             }
 
             var methodInfos = new List<MethodInfo>();
-            methodInfos.AddRange(typeof(DefineCommands)
+            methodInfos.AddRange(typeof(CommandsDefinitions)
                            .GetMethods(BindingFlags.Public | BindingFlags.Static));
 
             methodInfos.ForEach(x =>

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ServerBackend.Commands
+namespace Serverside.Command
 {
     public class Command
     {

@@ -1,4 +1,5 @@
 ﻿using GTANetworkAPI;
+using Serverside.Command;
 using Serverside.Services;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,14 @@ namespace Serverside.Controllers
         [RemoteEvent("chat_sendMessage")]
         public void SendMessage(Player player, string message)
         {
-            ChatService.SendLocalMessage(player, message);
+            if (message.StartsWith('/'))
+            {
+                Commands.ExecuteCommand(player, message.Substring(1));
+            }
+            else
+            {
+                ChatService.SendLocalMessage(player, message);
+            }
         }
     }
 }

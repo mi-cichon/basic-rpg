@@ -1,6 +1,7 @@
 ﻿using Backend.Entities;
 using Backend.Entities.DbSettings;
 using GTANetworkAPI;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Serverside.Config;
 using Serverside.Enums;
 
@@ -83,6 +84,34 @@ namespace Serverside.Services
             }
 
             return -1;
+        }
+
+        public static Player? GetPlayerByRemoteIdOrName(string idOrName)
+        {
+            if(ushort.TryParse(idOrName, out var remoteId))
+            {
+                var player = NAPI.Pools.GetAllPlayers().Where(x => x.Id == remoteId).FirstOrDefault();
+
+                if(player != null)
+                {
+                    return player;
+                }
+            }
+
+            var playersWithName = NAPI.Pools.GetAllPlayers().Where(x =>
+            {
+                if (x.HasSharedData("player_name"))
+                {
+                    var name = x.GetSharedData<string>("player_name").ToLower();
+                    if (name.StartsWith(idOrName.ToLower()))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }).FirstOrDefault();
+
+            return playersWithName;    
         }
     }
 }
