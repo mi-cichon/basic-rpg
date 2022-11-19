@@ -14,18 +14,29 @@ namespace Serverside.Services
             var vehicles = Enum.GetNames(typeof(VehicleHash)).ToList();
 
             var vehicleTypeName = vehicles
-                .FirstOrDefault(x => x.ToLower().StartsWith(keyWord.ToLower()));
+                .FirstOrDefault(x => x.ToLower().Equals(keyWord.ToLower()));
 
-            if (!Enum.TryParse(typeof(VehicleHash), vehicleTypeName, out var vehicleType))
+            if (Enum.TryParse(typeof(VehicleHash), vehicleTypeName, out var vehicleType))
             {
+                var vehicleTypeNumber = (VehicleHash)vehicleType!;
+
+                var vehicle = NAPI.Vehicle.CreateVehicle(vehicleTypeNumber, player.Position, 0.0f, 135, 135, numberPlate: " FURKA");
+
+                player.SetIntoVehicle(vehicle.Handle, 0);
+
                 return;
             }
+            if(uint.TryParse(keyWord, out var hash))
+            {
+                var vehicle = NAPI.Vehicle.CreateVehicle(hash, player.Position, 0.0f, 135, 135, numberPlate: " FURKA");
 
-            var vehicleTypeNumber = (VehicleHash)vehicleType!;
-           
-            var vehicle = NAPI.Vehicle.CreateVehicle(vehicleTypeNumber, player.Position, 0.0f, 135, 135, numberPlate: " FURKA");
+                if(vehicle == null)
+                {
+                    return;
+                }
+                player.SetIntoVehicle(vehicle.Handle, 0);
+            }
 
-            player.SetIntoVehicle(vehicle.Handle, 0);
         }
     }
 }

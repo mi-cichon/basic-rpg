@@ -129,11 +129,11 @@ namespace Serverside.Command
                         return;
                     }
 
-                    if (!arguments.TryGetValue("keyWord", out var playerTo))
+                    if (!arguments.TryGetValue("keyWord", out var car))
                     {
                         return;
                     }
-                    VehicleService.FindVehicleAndSpawnOnPlayer(player, arguments["keyWord"] as string);
+                    VehicleService.FindVehicleAndSpawnOnPlayer(player, car as string);
                 }
                 catch (ArgumentException ex)
                 {
