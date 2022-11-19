@@ -1,6 +1,8 @@
 ﻿using Backend.Entities;
 using Backend.Entities.DbSettings;
 using GTANetworkAPI;
+using Serverside.Enums;
+using Serverside.Helper;
 using System.Text;
 using XSystem.Security.Cryptography;
 
@@ -27,10 +29,6 @@ namespace Serverside.Services
 
             SetUsersVars(player, user);
             UserService.AssignPlayersValues(player);
-            NAPI.Task.Run(() =>
-            {
-                UserService.UpdatePlayersHud(player);
-            }, 1000);
         }
 
         public static void Register(Player player, string username, string password)
@@ -63,12 +61,29 @@ namespace Serverside.Services
             context.SaveChanges();
         }
 
+        public static void SpawnPlayer(Player player, SpawnLocation location)
+        {
+            var position = SpawnHelper.GetPlayersSpawnPosition(player, location);
+            if(position == null)
+            {
+                return;
+            }
+
+            player.Dimension = 0;
+            player.Position = position;
+
+            player.TriggerEvent("client_spawnSelectionCompleted");
+
+            NAPI.Task.Run(() =>
+            {
+                UserService.UpdatePlayersHud(player);
+            }, 1000);
+        }
+
         private static void SetUsersVars(Player player, User user)
         {
             player.SetSharedData("player_id", user.Id);
-            player.Position = new Vector3(-1659.993, -128.399, 59.954);
             player.Name = user.Name;
-            player.Dimension = 0;
         }
 
         private static string ToSHA256(string randomString)

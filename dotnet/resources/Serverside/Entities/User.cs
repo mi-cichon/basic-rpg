@@ -5,6 +5,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 using Serverside.Enums;
 using System.ComponentModel;
+using GTANetworkAPI;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace Backend.Entities
 {
@@ -34,5 +37,25 @@ namespace Backend.Entities
         public Permissions Permissions { get; set; }
 
         public DateTime RegisteredDate { get; set; }
+
+        internal string? _LastPosition { get; set; }
+
+        [NotMapped]
+        public Vector3? LastPosition
+        {
+            get 
+            { 
+                return _LastPosition == null 
+                    ? null 
+                    : JsonConvert.DeserializeObject<Vector3>(_LastPosition); 
+            }
+            set
+            {
+                _LastPosition = value == null
+                    ? null
+                    : JsonConvert.SerializeObject(value);
+
+            }
+        }
     }
 }

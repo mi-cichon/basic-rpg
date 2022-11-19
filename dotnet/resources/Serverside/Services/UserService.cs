@@ -113,5 +113,44 @@ namespace Serverside.Services
 
             return playersWithName;    
         }
+
+        public static void SaveLastPosition(Player player)
+        {
+            if(player == null)
+            {
+                return;
+            }
+
+            var user = GetUserEntity(player);
+
+            if(user == null)
+            {
+                return;
+            }
+
+            using var context = new RageDBContext();
+
+            user.LastPosition = player.Position;
+
+            context.Update(user);
+            context.SaveChanges();
+        }
+
+        public static Vector3? GetPlayersLastPos(Player player)
+        {
+            if (player == null)
+            {
+                return null;
+            }
+
+            var user = GetUserEntity(player);
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            return user.LastPosition;
+        }
     }
 }

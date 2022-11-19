@@ -1,6 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using GTANetworkAPI;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
+using System.Reflection.Emit;
 
 namespace Backend.Entities.DbSettings
 {
@@ -17,6 +20,8 @@ namespace Backend.Entities.DbSettings
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<User>().HasKey(x => x.Id);
+            builder.Entity<User>().Property(p => p._LastPosition);
+
             base.OnModelCreating(builder);
         }
     }

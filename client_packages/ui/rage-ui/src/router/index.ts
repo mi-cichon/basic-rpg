@@ -13,6 +13,11 @@ const router = createRouter({
       name: "register",
       component: () => import("../views/RegisterView.vue"),
     },
+    {
+      path: "/spawnselection/:lastpos",
+      name: "spawnselection",
+      component: () => import("../views/SpawnSelectionView.vue"),
+    },
   ],
 });
 

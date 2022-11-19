@@ -3,6 +3,7 @@ using System;
 using Backend.Entities.DbSettings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Serverside.Migrations
 {
     [DbContext(typeof(RageDBContext))]
-    partial class RageDBContextModelSnapshot : ModelSnapshot
+    [Migration("20221119130913_UserLastPosition")]
+    partial class UserLastPosition
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

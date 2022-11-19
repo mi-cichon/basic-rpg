@@ -44,10 +44,13 @@ export default {
       const type: number = args.type;
       this.showNotification(message, type);
     });
-    rpc.register("ui_loginCompleted", () => {
+    rpc.register("ui_loginCompleted", (lastPos: boolean) => {
+      this.$router.push("/spawnselection/" + lastPos.toString());
+    });
+    rpc.register("ui_spawnSelectionCompleted", () => {
       this.$router.push("/");
-      this.displayHud = true;
       this.displayChat = true;
+      this.displayHud = true;
     });
     rpc.register("ui_showChatInput", (state) => {
       if (this.displayChat) {
@@ -85,7 +88,6 @@ export default {
 html,
 body {
   user-select: none;
-  /* background-image: url("./assets/images/background.jpg"); */
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

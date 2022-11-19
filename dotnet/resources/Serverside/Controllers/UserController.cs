@@ -22,13 +22,20 @@ namespace Backend.Controllers
             player.GiveWeapon(WeaponHash.Parachute, 1);
         }
 
+        [ServerEvent(Event.PlayerDisconnected)]
+        public void OnPlayerDisconnected(Player player, DisconnectionType type, string reason)
+        {
+            UserService.SaveLastPosition(player);
+        }
+
         [RemoteEvent("user_login")]
         public void Login(Player player, string username, string password)
         {
             try
             {
                 LoginService.Login(player, username, password);
-                player.TriggerEvent("client_loginCompleted");
+                var hasLastPos = UserService.GetPlayersLastPos(player) != null;
+                player.TriggerEvent("client_loginCompleted", hasLastPos);
             }
             catch(ArgumentException ex)
             {
@@ -59,5 +66,11 @@ namespace Backend.Controllers
             }
         }
 
+        [RemoteEvent("user_spawnSelected")]
+        public void SpawnSelected(Player player, int spawnLocation)
+        {
+            var location = (SpawnLocation)spawnLocation;
+            LoginService.SpawnPlayer(player, location);
+        }
     }
 }

@@ -41,6 +41,10 @@
         },
         "info":{
             "discordInfo": "Zapraszamy na Discord naszego serwera pod discord.gg/basicrpg"
+        },
+        "spawnSelection":{
+            "clickText": "Naciśnij aby wybrać tę lokację...",
+            "lastPosition": "Ostatnia pozycja"
         }
     },
 
