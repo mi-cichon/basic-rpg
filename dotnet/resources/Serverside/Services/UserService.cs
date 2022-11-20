@@ -4,6 +4,7 @@ using GTANetworkAPI;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Serverside.Config;
 using Serverside.Enums;
+using Serverside.Helper;
 
 namespace Serverside.Services
 {
@@ -151,6 +152,16 @@ namespace Serverside.Services
             }
 
             return user.LastPosition;
+        }
+
+        public static void SpawnPlayerAtClosestHospital(Player player)
+        {
+            var deathLocation = player.GetSharedData<Vector3>("player_deathLocation");
+
+            var closestSpawn = SpawnHelper.GetPlayersClosestHospitalSpawn(player, deathLocation);
+            player.Position = closestSpawn.Position;
+            player.Heading = closestSpawn.Heading;
+            player.Dimension = 0;
         }
     }
 }

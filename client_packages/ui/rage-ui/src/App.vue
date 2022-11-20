@@ -15,6 +15,13 @@
     :show-input="showChatInput"
     @chat-message-sent="showChatInput = false"
   ></ChatComponent>
+
+  <DefaultSpeedometerComponent
+    ref="speedometerComponent"
+    v-if="displaySpeedometer"
+    :max-speed="speedometerMaxSpeed"
+    :veh-name="speedometerVehName"
+  ></DefaultSpeedometerComponent>
 </template>
 
 <script lang="ts">
@@ -22,6 +29,7 @@ import rpc from "rage-rpc";
 import NotificationComponent from "./components/NotificationComponent.vue";
 import HudComponent from "./components/HudComponent.vue";
 import ChatComponent from "./components/ChatComponent.vue";
+import DefaultSpeedometerComponent from "./components/speedometer/DefaultSpeedometerComponent.vue";
 
 export default {
   data() {
@@ -32,6 +40,9 @@ export default {
       notificationType: 0,
       displayHud: false,
       displayChat: false,
+      displaySpeedometer: false,
+      speedometerMaxSpeed: 0,
+      speedometerVehName: "",
       showChatInput: false,
     };
   },
@@ -62,6 +73,24 @@ export default {
         (this.$refs.chat as any).addMessage(message);
       }
     });
+    rpc.register("ui_displaySpeedometer", (values) => {
+      if (values.state) {
+        this.displaySpeedometer = true;
+        this.speedometerMaxSpeed = values.speed;
+        this.speedometerVehName = values.name;
+        return;
+      }
+      this.displaySpeedometer = false;
+    });
+    rpc.register("ui_updateSpeedometer", (values) => {
+      if (!this.displaySpeedometer) {
+        return;
+      }
+      (this.$refs.speedometerComponent as any).update(
+        values.speed,
+        values.street
+      );
+    });
   },
   methods: {
     showNotification(message: string, type: number) {
@@ -76,7 +105,12 @@ export default {
       }, 5000);
     },
   },
-  components: { NotificationComponent, HudComponent, ChatComponent },
+  components: {
+    NotificationComponent,
+    HudComponent,
+    ChatComponent,
+    DefaultSpeedometerComponent,
+  },
 };
 </script>
 
@@ -92,5 +126,6 @@ body {
   background-position: center;
   background-size: cover;
   box-sizing: border-box;
+  overflow: hidden;
 }
 </style>

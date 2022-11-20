@@ -53,38 +53,47 @@
             "loginTitle": "Login",
             "usernamePlaceholder": "Username",
             "passwordPlaceholder": "Password",
-            "loginButton": "Login",
-            "registerText": "Not registered?",
-            "registerClick": "Do it now!",
-            "wrongCredentials": "Given credentials are invialid!"
+            "loginButton": "Sign in",
+            "registerText": "Not registered yet?",
+            "registerClick": "Register now!",
+            "wrongCredentials": "Incorrect login data!"
         },
         "register": {
-            "registerTitle": "Register",
+            "registerTitle": "Registration",
             "repeatPasswordPlaceholder": "Repeat password",
             "registerClick": "Register",
             "userExists": "User with given name already exists!",
-            "maxAccounts": "You have already created maximum amount of accounts!",
-            "successful": "Account created successfully!"
+            "maxAccounts": "You've already reached the maximum ammount of accounts!",
+            "successful": "Registration successful!"
         },
         "notifications": {
             "success": "Success",
-            "infomation": "Info",
+            "infomation": "Information",
             "warning": "Warning",
             "fail": "Fail",
             "error": "Critical error"
         },
         "errors":{
-            "critical": "There was an error! Contact staff immedietaly!"
+            "critical": "Unknown error occured. Contact administration."
         },
         "chat":{
             "transferReceivedTitle": "Transfer",
-            "transferReceivedText": "sent you",
-            "infoTitle": "Info",
+            "transferReceivedText": "transfers You",
+            "infoTitle": "Information",
             "privateFrom": "From",
-            "privateTo": "To"
+            "privateTo": "To",
+            "penaltyTitle": "A player was punished",
+            "penaltyKickText": "Player {player} was kicked by {by}, for: {reason}.",
+            "penaltyBanText": "Player {player} was banned ({time}) by {by}, for: {reason}.",
+            "penaltyLicenceText": "Player {player} has lost the ability to drive a vehicle for ({time}) by {by}, for: {reason}.",
+            "penaltyMuteText": "Player {player} was muted ({time}) by {by}, for: {reason}."
         },
         "info":{
-            "discordInfo": "You are welcome on our discord server at discord.gg/basicrpg"
+            "discordInfo": "Join our discord using discord.gg/basicrpg"
+        },
+        "spawnSelection":{
+            "clickText": "Click to choose this location...",
+            "lastPosition": "Last position"
         }
     }
 }

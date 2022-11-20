@@ -16,10 +16,20 @@ namespace Backend.Controllers
             LoginService.LoginUser(player);
         }
 
+        [ServerEvent(Event.PlayerDeath)]
+        public void OnPlayerDeath(Player player, Player killer, uint reason)
+        {
+            player.SetSharedData("player_deathLocation", player.Position);
+            player.TriggerEvent("client_destroySpeedometer");
+        }
+
         [ServerEvent(Event.PlayerSpawn)]
         public void OnPlayerSpawn(Player player)
         {
-            player.GiveWeapon(WeaponHash.Parachute, 1);
+            if(player.HasSharedData("player_deathLocation"))
+            {
+                UserService.SpawnPlayerAtClosestHospital(player);
+            }
         }
 
         [ServerEvent(Event.PlayerDisconnected)]

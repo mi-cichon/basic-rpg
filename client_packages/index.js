@@ -3,3 +3,5 @@ require('./clientside/login/loginController.js');
 require('./clientside/ui/uiController.js');
 require('./clientside/chat/chatController.js');
 require('./clientside/spawnSelection/spawnSelectionController.js');
+require('./clientside/ui/speedometerController.js');
+require('./clientside/ui/nameTags.js');

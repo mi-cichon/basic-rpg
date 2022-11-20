@@ -12,6 +12,7 @@
   "dependencies": {
     "@fortawesome/vue-fontawesome": "^3.0.2",
     "grep": "^0.1.0",
+    "progressbar.js": "^1.1.0",
     "rage-rpc": "^0.4.0",
     "run-p": "^0.0.0",
     "vue": "^3.2.41",
@@ -21,6 +22,7 @@
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.4",
     "@types/node": "^16.18.3",
+    "@types/progressbar.js": "^1.1.2",
     "@vitejs/plugin-vue": "^3.1.2",
     "@vue/eslint-config-prettier": "^7.0.0",
     "@vue/eslint-config-typescript": "^11.0.0",

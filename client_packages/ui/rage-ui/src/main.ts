@@ -6,7 +6,6 @@ import { createI18n } from "vue-i18n";
 import messages from "./assets/language/messages.json";
 
 const app = createApp(App);
-
 app.use(router);
 
 const i18n = createI18n({

@@ -41,12 +41,14 @@ export default {
   transform: skew(-7deg, 0deg);
 }
 .blog-thumb-img .img {
-  transform: scale(1);
+  transform: scale(1) skew(7deg, 0deg);
   transition: all 0.3s ease-in-out 0s;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
+  width: 200%;
+  height: 200%;
+  background-size: 250%;
+  background-position-y: 0;
+  background-position-x: 60%;
+  background-repeat: no-repeat;
 }
 
 .imgLast {
@@ -71,7 +73,7 @@ export default {
   transform: translateY(0px);
 }
 .blog-thumb-img:hover .img {
-  transform: scale(1.2);
+  transform: scale(1.1) skew(7deg, 0deg);
 }
 .blog-thumb-img-overlay {
   background: none repeat scroll 0 0 rgb(18, 25, 44, 0.6);
