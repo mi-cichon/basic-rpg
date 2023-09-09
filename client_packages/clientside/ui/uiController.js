@@ -9,13 +9,13 @@ mp.events.add("client_createBrowser", () => {
     loginUi();
 });
 
-mp.events.add("client_showNotification", (message, type) => {
-    rpc.callBrowser(uiBrowser, 'ui_showNotification', {message: message, type: type});
-});
+// mp.events.add("client_showNotification", (message, type) => {
+//     rpc.callBrowser(uiBrowser, 'ui_showNotification', {message: message, type: type});
+// });
 
-mp.events.add("client_updateHudValues", values => {
-    rpc.callBrowser(uiBrowser, 'ui_updateHudValues', values);
-});
+// mp.events.add("client_updateHudValues", values => {
+//     rpc.callBrowser(uiBrowser, 'ui_updateHudValues', values);
+// });
 
 function loginUi(){
     player.freezePosition(true);
@@ -28,9 +28,12 @@ function loginUi(){
     loginCamera.setActive(true);
     mp.game.cam.renderScriptCams(true, false, 0, true, false);
     mp.gui.cursor.show(true, true);
-
-    rpc.callBrowser(uiBrowser, 'ui_showLoginComponent', true);
 }
+
+rpc.register('siemazrana', toggle => {
+    mp.gui.cursor.show(false, false);
+    rpc.callBrowser(uiBrowser, 'siema');
+});
 
 
 
