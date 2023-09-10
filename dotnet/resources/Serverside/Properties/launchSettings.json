@@ -2,8 +2,8 @@
   "profiles": {
     "Start server": {
       "commandName": "Executable",
-      "executablePath": "E:\\BasicRPG\\ragemp-server.exe",
-      "workingDirectory": "E:\\BasicRPG"
+      "executablePath": "D:\\git-ragemp\\basic-rpg\\ragemp-server.exe",
+      "workingDirectory": "D:\\git-ragemp\\basic-rpg"
     }
   }
 }

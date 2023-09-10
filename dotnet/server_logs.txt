@@ -109,4 +109,48 @@ File name: 'Microsoft.EntityFrameworkCore.Relational, Version=7.0.0.0, Culture=n
    at RuntimeAssembly System.Runtime.Loader.AssemblyLoadContext.OnAssemblyResolve(RuntimeAssembly assembly, string assemblyFullName)
 
 
-System.IO.FileLoadException: Could not load file or assembly 'Microsoft.EntityFrameworkCore.Relational, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60'. Could not find or load a specifi
+System.IO.FileLoadException: Could not load file or assembly 'Microsoft.EntityFrameworkCore.Relational, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60'. Could not find or load a specifiInitializing Bootstrapper.dll (1.1.0.0)..
+-> SERVER STARTED AT 08.09.2023 19:40:38
+Unable to load acl.xml
+Loaded 667 entries from vehicleData.json
+Loading resources..
+-> Starting Serverside resource..
+Serverside: loading scripts.. found 1 script(s)
+Serverside: instantiating Backend.Controllers.UserController..
+Serverside: instantiating Serverside.Startup..
+Serverside: instantiating Serverside.Controllers.ChatController..
+Serverside: loading server events.. found 4 server event(s)
+Serverside: loading server events.. found 1 server event(s)
+Serverside: loaded 5 server events(s)
+Serverside: loading remote events.. found 3 remote event(s)
+Serverside: loading remote events.. found 1 remote event(s)
+Serverside: loaded 4 remote event(s)
+-> Resource Serverside started!
+Started! Waiting for connections..
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.ArgumentException: Command mp not recognized!
+   at void Serverside.Command.Commands.ExecuteCommand(Player player, string message) in D:/git-ragemp/basic-rpg/dotnet/resources/Serverside/Command/Commands.cs:line 49
+   at void Serverside.Controllers.ChatController.SendMessage(Player player, string message) in D:/git-ragemp/basic-rpg/dotnet/resources/Serverside/Controllers/ChatController.cs:line 19
+   --- End of inner exception stack trace ---
+   at object RuntimeMethodHandle.InvokeMethod(object target, in Span<object> arguments, Signature sig, bool constructor, bool wrapExceptions)
+   at object System.Reflection.RuntimeMethodInfo.Invoke(object obj, BindingFlags invokeAttr, Binder binder, object[] parameters, CultureInfo culture)
+   at void GTANetworkInternals.RemoteEventParser.Parse(Player sender, ulong eventNameHash, params object[] args)
+   at void GTANetworkInternals.RemoteEventHandler.Parse(Player sender, ulong eventNameHash, params object[] arguments)
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.ArgumentException: Command mp not recognized!
+   at void Serverside.Command.Commands.ExecuteCommand(Player player, string message) in D:/git-ragemp/basic-rpg/dotnet/resources/Serverside/Command/Commands.cs:line 49
+   at void Serverside.Controllers.ChatController.SendMessage(Player player, string message) in D:/git-ragemp/basic-rpg/dotnet/resources/Serverside/Controllers/ChatController.cs:line 19
+   --- End of inner exception stack trace ---
+   at object RuntimeMethodHandle.InvokeMethod(object target, in Span<object> arguments, Signature sig, bool constructor, bool wrapExceptions)
+   at object System.Reflection.RuntimeMethodInfo.Invoke(object obj, BindingFlags invokeAttr, Binder binder, object[] parameters, CultureInfo culture)
+   at void GTANetworkInternals.RemoteEventParser.Parse(Player sender, ulong eventNameHash, params object[] args)
+   at void GTANetworkInternals.RemoteEventHandler.Parse(Player sender, ulong eventNameHash, params object[] arguments)
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.ArgumentException: Command maxpower not recognized!
+   at void Serverside.Command.Commands.ExecuteCommand(Player player, string message) in D:/git-ragemp/basic-rpg/dotnet/resources/Serverside/Command/Commands.cs:line 49
+   at void Serverside.Controllers.ChatController.SendMessage(Player player, string message) in D:/git-ragemp/basic-rpg/dotnet/resources/Serverside/Controllers/ChatController.cs:line 19
+   --- End of inner exception stack trace ---
+   at object RuntimeMethodHandle.InvokeMethod(object target, in Span<object> arguments, Signature sig, bool constructor, bool wrapExceptions)
+   at object System.Reflection.RuntimeMethodInfo.Invoke(object obj, BindingFlags invokeAttr, Binder binder, object[] parameters, CultureInfo culture)
+   at void GTANetworkInternals.RemoteEventParser.Parse(Player sender, ulong eventNameHash, params object[] args)
+   at void GTANetworkInternals.RemoteEventHandler.Parse(Player sender, ulong eventNameHash, params obje

@@ -2360,3 +2360,92 @@ System.Reflection.TargetInvocationException: Exception has been thrown by the ta
    at object System.Reflection.MethodBase.Invoke(object obj, object[] parameters)
    at List<object> Serverside.Command.CommandHelper.ParseArguments(List<string> arguments, List<Type> types) in E:/BasicRPG/dotnet/resources/Serverside/Command/CommandHelper.cs:line 94
    at Dictionary<string, object> Serverside.Command.CommandHelper.ValidateAr
+==================[08.09.2023 19:40:39]==================
+System.IO.FileNotFoundException: Could not load file or assembly 'Bootstrapper.XmlSerializers, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null, processorArchitecture=AMD64'. Nie można odnaleźć określonego pliku.
+File name: 'Bootstrapper.XmlSerializers, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null, processorArchitecture=AMD64'
+   at void System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, bool throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+=========================================================
+
+==================[08.09.2023 19:40:40]==================
+System.IO.FileNotFoundException: Could not load file or assembly 'Bootstrapper.XmlSerializers, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null, processorArchitecture=AMD64'. Nie można odnaleźć określonego pliku.
+File name: 'Bootstrapper.XmlSerializers, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null, processorArchitecture=AMD64'
+   at void System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, bool throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+=========================================================
+
+==================[08.09.2023 19:47:29]==================
+System.Net.Internals.SocketExceptionFactory+ExtendedSocketException (10035): Operacja nie blokująca gniazda nie mogła być natychmiast ukończona. [::1]:5432
+   at void System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+=========================================================
+
+==================[08.09.2023 19:49:36]==================
+System.ArgumentException: Command mp not recognized!
+   at void Serverside.Command.Commands.ExecuteCommand(Player player, string message) in D:/git-ragemp/basic-rpg/dotnet/resources/Serverside/Command/Commands.cs:line 49
+=========================================================
+
+==================[08.09.2023 19:50:31]==================
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.ArgumentException: Command mp not recognized!
+   at void Serverside.Command.Commands.ExecuteCommand(Player player, string message) in D:/git-ragemp/basic-rpg/dotnet/resources/Serverside/Command/Commands.cs:line 49
+   at void Serverside.Controllers.ChatController.SendMessage(Player player, string message) in D:/git-ragemp/basic-rpg/dotnet/resources/Serverside/Controllers/ChatController.cs:line 19
+   --- End of inner exception stack trace ---
+   at object RuntimeMethodHandle.InvokeMethod(object target, in Span<object> arguments, Signature sig, bool constructor, bool wrapExceptions)
+   at object System.Reflection.RuntimeMethodInfo.Invoke(object obj, BindingFlags invokeAttr, Binder binder, object[] parameters, CultureInfo culture)
+=========================================================
+
+==================[08.09.2023 19:50:31]==================
+System.ArgumentException: Command mp not recognized!
+   at void Serverside.Command.Commands.ExecuteCommand(Player player, string message) in D:/git-ragemp/basic-rpg/dotnet/resources/Serverside/Command/Commands.cs:line 49
+=========================================================
+
+==================[08.09.2023 19:50:34]==================
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.ArgumentException: Command mp not recognized!
+   at void Serverside.Command.Commands.ExecuteCommand(Player player, string message) in D:/git-ragemp/basic-rpg/dotnet/resources/Serverside/Command/Commands.cs:line 49
+   at void Serverside.Controllers.ChatController.SendMessage(Player player, string message) in D:/git-ragemp/basic-rpg/dotnet/resources/Serverside/Controllers/ChatController.cs:line 19
+   --- End of inner exception stack trace ---
+   at object RuntimeMethodHandle.InvokeMethod(object target, in Span<object> arguments, Signature sig, bool constructor, bool wrapExceptions)
+   at object System.Reflection.RuntimeMethodInfo.Invoke(object obj, BindingFlags invokeAttr, Binder binder, object[] parameters, CultureInfo culture)
+=========================================================
+
+==================[08.09.2023 19:50:34]==================
+System.ArgumentException: Command maxpower not recognized!
+   at void Serverside.Command.Commands.ExecuteCommand(Player player, string message) in D:/git-ragemp/basic-rpg/dotnet/resources/Serverside/Command/Commands.cs:line 49
+=========================================================
+
+==================[08.09.2023 19:50:41]==================
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.ArgumentException: Command maxpower not recognized!
+   at void Serverside.Command.Commands.ExecuteCommand(Player player, string message) in D:/git-ragemp/basic-rpg/dotnet/resources/Serverside/Command/Commands.cs:line 49
+   at void Serverside.Controllers.ChatController.SendMessage(Player player, string message) in D:/git-ragemp/basic-rpg/dotnet/resources/Serverside/Controllers/ChatController.cs:line 19
+   --- End of inner exception stack trace ---
+   at object RuntimeMethodHandle.InvokeMethod(object target, in Span<object> arguments, Signature sig, bool constructor, bool wrapExceptions)
+   at object System.Reflection.RuntimeMethodInfo.Invoke(object obj, BindingFlags invokeAttr, Binder binder, object[] parameters, CultureInfo culture)
+=========================================================
+
+==================[08.09.2023 19:51:01]==================
+System.ArgumentException: Command mp not recognized!
+   at void Serverside.Command.Commands.ExecuteCommand(Player player, string message) in D:/git-ragemp/basic-rpg/dotnet/resources/Serverside/Command/Commands.cs:line 49
+=========================================================
+
+==================[08.09.2023 19:51:13]==================
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.ArgumentException: Command mp not recognized!
+   at void Serverside.Command.Commands.ExecuteCommand(Player player, string message) in D:/git-ragemp/basic-rpg/dotnet/resources/Serverside/Command/Commands.cs:line 49
+   at void Serverside.Controllers.ChatController.SendMessage(Player player, string message) in D:/git-ragemp/basic-rpg/dotnet/resources/Serverside/Controllers/ChatController.cs:line 19
+   --- End of inner exception stack trace ---
+   at object RuntimeMethodHandle.InvokeMethod(object target, in Span<object> arguments, Signature sig, bool constructor, bool wrapExceptions)
+   at object System.Reflection.RuntimeMethodInfo.Invoke(object obj, BindingFlags invokeAttr, Binder binder, object[] parameters, CultureInfo culture)
+=========================================================
+
+==================[08.09.2023 19:51:19]==================
+System.ArgumentException: Command mp not recognized!
+   at void Serverside.Command.Commands.ExecuteCommand(Player player, string message) in D:/git-ragemp/basic-rpg/dotnet/resources/Serverside/Command/Commands.cs:line 49
+=========================================================
+
+==================[08.09.2023 19:51:19]==================
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.ArgumentException: Command mp not recognized!
+   at void Serverside.Command.Commands.ExecuteCommand(Player player, string message) in D:/git-ragemp/basic-rpg/dotnet/resources/Serverside/Command/Commands.cs:line 49
+   at void Serverside.Controllers.ChatController.SendMessage(Player player, string message) in D:/git-ragemp/basic-rpg/dotnet/resources/Serverside/Controllers/ChatController.cs:line 19
+   --- End of inner exception stack trace ---
+   at object RuntimeMethodHandle.InvokeMethod(object target, in S
