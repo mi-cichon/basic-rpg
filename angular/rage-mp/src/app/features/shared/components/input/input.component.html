@@ -1,0 +1,15 @@
+<div
+  class="input"
+  [formGroup]="formGroup.control"
+  [class.error]="
+    formGroup.control.get(controlName)?.invalid &&
+    formGroup.control.get(controlName)?.touched
+  "
+>
+  <i *ngIf="icon" [class]="icon"></i>
+  <input
+    [type]="inputType"
+    [placeholder]="inputPlaceholder"
+    [formControlName]="controlName"
+  />
+</div>

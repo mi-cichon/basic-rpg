@@ -1,4 +1,30 @@
-<ng-container *ngIf="showLogin">
-    <p>siema zaloguj sie</p>
-    <button (click)="login()">zaloguj</button>
-</ng-container>
+<div class="body" [class.disappear]="disappear">
+  <div class="flags">
+    <div class="flag pl" (click)="changeLocale('pl')"></div>
+    <div class="flag en" (click)="changeLocale('en')"></div>
+  </div>
+  <form [formGroup]="loginForm" class="col-8" (ngSubmit)="submit()">
+    <div class="header">
+      {{ "login.loginTitle" | transloco }}
+    </div>
+    <app-input
+      controlName="login"
+      inputType="text"
+      icon="fa-solid fa-user"
+      [inputPlaceholder]="'login.usernamePlaceholder' | transloco"
+    />
+    <app-input
+      controlName="password"
+      inputType="password"
+      icon="fa-solid fa-lock"
+      [inputPlaceholder]="'login.passwordPlaceholder' | transloco"
+    />
+    <app-form-button>{{ "login.loginButton" | transloco }}</app-form-button>
+  </form>
+  <div class="register">
+    {{ "login.registerText" | transloco }}
+    <div (click)="goToRegister()">{{ "login.registerClick" | transloco }}</div>
+  </div>
+  <div class="simple-logo"></div>
+  <app-spinner *ngIf="loggingIn" [textKey]="'login.loggingIn'"> </app-spinner>
+</div>

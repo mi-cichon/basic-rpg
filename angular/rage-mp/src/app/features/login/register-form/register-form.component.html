@@ -1,0 +1,34 @@
+<div class="body" [class.disappear]="disappear">
+  <div class="backButton" *ngIf="!registering" (click)="goToLogin()">
+    <i class="fa-solid fa-arrow-left-long"></i>
+  </div>
+  <form [formGroup]="registerForm" class="col-8">
+    <div class="header">{{ "register.registerTitle" | transloco }}</div>
+    <app-input
+      controlName="login"
+      inputType="text"
+      icon="fa-solid fa-user"
+      [inputPlaceholder]="'login.usernamePlaceholder' | transloco"
+    />
+    <app-input
+      controlName="password"
+      inputType="password"
+      icon="fa-solid fa-lock"
+      [inputPlaceholder]="'login.passwordPlaceholder' | transloco"
+    />
+    <app-input
+      controlName="confirmPassword"
+      inputType="password"
+      icon="fa-solid fa-lock"
+      [inputPlaceholder]="'register.repeatPasswordPlaceholder' | transloco"
+    />
+    <app-form-button>{{
+      "register.registerButton" | transloco
+    }}</app-form-button>
+  </form>
+  <app-spinner
+    *ngIf="registering"
+    [textKey]="'register.registering' | transloco"
+  >
+  </app-spinner>
+</div>

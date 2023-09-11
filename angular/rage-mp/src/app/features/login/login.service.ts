@@ -1,20 +1,16 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { ClientApiService } from 'src/app/lib/client-api.service';
+import { Injectable } from "@angular/core";
+import { AbstractClientApiService } from "src/app/lib/client-api-service/abstract-client-api.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class LoginService {
-  private _showLogin = new BehaviorSubject<boolean>(false);
-  public get showLogin$(): BehaviorSubject<boolean>{
-    return this._showLogin;
-  }
-  
-  constructor(rpcService: ClientApiService) {
-   }
+  constructor(private clientApiService: AbstractClientApiService) {}
 
-   private handleShowLoginForm(state: boolean): void {
-    this._showLogin.next(true);
-   }
+  public async login(login: string, password: string): Promise<void> {
+    return this.clientApiService.callClient("client_tryLogin", {
+      login: login,
+      password: password,
+    });
+  }
 }

@@ -1,0 +1,12 @@
+<div class="spinner-body">
+  <mat-progress-spinner
+    class="spinner"
+    [color]="color"
+    [mode]="mode"
+    [value]="value"
+  >
+  </mat-progress-spinner>
+  <p class="mt-3 spinner-text">
+    {{ textKey ?? "common.loading" | transloco }}
+  </p>
+</div>

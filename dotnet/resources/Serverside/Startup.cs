@@ -1,22 +1,22 @@
-﻿using GTANetworkAPI;
-using Serverside.Command;
-using Serverside.Config;
+﻿using BasicRPG.ClientApi.Commands;
+using BasicRPG.Configuration;
+using GTANetworkAPI;
 
-namespace Serverside
+namespace BasicRPG.ClientApi;
+
+public class Startup : Script
 {
-    public class Startup : Script
+    [ServerEvent(Event.ResourceStart)]
+    public void OnStart()
     {
-        [ServerEvent(Event.ResourceStart)]
-        public void OnStart()
-        {
-            Console.WriteLine("Server backend started...");
-            NAPI.Server.SetDefaultSpawnLocation(new Vector3(0, 0, 1250), 0);
-            NAPI.Server.SetGlobalServerChat(false);
+        Console.WriteLine("Server backend started...");
+        NAPI.Server.SetDefaultSpawnLocation(new Vector3(0, 0, 1250));
+        NAPI.Server.SetGlobalServerChat(false);
 
-            Commands.DefineCommands();
-            Commands.StartConsoleInputThread();
 
-            ConfigurationService.LoadConfigs();
-        }
+        CommandProvider.DefineCommands();
+        CommandProvider.StartConsoleInputThread();
+
+        ConfigurationService.LoadConfigs();
     }
 }

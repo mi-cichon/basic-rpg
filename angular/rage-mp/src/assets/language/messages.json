@@ -1,0 +1,99 @@
+{
+  "pl": {
+    "login": {
+      "loginTitle": "Logowanie",
+      "usernamePlaceholder": "Nazwa użytkownika",
+      "passwordPlaceholder": "Hasło",
+      "loginButton": "Login",
+      "registerText": "Nie masz konta?",
+      "registerClick": "Zarejestruj się!",
+      "wrongCredentials": "Niepoprawne dane logowania!"
+    },
+    "register": {
+      "registerTitle": "Rejestracja",
+      "repeatPasswordPlaceholder": "Powtórz hasło",
+      "registerClick": "Zarejestruj",
+      "userExists": "Użytkownik z podaną nazwą już istnieje!",
+      "maxAccounts": "Stworzono już maksymalną ilość kont!",
+      "successful": "Zarejestrowano pomyślnie!"
+    },
+    "notifications": {
+      "success": "Sukces",
+      "infomation": "Informacja",
+      "warning": "Ostrzeżenie",
+      "fail": "Niepowodzenie",
+      "error": "Błąd krytyczny"
+    },
+    "errors": {
+      "critical": "Wystąpił nieznany błąd. Zgłoś go administracji."
+    },
+    "chat": {
+      "transferReceivedTitle": "Przelew",
+      "transferReceivedText": "przesyła Ci",
+      "infoTitle": "Informacja",
+      "privateFrom": "Od",
+      "privateTo": "Do",
+      "penaltyTitle": "Ukarano gracza",
+      "penaltyKickText": "Gracz {player} został wyrzucony przez {by}, powód: {reason}.",
+      "penaltyBanText": "Gracz {player} został zbanowany ({time}) przez {by}, powód: {reason}.",
+      "penaltyLicenceText": "Gracz {player} stacił możliwość prowadzenie pojazdów ({time}) przez {by}, powód: {reason}.",
+      "penaltyMuteText": "Gracz {player} został wyciszony ({time}) przez {by}, powód: {reason}."
+    },
+    "info": {
+      "discordInfo": "Zapraszamy na Discord naszego serwera pod discord.gg/basicrpg"
+    },
+    "spawnSelection": {
+      "clickText": "Naciśnij aby wybrać tę lokację...",
+      "lastPosition": "Ostatnia pozycja"
+    }
+  },
+
+  "en": {
+    "login": {
+      "loginTitle": "Login",
+      "usernamePlaceholder": "Username",
+      "passwordPlaceholder": "Password",
+      "loginButton": "Sign in",
+      "registerText": "Not registered yet?",
+      "registerClick": "Register now!",
+      "wrongCredentials": "Incorrect login data!"
+    },
+    "register": {
+      "registerTitle": "Registration",
+      "repeatPasswordPlaceholder": "Repeat password",
+      "registerClick": "Register",
+      "userExists": "User with given name already exists!",
+      "maxAccounts": "You've already reached the maximum ammount of accounts!",
+      "successful": "Registration successful!"
+    },
+    "notifications": {
+      "success": "Success",
+      "infomation": "Information",
+      "warning": "Warning",
+      "fail": "Fail",
+      "error": "Critical error"
+    },
+    "errors": {
+      "critical": "Unknown error occured. Contact administration."
+    },
+    "chat": {
+      "transferReceivedTitle": "Transfer",
+      "transferReceivedText": "transfers You",
+      "infoTitle": "Information",
+      "privateFrom": "From",
+      "privateTo": "To",
+      "penaltyTitle": "A player was punished",
+      "penaltyKickText": "Player {player} was kicked by {by}, for: {reason}.",
+      "penaltyBanText": "Player {player} was banned ({time}) by {by}, for: {reason}.",
+      "penaltyLicenceText": "Player {player} has lost the ability to drive a vehicle for ({time}) by {by}, for: {reason}.",
+      "penaltyMuteText": "Player {player} was muted ({time}) by {by}, for: {reason}."
+    },
+    "info": {
+      "discordInfo": "Join our discord using discord.gg/basicrpg"
+    },
+    "spawnSelection": {
+      "clickText": "Click to choose this location...",
+      "lastPosition": "Last position"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+
+.input {
+    display: flex;
+    justify-content: space-between;
+    height: 4rem;
+    background-color: transparent;
+    border: 2px solid gray;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+  }
+  
+  .input:focus-within {
+    border: 2px solid #0c9;
+  }
+  
+  .input > i {
+    width: 15%;
+    font-size: 1.4rem;
+    text-align: center;
+    line-height: 4rem;
+  }
+  
+  .input > input {
+    width: 85%;
+    background-color: transparent;
+    border: none;
+    font-size: 1.3rem;
+    font-family: "Sono";
+    color: white;
+  }
+  
+  input:focus {
+    outline: none;
+  }
+
+  i {
+    color: gray;
+  }
+  
+  .error {
+    border: 2px solid red !important;
+  }

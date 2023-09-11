@@ -1,0 +1,53 @@
+{
+  "common": {
+    "loading": "Loading"
+  },
+  "login": {
+    "loginTitle": "Login",
+    "usernamePlaceholder": "Username",
+    "passwordPlaceholder": "Password",
+    "loginButton": "Sign in",
+    "registerText": "Not registered yet?",
+    "registerClick": "Register now!",
+    "wrongCredentials": "Incorrect login data!",
+    "loggingIn": "Logging in"
+  },
+  "register": {
+    "registerTitle": "Registration",
+    "repeatPasswordPlaceholder": "Repeat password",
+    "registerButton": "Register",
+    "userExists": "User with given name already exists!",
+    "maxAccounts": "You've already reached the maximum ammount of accounts!",
+    "successful": "Registration successful!",
+    "registering": "Registration in progress"
+  },
+  "notifications": {
+    "success": "Success",
+    "infomation": "Information",
+    "warning": "Warning",
+    "fail": "Fail",
+    "error": "Critical error"
+  },
+  "errors": {
+    "critical": "Unknown error occured. Contact administration."
+  },
+  "chat": {
+    "transferReceivedTitle": "Transfer",
+    "transferReceivedText": "transfers You",
+    "infoTitle": "Information",
+    "privateFrom": "From",
+    "privateTo": "To",
+    "penaltyTitle": "A player was punished",
+    "penaltyKickText": "Player {player} was kicked by {by}, for: {reason}.",
+    "penaltyBanText": "Player {player} was banned ({time}) by {by}, for: {reason}.",
+    "penaltyLicenceText": "Player {player} has lost the ability to drive a vehicle for ({time}) by {by}, for: {reason}.",
+    "penaltyMuteText": "Player {player} was muted ({time}) by {by}, for: {reason}."
+  },
+  "info": {
+    "discordInfo": "Join our discord using discord.gg/basicrpg"
+  },
+  "spawnSelection": {
+    "clickText": "Click to choose this location...",
+    "lastPosition": "Last position"
+  }
+}

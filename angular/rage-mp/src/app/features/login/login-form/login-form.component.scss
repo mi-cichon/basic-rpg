@@ -1,0 +1,93 @@
+.flags {
+  position: absolute;
+  left: 50%;
+  bottom: -2rem;
+  display: flex;
+  justify-content: space-around;
+  transform: translateX(-50%);
+}
+
+.flag {
+  height: 2rem;
+  width: 3.9rem;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.pl {
+  background-image: url("/assets/language/flags/pl.png");
+  left: -5rem;
+}
+.en {
+  background-image: url("/assets/language/flags/en.png");
+  right: -5rem;
+}
+
+.flag:hover {
+  filter: contrast(150%);
+  width: 5rem;
+  height: 2.5rem;
+}
+.simple-logo {
+  width: 10rem;
+  height: 5rem;
+  background-image: url("/assets/images/logo-simple.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.body {
+  width: 30rem;
+  height: 35rem;
+  background-color: #12192c;
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  box-shadow: 0 0 8px black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  font-size: 3rem;
+  color: white;
+  font-family: "Sen";
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.register {
+  width: 70%;
+  font-family: "Sono";
+  color: white;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.register > div {
+  display: inline-block;
+  color: #0c9;
+}
+
+.register > div:hover {
+  text-shadow: #0c9 1px 0 10px;
+}
+
+.global-logo {
+  position: absolute;
+  top: 0;
+  right: 2rem;
+  width: 10rem;
+  height: 10rem;
+  background-image: url("/assets/images/logo.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
