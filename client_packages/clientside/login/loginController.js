@@ -13,18 +13,18 @@ rpc.register('client_tryRegister', (credentials) => {
     mp.events.callRemote("user_register", credentials.login, credentials.password);
 });
 
-mp.events.add("client_loginCompleted", (hasLastPos) => {
+mp.events.add("client_loginCompleted", (response) => {
     let uiBrowser = getBrowser();
     if(uiBrowser == null){
         return;
     }
-    rpc.callBrowser(uiBrowser, 'response_client_tryLogin', hasLastPos);   
+    rpc.callBrowser(uiBrowser, 'response_client_tryLogin', response);   
 });
 
-mp.events.add("client_registerSuccessful", () => {
+mp.events.add("client_registerSuccessful", (response) => {
     let uiBrowser = getBrowser();
     if(uiBrowser == null){
         return;
     }
-    rpc.callBrowser(uiBrowser, 'ui_registerSuccessful');
+    rpc.callBrowser(uiBrowser, 'response_client_tryRegister', response);
 });

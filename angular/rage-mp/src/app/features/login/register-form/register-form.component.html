@@ -1,8 +1,8 @@
 <div class="body" [class.disappear]="disappear">
-  <div class="backButton" *ngIf="!registering" (click)="goToLogin()">
+  <div class="backButton" (click)="goToLogin()">
     <i class="fa-solid fa-arrow-left-long"></i>
   </div>
-  <form [formGroup]="registerForm" class="col-8">
+  <form [formGroup]="registerForm" class="col-8" (submit)="register()">
     <div class="header">{{ "register.registerTitle" | transloco }}</div>
     <app-input
       controlName="login"
@@ -27,8 +27,7 @@
     }}</app-form-button>
   </form>
   <app-spinner
-    *ngIf="registering"
     [textKey]="'register.registering' | transloco"
-  >
-  </app-spinner>
+    spinnerType="apiCall"
+  />
 </div>

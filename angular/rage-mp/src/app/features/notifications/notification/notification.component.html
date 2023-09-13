@@ -1,0 +1,47 @@
+<div class="body">
+  <div
+    class="circle"
+    [style.background-color]="color"
+    [class.hideCircle]="notificationService.disappear"
+    [ngSwitch]="type"
+  >
+    <i
+      class="fa-solid fa-check"
+      *ngSwitchCase="0"
+      [style.border-color]="color"
+    ></i>
+    <i
+      class="fa-solid fa-info"
+      *ngSwitchCase="1"
+      style="font-size: 2.1rem"
+      [style.border-color]="color"
+    ></i>
+    <i
+      class="fa-solid fa-exclamation"
+      *ngSwitchCase="2"
+      [style.border-color]="color"
+    ></i>
+    <i
+      class="fa-solid fa-xmark"
+      *ngSwitchCase="3"
+      [style.border-color]="color"
+    ></i>
+    <i
+      class="fa-solid fa-bug"
+      *ngSwitchCase="4"
+      [style.border-color]="color"
+    ></i>
+  </div>
+  <div class="notification-wrapper">
+    <div
+      class="notification-body"
+      [class.hide]="notificationService.hideNotification"
+    >
+      <div class="notification">
+        <div>
+          {{ message | transloco }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

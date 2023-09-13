@@ -2,23 +2,19 @@
   stroke: #0c9;
 }
 
-:host {
-  width: 100%;
-  height: 100%;
-  display: block;
-  position: absolute;
-  backdrop-filter: blur(6px);
-}
-
 .spinner-body {
   width: 100%;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
+}
+
+.show-spinner {
+  display: flex;
 }
 
 .spinner {

@@ -5,24 +5,23 @@ let getBrowser = () => {
 
 const rpc = require('ext/rage-rpc.js');
 
-rpc.register('client_spawnSelected', (spawnId) => {
-    mp.events.callRemote('user_spawnSelected', spawnId);
+rpc.register('client_spawnSelected', (data) => {
+    mp.events.callRemote('user_spawnSelected', data.spawnId);
 });
 
-mp.events.add("client_spawnSelectionCompleted", () => {
+mp.events.add("client_spawnSelectionCompleted", (response) => {
     let uiBrowser = getBrowser();
     if(uiBrowser == null){
         return;
     }
 
-    
     setTimeout(() => {
         mp.game.ui.displayHud(true);
         mp.game.ui.displayRadar(true);
         mp.gui.cursor.show(false, false);
         mp.game.cam.renderScriptCams(false, false, 0, true, false);
         mp.players.local.freezePosition(false);
-    },2000);
+    }, 2000);
     
-    rpc.callBrowser(uiBrowser, 'ui_spawnSelectionCompleted');
+    rpc.callBrowser(uiBrowser, 'response_client_spawnSelected', response);
 })

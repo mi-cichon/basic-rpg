@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { TranslocoService } from "@ngneat/transloco";
 import { LoginService } from "../login.service";
+import { NotificationService } from "../../notifications/notification/notification.service";
 
 @Component({
   selector: "app-login-form",
@@ -12,9 +13,9 @@ import { LoginService } from "../login.service";
 export class LoginFormComponent implements OnInit {
   public disappear = false;
   public loginForm!: FormGroup;
-  public loggingIn = false;
 
   constructor(
+    private notificationService: NotificationService,
     private loginService: LoginService,
     private translocoService: TranslocoService,
     private router: Router,
@@ -39,19 +40,29 @@ export class LoginFormComponent implements OnInit {
   }
 
   public submit(): void {
-    if (this.loginForm.invalid) {
+    if (this.loginForm.invalid || this.disappear) {
       return;
     }
-
-    this.loggingIn = true;
 
     this.loginService
       .login(
         this.loginForm.get("login")?.value,
         this.loginForm.get("password")?.value,
       )
-      .then((val) => {
-        this.loggingIn = false;
+      .then((response) => {
+        if (response.responseType === "success") {
+          if (response.data) {
+            this.loginService.lastPosAvailable = response.data[
+              "hasLastPos" as keyof object
+            ] as boolean;
+          }
+          this.router.navigateByUrl("/login/spawn-selection");
+        } else {
+          this.notificationService.showNotification(
+            response.message,
+            response.responseType,
+          );
+        }
       });
   }
 }

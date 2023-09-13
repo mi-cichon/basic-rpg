@@ -10,9 +10,16 @@ import { SpinnerComponent } from "../shared/components/spinner/spinner.component
 import { ReactiveFormsModule } from "@angular/forms";
 import { FormButtonComponent } from "../shared/components/form-button/form-button.component";
 import { InputComponent } from "../shared/components/input/input.component";
+import { SelectSpawnComponent } from "./spawn-selection/select-spawn/select-spawn.component";
+import { SpawnSelectionComponent } from "./spawn-selection/spawn-selection/spawn-selection.component";
 
 @NgModule({
-  declarations: [LoginFormComponent, RegisterFormComponent],
+  declarations: [
+    LoginFormComponent,
+    RegisterFormComponent,
+    SelectSpawnComponent,
+    SpawnSelectionComponent,
+  ],
   imports: [
     CommonModule,
     LoginRoutingModule,

@@ -26,5 +26,8 @@
     <div (click)="goToRegister()">{{ "login.registerClick" | transloco }}</div>
   </div>
   <div class="simple-logo"></div>
-  <app-spinner *ngIf="loggingIn" [textKey]="'login.loggingIn'"> </app-spinner>
+  <app-spinner
+    [textKey]="'login.loggingIn' | transloco"
+    spinnerType="apiCall"
+  />
 </div>

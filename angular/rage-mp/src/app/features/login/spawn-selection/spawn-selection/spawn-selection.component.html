@@ -1,0 +1,26 @@
+<div class="body">
+  <app-select-spawn
+    *ngIf="loginService.lastPosAvailable"
+    [spawnId]="0"
+    [spawnName]="'spawnSelection.lastPosition' | transloco"
+    (spawnSelectedEvent)="spawnSelected($event)"
+  />
+
+  <app-select-spawn
+    [spawnId]="1"
+    spawnName="Los Santos"
+    (spawnSelectedEvent)="spawnSelected($event)"
+  />
+
+  <app-select-spawn
+    [spawnId]="2"
+    spawnName="Sandy Shores"
+    (spawnSelectedEvent)="spawnSelected($event)"
+  />
+
+  <app-select-spawn
+    [spawnId]="3"
+    spawnName="Paleto Bay"
+    (spawnSelectedEvent)="spawnSelected($event)"
+  />
+</div>

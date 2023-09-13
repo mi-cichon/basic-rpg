@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { confirmPasswordValidator } from "../../shared/validators/common-validators";
+import { LoginService } from "../login.service";
+import { NotificationService } from "../../notifications/notification/notification.service";
 
 @Component({
   selector: "app-register-form",
@@ -11,8 +13,11 @@ import { confirmPasswordValidator } from "../../shared/validators/common-validat
 export class RegisterFormComponent implements OnInit {
   public registerForm!: FormGroup;
   public disappear = false;
-  public registering = false;
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private loginService: LoginService,
+    private notificationService: NotificationService,
+  ) {}
 
   public goToLogin(): void {
     this.disappear = true;
@@ -33,13 +38,28 @@ export class RegisterFormComponent implements OnInit {
   }
 
   public register(): void {
-    if (this.disappear) {
+    if (this.disappear || this.registerForm.invalid) {
       return;
     }
 
-    this.registering = true;
-    setTimeout(() => {
-      this.registering = false;
-    }, 1000);
+    this.loginService
+      .register(
+        this.registerForm.get("login")?.value,
+        this.registerForm.get("password")?.value,
+      )
+      .then((response) => {
+        if (response.responseType === "success") {
+          this.goToLogin();
+          this.notificationService.showNotification(
+            "register.successful",
+            "success",
+          );
+        } else {
+          this.notificationService.showNotification(
+            response.message,
+            response.responseType,
+          );
+        }
+      });
   }
 }

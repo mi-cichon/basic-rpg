@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { NotificationService } from "./features/notifications/notification/notification.service";
 
 @Component({
   selector: "app-root",
@@ -6,9 +7,5 @@ import { Component } from "@angular/core";
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
-  public twojstary = false;
-
-  public onClick(): void {
-    this.twojstary = !this.twojstary;
-  }
+  constructor(public notificationService: NotificationService) {}
 }

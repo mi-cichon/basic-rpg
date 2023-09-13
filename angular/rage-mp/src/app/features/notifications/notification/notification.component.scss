@@ -1,0 +1,114 @@
+.body {
+    position: absolute;
+    left: 50%;
+    bottom: 5%;
+    transform: translateX(-50%);
+    width: 25rem;
+    height: 5rem;
+    overflow: hidden;
+  }
+  
+  .circle {
+    width: 5rem;
+    height: 5rem;
+    border: 3px solid #12192C;
+    border-radius: 50%;
+    position: absolute;
+    font-size: 2.4rem;
+    color: white;
+    box-sizing: border-box;
+  }
+  
+  .circle > i {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .notification-body {
+    min-width: 10rem;
+    height: 6rem;
+    z-index: -100;
+    position: absolute;
+    left: -22rem;
+    animation-name: show;
+    animation-duration: 700ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+  }
+  
+  .hide {
+    animation-name: hide;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+  }
+  
+  .hide-circle {
+    animation-name: hide-circle;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+  }
+  
+  .notification-wrapper {
+    overflow: hidden;
+    width: 22rem;
+    height: 5rem;
+    z-index: -100;
+    position: absolute;
+    left: 3rem;
+  }
+  
+  @keyframes show {
+    0% {
+      left: -27rem;
+    }
+    100% {
+      left: 0rem;
+    }
+  }
+  
+  @keyframes hide {
+    0% {
+      left: 0rem;
+    }
+    100% {
+      left: -27rem;
+    }
+  }
+  
+  @keyframes hide-circle {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  .notification {
+    background-color: #12192c;
+    width: auto;
+    max-width: 20rem;
+    text-wrap: wrap;
+    height: 5rem;
+    position: relative;
+    color: rgb(203, 203, 203);
+    font-size: 1.2rem;
+    padding: 1rem;
+    padding-left: 2.5rem;
+    font-family: "Dosis";
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+  
+  .title {
+    color: white;
+    font-weight: 800;
+    font-size: 1.4rem;
+  }

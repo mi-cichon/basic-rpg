@@ -35,45 +35,22 @@ public class UserController : Script
     [RemoteEvent("user_login")]
     public void Login(Player player, string username, string password)
     {
-        try
-        {
-            LoginService.Login(player, username, password);
-            var hasLastPos = UserService.GetPlayersLastPos(player) != null;
-            player.TriggerEvent("client_loginCompleted", hasLastPos);
-        }
-        catch (ArgumentException ex)
-        {
-            UserService.ShowNotification(player, ex.Message, NotificationType.Failure);
-        }
-        catch (Exception)
-        {
-            UserService.ShowGenericError(player);
-        }
+        var response = LoginService.Login(player, username, password);
+        player.TriggerEvent("client_loginCompleted", response);
     }
 
     [RemoteEvent("user_register")]
     public void Register(Player player, string username, string password)
     {
-        try
-        {
-            LoginService.Register(player, username, password);
-            UserService.ShowNotification(player, "register.successful", NotificationType.Success);
-            player.TriggerEvent("client_registerSuccessful");
-        }
-        catch (ArgumentException ex)
-        {
-            UserService.ShowNotification(player, ex.Message, NotificationType.Failure);
-        }
-        catch (Exception)
-        {
-            UserService.ShowGenericError(player);
-        }
+        var response = LoginService.Register(player, username, password);
+        player.TriggerEvent("client_registerSuccessful", response);
     }
 
     [RemoteEvent("user_spawnSelected")]
     public void SpawnSelected(Player player, int spawnLocation)
     {
         var location = (SpawnLocation)spawnLocation;
-        LoginService.SpawnPlayer(player, location);
+        var response = LoginService.SpawnPlayer(player, location);
+        player.TriggerEvent("client_spawnSelectionCompleted", response);
     }
 }

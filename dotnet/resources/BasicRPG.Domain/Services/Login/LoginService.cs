@@ -3,6 +3,7 @@ using System.Text;
 using BasicRPG.Domain.Enums;
 using BasicRPG.Domain.Services.Spawn;
 using BasicRPG.Domain.Services.Users;
+using BasicRPG.Domain.Types;
 using BasicRPG.Infrastructure.Entities;
 using BasicRPG.Infrastructure.Entities.DbSettings;
 using GTANetworkAPI;
@@ -16,30 +17,32 @@ public static class LoginService
         player.Dimension = dimension;
     }
 
-    public static void Login(Player player, string username, string password)
+    public static ApiResponse Login(Player player, string username, string password)
     {
         var encPassword = ToSHA256(password);
         using var context = new RageDbContext();
 
         var user = context.Users.SingleOrDefault(x => x.Name == username && x.Password == encPassword);
 
-        if (user == null) throw new ArgumentException("login.wrongCredentials");
+        if (user == null) return new ApiResponse(ApiResponseType.Fail, "login.wrongCredentials", null);
 
         SetUsersVars(player, user);
         UserService.AssignPlayersValues(player);
+        var hasLastPos = UserService.GetPlayersLastPos(player) != null;
+        return new ApiResponse(ApiResponseType.Success, "", new {hasLastPos});
     }
 
-    public static void Register(Player player, string username, string password)
+    public static ApiResponse Register(Player player, string username, string password)
     {
         using var context = new RageDbContext();
 
         var usersCreated = context.Users.Count(x => x.CreatedBy == player.SocialClubId);
 
-        if (usersCreated >= 2) throw new ArgumentException("register.maxAccounts");
+        if (usersCreated >= 2) return new ApiResponse(ApiResponseType.Fail, "register.maxAccounts", null);
 
         var sameUsername = context.Users.SingleOrDefault(x => x.Name == username);
 
-        if (sameUsername != null) throw new ArgumentException("register.userExists");
+        if (sameUsername != null) return new ApiResponse(ApiResponseType.Fail, "register.userExists", null);
 
         var newUser = new User
         {
@@ -51,19 +54,19 @@ public static class LoginService
 
         context.Users.Add(newUser);
         context.SaveChanges();
+        return new ApiResponse(ApiResponseType.Success, "", null);
     }
 
-    public static void SpawnPlayer(Player player, SpawnLocation location)
+    public static ApiResponse SpawnPlayer(Player player, SpawnLocation location)
     {
         var position = SpawnService.GetPlayersSpawnPosition(player, location);
-        if (position == null) return;
+        if (position == null) return new ApiResponse(ApiResponseType.Exception, "errors.critical", null);
 
         player.Dimension = 0;
         player.Position = position;
 
-        player.TriggerEvent("client_spawnSelectionCompleted");
-
         NAPI.Task.Run(() => { UserService.UpdatePlayersHud(player); }, 1000);
+        return new ApiResponse(ApiResponseType.Success, "", null);
     }
 
     private static void SetUsersVars(Player player, User user)

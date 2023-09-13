@@ -1,0 +1,17 @@
+<div class="blog-thumb-img" (click)="spawnSelected()">
+  <div
+    class="img"
+    [ngClass]="{
+      imgLast: spawnId === 0,
+      imgLs: spawnId === 1,
+      imgSandy: spawnId === 2,
+      imgPaleto: spawnId === 3
+    }"
+  ></div>
+  <div class="blog-thumb-img-overlay">
+    <span class="overlay-text"> {{ spawnName }} </span>
+    <span class="overlay-link">
+      <p>{{ "spawnSelection.clickText" | transloco }}</p>
+    </span>
+  </div>
+</div>
