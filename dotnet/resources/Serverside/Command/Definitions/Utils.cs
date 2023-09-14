@@ -143,5 +143,38 @@ namespace Serverside.Command
 
             Commands.Add(furka);
         }
+        public static void Define_obj()
+        {
+            var obj = new Command()
+            {
+                Name = "obj",
+                Args = new Dictionary<string, Type> { { "keyWord", typeof(string) } }
+            };
+
+            obj.Execute = ((player, args) =>
+            {
+                try
+                {
+                    var arguments = CommandHelper.ValidateArguments(obj.Args, args);
+
+                    if (player == null)
+                    {
+                        return;
+                    }
+
+                    if (!arguments.TryGetValue("keyWord", out var objName))
+                    {
+                        return;
+                    }
+                    UserService.SpawnObject(player, objName as string);
+                }
+                catch (ArgumentException ex)
+                {
+                    ChatService.SendInfoMessageToPlayer(player, ex.Message);
+                }
+            });
+
+            Commands.Add(obj);
+        }
     }
 }

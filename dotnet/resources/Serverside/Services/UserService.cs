@@ -26,6 +26,11 @@ namespace Serverside.Services
 
             return user;
         }
+        public static void SpawnObject(Player player, string objName)
+        {
+            var parsedObj = NAPI.Util.GetHashKey(objName);
+            NAPI.Object.CreateObject(parsedObj, player.Position + new Vector3(0, 0, -1), new Vector3(0, 0, 0));
+        }
 
         public static void ShowNotification(Player player, string message, NotificationType type)
         {
