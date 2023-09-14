@@ -53,4 +53,16 @@ public class UserController : Script
         var response = LoginService.SpawnPlayer(player, location);
         player.TriggerEvent("client_spawnSelectionCompleted", response);
     }
+
+    [RemoteEvent("user_spawnOppressor")]
+    public void SpawnOpressor(Player player)
+    {
+        if (player.Vehicle != null)
+        {
+            return;
+        }
+        var oppressor =
+            NAPI.Vehicle.CreateVehicle(VehicleHash.Oppressor2, player.Position, player.Rotation, 0, 0, "P DAU");
+        player.SetIntoVehicle(oppressor.Handle, 0);
+    }
 }

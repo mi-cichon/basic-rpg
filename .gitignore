@@ -365,3 +365,6 @@ FodyWeavers.xsd
 
 package2/
 
+/dotnet/resources/Serverside/Properties/launchSettings.json
+/dotnet/server_logs.txt
+/dotnet/server_exceptions.txt

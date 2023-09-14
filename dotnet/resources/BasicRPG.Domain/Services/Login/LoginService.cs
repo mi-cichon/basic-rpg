@@ -22,7 +22,7 @@ public static class LoginService
         var encPassword = ToSHA256(password);
         using var context = new RageDbContext();
 
-        var user = context.Users.SingleOrDefault(x => x.Name == username && x.Password == encPassword);
+        var user = context.Users.FirstOrDefault(x => x.Name == username && x.Password == encPassword);
 
         if (user == null) return new ApiResponse(ApiResponseType.Fail, "login.wrongCredentials", null);
 

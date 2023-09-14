@@ -16,6 +16,7 @@ mp.events.add("client_spawnSelectionCompleted", (response) => {
     }
 
     setTimeout(() => {
+        mp.storage.data.userSpawned = true;
         mp.game.ui.displayHud(true);
         mp.game.ui.displayRadar(true);
         mp.gui.cursor.show(false, false);

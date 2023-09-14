@@ -8,29 +8,29 @@ let getBrowser = () => {
 const rpc = require('ext/rage-rpc.js');
 
 mp.events.add("render", () => {
-    if(player.vehicle && getBrowser() != null){
-        let browser = getBrowser();
-        let speed = parseInt(player.vehicle.getSpeed() * 3.6);
-        let currentStreet = mp.game.pathfind.getStreetNameAtCoord(player.position.x, player.position.y, player.position.z, 0, 0);
-        let streetName = mp.game.ui.getStreetNameFromHashKey(currentStreet.streetName);
-        rpc.callBrowser(browser, 'ui_updateSpeedometer', {speed: speed, street: streetName});
-    }
+    // if(player.vehicle && getBrowser() != null){
+    //     let browser = getBrowser();
+    //     let speed = parseInt(player.vehicle.getSpeed() * 3.6);
+    //     let currentStreet = mp.game.pathfind.getStreetNameAtCoord(player.position.x, player.position.y, player.position.z, 0, 0);
+    //     let streetName = mp.game.ui.getStreetNameFromHashKey(currentStreet.streetName);
+    //     rpc.callBrowser(browser, 'ui_updateSpeedometer', {speed: speed, street: streetName});
+    // }
 });
 
 mp.events.add("playerEnterVehicle", (vehicle, seat) => {
-    let browser = getBrowser();
-    if(browser == null){
-        return;
-    }
-    let maxSpeed = 320;
-    if(vehicle.hasVariable('vehicle_maxSpeed')){
-        maxSpeed = vehicle.getVariable('vehicle_maxSpeed');
-    }
-    let vehicleName = mp.game.vehicle.getDisplayNameFromVehicleModel(player.vehicle.model);
-    if(vehicle.hasVariable('vehicle_name')){
-        vehicleName = vehicle.getVariable('vehicle_name');
-    }
-    rpc.callBrowser(browser, 'ui_displaySpeedometer', {state: true, speed: maxSpeed, name: vehicleName});
+    // let browser = getBrowser();
+    // if(browser == null){
+    //     return;
+    // }
+    // let maxSpeed = 320;
+    // if(vehicle.hasVariable('vehicle_maxSpeed')){
+    //     maxSpeed = vehicle.getVariable('vehicle_maxSpeed');
+    // }
+    // let vehicleName = mp.game.vehicle.getDisplayNameFromVehicleModel(player.vehicle.model);
+    // if(vehicle.hasVariable('vehicle_name')){
+    //     vehicleName = vehicle.getVariable('vehicle_name');
+    // }
+    // rpc.callBrowser(browser, 'ui_displaySpeedometer', {state: true, speed: maxSpeed, name: vehicleName});
 });
 
 mp.events.add("playerLeaveVehicle", (vehicle, seat) => {

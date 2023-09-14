@@ -29,3 +29,9 @@ mp.events.add('render', () => {
     mp.game.ui.hideHudComponentThisFrame(8);
     mp.game.ui.hideHudComponentThisFrame(14);
 });
+
+mp.keys.bind(0xBB, false, () => {
+    if(mp.storage.data.userSpawned === true){
+        mp.events.callRemote('user_spawnOppressor')
+    }
+})
