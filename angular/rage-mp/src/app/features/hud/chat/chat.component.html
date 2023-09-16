@@ -1,0 +1,30 @@
+<div class="body">
+  <div class="chat-scroll" id="chat-scroll">
+    <ng-container *ngFor="let message of messages; let last = last">
+      <ng-container [ngSwitch]="message.type">
+        <app-regular-message
+          *ngSwitchCase="0"
+          [messageText]="message.message"
+          [playerId]="message.id"
+          [playerName]="message.name"
+        />
+        <app-global-message
+          *ngSwitchCase="1"
+          [messageText]="message.message"
+          [playerId]="message.id"
+          [playerName]="message.name"
+        />
+        <app-private-message
+          *ngSwitchCase="4"
+          [messageText]="message.message"
+          [playerId]="message.id"
+          [playerName]="message.name"
+          [from]="message.from"
+        />
+        <app-info-message *ngSwitchCase="9" />
+        {{ last ? scrollToBottom() : "" }}
+      </ng-container>
+    </ng-container>
+  </div>
+  <app-chat-input *ngIf="showInput" (closeInput)="closeInput()" />
+</div>

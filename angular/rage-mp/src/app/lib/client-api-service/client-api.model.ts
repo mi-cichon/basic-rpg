@@ -1,7 +1,7 @@
 export type ApiResponse = {
   responseType: ApiResponseType;
   message: string;
-  data?: object;
+  data?: unknown;
 };
 
 export type ApiResponseType = "success" | "fail" | "exception";

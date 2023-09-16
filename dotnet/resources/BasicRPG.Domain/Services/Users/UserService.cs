@@ -1,6 +1,7 @@
 ﻿using BasicRPG.Configuration;
 using BasicRPG.Domain.Enums;
 using BasicRPG.Domain.Services.Spawn;
+using BasicRPG.Domain.Types;
 using BasicRPG.Infrastructure.Entities;
 using BasicRPG.Infrastructure.Entities.DbSettings;
 using GTANetworkAPI;
@@ -61,8 +62,7 @@ public static class UserService
         var nextLevelExperience = GetPlayersNextLevelExperience(player);
         var level = player.GetSharedData<int>("player_level");
 
-        var request = new
-        {
+        var data = new {
             money,
             name,
             experience,
@@ -70,17 +70,20 @@ public static class UserService
             level
         };
 
-        player.TriggerEvent("client_updateHudValues", request);
+        var response = new ApiResponse(ApiResponseType.Success, "", data);
+        
+
+        player.TriggerEvent("client_updateHudValues", response);
     }
 
-    public static int GetPlayersNextLevelExperience(Player player)
+    public static int? GetPlayersNextLevelExperience(Player player)
     {
         var currentLevel = player.GetSharedData<int>("player_level");
 
         if (ConfigurationService.LevelsConfig.LevelSteps.TryGetValue(currentLevel + 1, out var nextLevel))
             return nextLevel;
 
-        return -1;
+        return null;
     }
 
     public static Player? GetPlayerByRemoteIdOrName(string idOrName)

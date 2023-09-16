@@ -22,6 +22,6 @@ mp.events.add("client_showNotification", (message, type) => {
     //rpc.callBrowser(uiBrowser, 'ui_showNotification', {message: message, type: type});
 });
 
-mp.events.add("client_updateHudValues", values => {
-    //rpc.callBrowser(uiBrowser, 'ui_updateHudValues', values);
+mp.events.add("client_updateHudValues", response => {
+    rpc.callBrowser(uiBrowser, 'browser_updatePlayerInfo', response);
 });

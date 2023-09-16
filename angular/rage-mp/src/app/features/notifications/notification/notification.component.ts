@@ -20,7 +20,6 @@ export class NotificationComponent implements OnInit {
     }
     this.type = this.notificationService.notification.type;
     this.message = this.notificationService.notification.message;
-    console.log(this.type);
     switch (this.type) {
       case 0:
         this.color = "#0f9861";

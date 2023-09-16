@@ -1,0 +1,9 @@
+<input
+  id="input"
+  class="chat-input mt-2"
+  type="text"
+  maxlength="150"
+  (keyup.enter)="sendMessage($event)"
+  (keyup.arrowdown)="nextMessage($event)"
+  (keyup.arrowup)="previousMessage($event)"
+/>

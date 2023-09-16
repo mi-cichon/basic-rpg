@@ -1,0 +1,21 @@
+.avatar-background{
+    border: 1px solid rgb(208, 31, 125);
+}
+
+.tag-private{
+    color: rgb(208, 31, 125) !important;
+    font-size: 0.9rem !important;
+    line-height: 1.2rem !important;
+}
+
+.tag-tofrom{
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    font-size: 0.7rem !important;
+    padding-right: 0.2rem !important;
+}
+
+.message-name{
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}

@@ -1,0 +1,21 @@
+<div class="body" *ngIf="hudValues">
+  <div class="content">
+    <div class="name stat">{{ hudValues.name }}</div>
+    <div class="experience stat">
+      <i class="fa-solid fa-arrow-up-wide-short" style="color: gold"></i>
+      {{ hudValues.experience }}
+      {{
+        hudValues.nextLevelExperience !== null
+          ? " / " + hudValues.nextLevelExperience
+          : ""
+      }}
+    </div>
+    <div class="money stat">
+      <i class="fa-solid fa-dollar-sign" style="color: lime"></i>
+      {{ hudValues.money }}
+    </div>
+  </div>
+  <div class="avatar">
+    <div class="level">{{ hudValues.level }}</div>
+  </div>
+</div>

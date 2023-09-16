@@ -2,6 +2,7 @@ import { SpinnerService } from "src/app/features/shared/components/spinner/spinn
 import { AbstractClientApiService } from "./abstract-client-api.service";
 import { Inject, Injectable } from "@angular/core";
 import { ApiResponse } from "./client-api.model";
+import { Observable, Subscriber } from "rxjs";
 
 @Injectable()
 export class ClientApiMockService extends AbstractClientApiService {
@@ -27,10 +28,21 @@ export class ClientApiMockService extends AbstractClientApiService {
       }, 2000);
     });
   }
-  override registerEvent(
-    eventName: string,
-    callBack: (args: any, info: any) => void,
-  ): void {
-    console.log(`Registered browser event ${eventName}.`);
+  override registerEvent(eventName: string): Observable<ApiResponse> {
+    const response$ = new Observable((observer: Subscriber<ApiResponse>) => {
+      console.log(`Registered client event ${eventName}.`);
+      setTimeout(() => {
+        observer.next({
+          responseType: "success",
+          message: "success",
+          data: {},
+        });
+      }, 2000);
+    });
+    return response$;
+  }
+
+  override pokeClient(eventName: string, data?: object): void {
+    console.log(`Poked client event ${eventName}.`);
   }
 }

@@ -33,13 +33,13 @@ mp.events.add("playerEnterVehicle", (vehicle, seat) => {
     // rpc.callBrowser(browser, 'ui_displaySpeedometer', {state: true, speed: maxSpeed, name: vehicleName});
 });
 
-mp.events.add("playerLeaveVehicle", (vehicle, seat) => {
-    destroySpeedometer();
-})
+// mp.events.add("playerLeaveVehicle", (vehicle, seat) => {
+//     destroySpeedometer();
+// })
 
-mp.events.add("client_destroySpeedometer", () => {
-    destroySpeedometer();
-});
+// mp.events.add("client_destroySpeedometer", () => {
+//     destroySpeedometer();
+// });
 
 function destroySpeedometer(){
     let browser = getBrowser();

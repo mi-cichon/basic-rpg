@@ -6,9 +6,9 @@ import { AbstractClientApiService } from "./lib/client-api-service/abstract-clie
 import { TranslocoRootModule } from "./core/i18n/transloco/transloco-root.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NotificationComponent } from "./features/notifications/notification/notification.component";
-import { ClientApiMockService } from "./lib/client-api-service/client-api-mock.service";
 import { HashLocationStrategy, LocationStrategy } from "@angular/common";
 import { ClientApiProdService } from "./lib/client-api-service/client-api-prod.service";
+import { ClientApiMockService } from "./lib/client-api-service/client-api-mock.service";
 
 @NgModule({
   declarations: [AppComponent, NotificationComponent],

@@ -32,6 +32,7 @@
     "critical": "Wystąpił nieznany błąd. Zgłoś go administracji."
   },
   "chat": {
+    "global": "Globalny",
     "transferReceivedTitle": "Przelew",
     "transferReceivedText": "przesyła Ci",
     "infoTitle": "Informacja",

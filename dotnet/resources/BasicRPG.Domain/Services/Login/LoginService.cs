@@ -65,7 +65,7 @@ public static class LoginService
         player.Dimension = 0;
         player.Position = position;
 
-        NAPI.Task.Run(() => { UserService.UpdatePlayersHud(player); }, 1000);
+        NAPI.Task.Run(() => { UserService.UpdatePlayersHud(player); }, 1500);
         return new ApiResponse(ApiResponseType.Success, "", null);
     }
 

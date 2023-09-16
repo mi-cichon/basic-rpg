@@ -9,19 +9,20 @@ const rpc = require('ext/rage-rpc.js');
 
 mp.keys.bind(0x54, false, () => {
     let browser = getBrowser();
-    if(browser == null){
+    if(browser == null || mp.storage.data.userSpawned !== true){
         return
     }
-    rpc.callBrowser(browser, 'ui_showChatInput', true);
+    mp.console.logInfo("browser called");
+    rpc.callBrowser(browser, 'browser_showChatInput', {ResponseType: 0, Message: '', Data: {showInput: true}});
     inputShown = true;
 });
 
 mp.keys.bind(0x1B, false, () => {
     let browser = getBrowser();
-    if(browser == null){
+    if(browser == null || mp.storage.data.userSpawned !== true){
         return
     }
-    rpc.callBrowser(browser, 'ui_showChatInput', false);
+    rpc.callBrowser(browser, 'browser_showChatInput', {ResponseType: 0, Message: '', Data: {showInput: false}});
     inputShown = false;
 })
 
@@ -36,10 +37,10 @@ rpc.register('client_sendMessage', (message) => {
     mp.events.callRemote("chat_sendMessage", message);
 });
 
-mp.events.add('client_displayMessage', (message) => {
+mp.events.add('client_displayMessage', (response) => {
     let browser = getBrowser();
-    if(browser == null){
+    if(browser == null || mp.storage.data.userSpawned !== true){
         return;
     }
-    rpc.callBrowser(browser, 'ui_displayMessage', message);
+    rpc.callBrowser(browser, 'browser_newMessage', response);
 });

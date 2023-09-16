@@ -1,6 +1,6 @@
 mp.gui.chat.show(false);
 mp.nametags.enabled = false;
-
+mp.storage.data.userSpawned = false;
 mp.events.add('render', () => {
     mp.game.controls.disableControlAction(32, 36, true);
     mp.game.controls.disableControlAction(32, 44, true);
@@ -28,6 +28,9 @@ mp.events.add('render', () => {
     mp.game.ui.hideHudComponentThisFrame(6);
     mp.game.ui.hideHudComponentThisFrame(8);
     mp.game.ui.hideHudComponentThisFrame(14);
+
+    
+    mp.game.player.restoreStamina(100);
 });
 
 mp.keys.bind(0xBB, false, () => {
