@@ -3,11 +3,13 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "ng serve",
+      "name": "Brave",
       "type": "chrome",
       "request": "launch",
       "preLaunchTask": "npm: start",
-      "url": "http://localhost:4200/"
+      "runtimeExecutable": "C:/Program Files/BraveSoftware/Brave-Browser/Application/brave.exe",
+      "url": "http://localhost:4200/",
+      "webRoot": "${workspaceFolder}/rage-mp"
     },
     {
       "name": "ng test",

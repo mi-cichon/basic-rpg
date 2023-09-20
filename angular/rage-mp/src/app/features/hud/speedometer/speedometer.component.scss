@@ -1,0 +1,122 @@
+.body{
+    position: absolute;
+    right: 3rem;
+    bottom: 5rem;
+    transform: translateY(50%)
+}
+
+.speedometer{
+    margin-left: 10rem;
+    width: 20rem;
+    height: 20rem;
+    background-image: url('/assets/images/speedometer.png');
+    background-size: 98%;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.needle-body{
+    width: 94%;
+    height: 1.2%;
+    position: absolute;
+    bottom: 49%;
+    left: 49.9%;
+    transform: translate(-50%) rotate(185deg);
+}
+
+.needle{
+    position: absolute;
+    z-index: 999;
+    width: 12.5%;
+    left: 0;
+    height: 100%;
+    background-color: darkred;
+    border-radius: 2px;
+}
+
+.speed-body{
+    width: 40%;
+    height: 30%;
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translateX(-50%)
+}
+
+.speed-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-family: 'Rajdhani';
+    padding: 1%;
+}
+
+.speed-kmh{
+    display: inline;
+    font-size: 0.9em;
+    height: 30%;
+}
+
+.speed-main{
+    display: inline;
+    box-sizing: border-box;
+    margin-top: 3%;
+    font-size: 3.4rem;
+    height: 40%;
+}
+
+.trip-body{
+    font-family: "Digital Numbers Regular";
+    height: 1.1rem;
+    line-height: 1.1rem;
+    font-size: 0.8rem;
+    background-color: #19233F;
+    background-color: rgba($color: #19233F, $alpha: 0.8)
+}
+
+.trip-kilometers, .trip-meters{
+    display: inline;
+}
+
+.trip-meters{
+    color: red;    
+    height: 1.1rem;
+    line-height: 1.1rem;
+    font-size: 0.8rem;
+}
+
+.petrol-body{
+    position: absolute;
+    top: 45%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    width: 4rem;
+    height: 4rem;
+}
+
+.petrol{
+    width: 3.6rem;
+    height: 3.6rem;
+    position: absolute;
+    transform: rotate(-140deg) translate(-6%);
+}
+
+.petrol-back{
+    width: 4rem;
+    height: 4rem;
+    position: absolute;
+    z-index: -9;
+    transform: rotate(-140deg);
+}
+
+.petrol-body > i{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    color: white;
+    display: block;
+    font-size: 1.3rem;
+}

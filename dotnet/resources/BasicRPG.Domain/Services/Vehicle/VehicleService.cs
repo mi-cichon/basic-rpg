@@ -15,7 +15,7 @@ public static class VehicleService
         {
             var vehicleTypeNumber = (VehicleHash)vehicleType!;
 
-            var vehicle = NAPI.Vehicle.CreateVehicle(vehicleTypeNumber, player.Position, 0.0f, 135, 135, " FURKA");
+            var vehicle = NAPI.Vehicle.CreateVehicle(vehicleTypeNumber, player.Position, 0.0f, 142, 142, " FURKA");
 
             player.SetIntoVehicle(vehicle.Handle, 0);
 
@@ -24,7 +24,7 @@ public static class VehicleService
 
         if (uint.TryParse(keyWord, out var hash))
         {
-            var vehicle = NAPI.Vehicle.CreateVehicle(hash, player.Position, 0.0f, 135, 135, " FURKA");
+            var vehicle = NAPI.Vehicle.CreateVehicle(hash, player.Position, 0.0f, 142, 142, " FURKA");
 
             if (vehicle == null) return;
             player.SetIntoVehicle(vehicle.Handle, 0);

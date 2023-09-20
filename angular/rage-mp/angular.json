@@ -30,7 +30,7 @@
               "node_modules/bootstrap/dist/css/bootstrap.css"
             ],
             "scripts": ["node_modules/bootstrap/dist/js/bootstrap.js"],
-            "allowedCommonJsDependencies": ["rage-rpc", "flat"]
+            "allowedCommonJsDependencies": ["rage-rpc", "flat", "progressbar.js"]
           },
           "configurations": {
             "production": {

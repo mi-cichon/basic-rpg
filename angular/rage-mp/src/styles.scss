@@ -22,9 +22,17 @@
 }
 
 @font-face {
-  font-family: "Digi";
-  src: url("./assets/fonts/digi/DS-DIGI.TTF") format("truetype");
+  font-family: "Rajdhani";
+  src: url("./assets/fonts/rajdhani/Rajdhani-Regular.ttf")
+    format("truetype");
 }
+
+@font-face {
+  font-family: 'Digital Numbers Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Digital Numbers Regular'), url('/assets/fonts/digi/DigitalNumbers-Regular.woff') format('woff');
+  }
 
 /* cyrillic-ext */
 @font-face {
@@ -89,6 +97,7 @@
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
     U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
+
 /* latin */
 @font-face {
   font-family: "Open Sans Condensed";
@@ -105,6 +114,7 @@
 body {
   user-select: none;
   background: none !important;
+  overflow: hidden;
 }
 
 @keyframes disappear {
@@ -152,10 +162,10 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  // background-image: url('/assets/chat.png') !important;
-  // background-position: 0 100% !important;
+  // background-image: url('/assets/images/background.jpg') !important;
+  // background-position: center !important;
   // background-repeat: no-repeat !important;
-  // background-size: auto !important;
+  // background-size: cover !important;
 }
 
 .hide-spinner-host {
