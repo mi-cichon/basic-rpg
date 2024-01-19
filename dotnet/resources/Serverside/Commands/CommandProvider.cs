@@ -1,12 +1,11 @@
 ﻿using System.Reflection;
-using BasicRPG.ClientApi.Commands.Definitions;
 using GTANetworkAPI;
 
-namespace BasicRPG.ClientApi.Commands;
+namespace BasicRPG.Client.Api.Commands;
 
 public static class CommandProvider
 {
-    private static List<BasicRPG.ClientApi.Commands.Command> AllCommands { get; } = new();
+    private static List<Command> AllCommands { get; } = new();
 
     public static void ExecuteCommand(Player? player, string message)
     {
@@ -40,7 +39,7 @@ public static class CommandProvider
         throw new ArgumentException($"Command {command} not recognized!");
     }
 
-    public static void Add(BasicRPG.ClientApi.Commands.Command cmd)
+    public static void Add(Command cmd)
     {
         AllCommands.Add(cmd);
     }
@@ -72,10 +71,10 @@ public static class CommandProvider
     {
         if (AllCommands.Count > 0) return;
 
-        var methodInfos = new List<MethodInfo>();
-        methodInfos.AddRange(typeof(CommandsDefinitions)
-            .GetMethods(BindingFlags.Public | BindingFlags.Static));
+        //var methodInfos = new List<MethodInfo>();
+        //methodInfos.AddRange(typeof(CommandsDefinitions)
+        //    .GetMethods(BindingFlags.Public | BindingFlags.Static));
 
-        methodInfos.ForEach(x => { x.Invoke(null, null); });
+        //methodInfos.ForEach(x => { x.Invoke(null, null); });
     }
 }

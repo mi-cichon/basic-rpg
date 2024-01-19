@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicRPG.ClientApi", "BasicRPG.ClientApi.csproj", "{7F932C49-A4FE-447C-8352-994533181E93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicRPG.Client.Api", "BasicRPG.Client.Api.csproj", "{7F932C49-A4FE-447C-8352-994533181E93}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicRPG.Infrastructure", "..\BasicRPG.Infrastructure\BasicRPG.Infrastructure.csproj", "{4512AFA2-1BD8-48CF-9B4E-0DDD6F4135C0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicRPG.Domain", "..\BasicRPG.Domain\BasicRPG.Domain.csproj", "{A0A32A44-D700-4904-8508-51FFB1E91A16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicRPG.Configuration", "..\BasicRPG.Configuration\BasicRPG.Configuration.csproj", "{56DA8CAF-DA65-49AF-A5D1-67887496787C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicRPG.Configuration", "..\BasicRPG.Configuration\BasicRPG.Configuration.csproj", "{56DA8CAF-DA65-49AF-A5D1-67887496787C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicRPG.Cli", "..\BasicRPG.Cli\BasicRPG.Cli.csproj", "{EEC1A11E-ED54-47D3-8FBB-1CA37DECAFE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicRPG.Cli", "..\BasicRPG.Cli\BasicRPG.Cli.csproj", "{EEC1A11E-ED54-47D3-8FBB-1CA37DECAFE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicRPG.Application", "..\BasicRPG.Application\BasicRPG.Application.csproj", "{E2B928E2-6CC4-4D44-B9A3-5B59B3F76E13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{EEC1A11E-ED54-47D3-8FBB-1CA37DECAFE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEC1A11E-ED54-47D3-8FBB-1CA37DECAFE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEC1A11E-ED54-47D3-8FBB-1CA37DECAFE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2B928E2-6CC4-4D44-B9A3-5B59B3F76E13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2B928E2-6CC4-4D44-B9A3-5B59B3F76E13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2B928E2-6CC4-4D44-B9A3-5B59B3F76E13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2B928E2-6CC4-4D44-B9A3-5B59B3F76E13}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

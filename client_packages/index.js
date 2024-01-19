@@ -5,3 +5,4 @@ require('./clientside/chat/chatController.js');
 require('./clientside/spawnSelection/spawnSelectionController.js');
 require('./clientside/ui/speedometerController.js');
 require('./clientside/ui/nameTags.js');
+require('./clientside/settings/trailerSync.js');

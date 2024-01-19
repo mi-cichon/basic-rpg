@@ -1,4 +1,4 @@
 ﻿<meta>
 	<info name="RPGMode" description="" />
-	<script src="bin/Debug/net6.0/BasicRPG.ClientApi.dll" />
+	<script src="bin/Debug/net6.0/BasicRPG.Client.Api.dll" />
 </meta>

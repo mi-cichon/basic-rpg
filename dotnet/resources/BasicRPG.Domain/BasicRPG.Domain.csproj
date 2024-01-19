@@ -12,7 +12,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BasicRPG.Configuration\BasicRPG.Configuration.csproj" />
-    <ProjectReference Include="..\BasicRPG.Infrastructure\BasicRPG.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Repositories\Users\" />
+    <Folder Include="Services\Notification\" />
+    <Folder Include="SharedData\" />
   </ItemGroup>
 
 </Project>

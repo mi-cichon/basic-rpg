@@ -1,8 +1,8 @@
-﻿using BasicRPG.ClientApi.Commands;
-using BasicRPG.Configuration;
+﻿using BasicRPG.Client.Api.Commands;
 using GTANetworkAPI;
+using Newtonsoft.Json;
 
-namespace BasicRPG.ClientApi;
+namespace BasicRPG.Client.Api;
 
 public class Startup : Script
 {
@@ -16,7 +16,5 @@ public class Startup : Script
 
         CommandProvider.DefineCommands();
         CommandProvider.StartConsoleInputThread();
-
-        ConfigurationService.LoadConfigs();
     }
 }

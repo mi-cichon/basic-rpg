@@ -1,68 +1,72 @@
-﻿using BasicRPG.Domain.Enums;
+﻿using BasicRPG.Client.Api.Dependencies;
+using BasicRPG.Domain.Enums;
+using BasicRPG.Domain.Events;
 using BasicRPG.Domain.Services.Login;
 using BasicRPG.Domain.Services.Users;
+using BasicRPG.Domain.SharedData;
 using GTANetworkAPI;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace BasicRPG.ClientApi.Controllers;
+namespace BasicRPG.Client.Api.Controllers;
 
-public class UserController : Script
+public class UserController : DependencyScript
 {
+    private readonly ILoginService _loginService;
+    private readonly IUserService _userService;
+
+    public UserController()
+    {
+        _loginService = ServiceProvider.GetRequiredService<ILoginService>();
+        _userService = ServiceProvider.GetRequiredService<IUserService>();
+    }
+
     [ServerEvent(Event.PlayerConnected)]
     public void OnPlayerConnected(Player player)
     {
-        LoginService.SetPlayerDimension(player, 9999);
+        _loginService.MovePlayerToSpawnDimension(player);
     }
 
     [ServerEvent(Event.PlayerDeath)]
     public void OnPlayerDeath(Player player, Player killer, uint reason)
     {
-        player.SetSharedData("player_deathLocation", player.Position);
-        player.TriggerEvent("client_destroySpeedometer");
+        player.SetSharedData(PlayerSharedData.DeathLocation, player.Position);
+        player.TriggerEvent(PlayerEvents.DestroySpeedometer);
     }
 
     [ServerEvent(Event.PlayerSpawn)]
     public void OnPlayerSpawn(Player player)
     {
-        if (player.HasSharedData("player_deathLocation")) UserService.SpawnPlayerAtClosestHospital(player);
+        if (player.HasSharedData(PlayerSharedData.DeathLocation))
+        {
+            _userService.SpawnPlayerAtClosestHospital(player);
+        }
     }
 
     [ServerEvent(Event.PlayerDisconnected)]
     public void OnPlayerDisconnected(Player player, DisconnectionType type, string reason)
     {
-        UserService.SaveLastPosition(player);
+        _userService.SavePlayersLastPos(player);
     }
 
     [RemoteEvent("user_login")]
     public void Login(Player player, string username, string password)
     {
-        var response = LoginService.Login(player, username, password);
-        player.TriggerEvent("client_loginCompleted", response);
+        var response = _loginService.Login(player, username, password);
+        player.TriggerEvent(PlayerEvents.LoginCompleted, response);
     }
 
     [RemoteEvent("user_register")]
     public void Register(Player player, string username, string password)
     {
-        var response = LoginService.Register(player, username, password);
-        player.TriggerEvent("client_registerSuccessful", response);
+        var response = _loginService.Register(player, username, password);
+        player.TriggerEvent(PlayerEvents.RegisteredSuccessfully, response);
     }
 
     [RemoteEvent("user_spawnSelected")]
     public void SpawnSelected(Player player, int spawnLocation)
     {
         var location = (SpawnLocation)spawnLocation;
-        var response = LoginService.SpawnPlayer(player, location);
-        player.TriggerEvent("client_spawnSelectionCompleted", response);
-    }
-
-    [RemoteEvent("user_spawnOppressor")]
-    public void SpawnOpressor(Player player)
-    {
-        if (player.Vehicle != null)
-        {
-            return;
-        }
-        var oppressor =
-            NAPI.Vehicle.CreateVehicle(VehicleHash.Oppressor2, player.Position, player.Rotation, 0, 0, "P DAU");
-        player.SetIntoVehicle(oppressor.Handle, 0);
+        var response = _loginService.SpawnPlayer(player, location);
+        player.TriggerEvent(PlayerEvents.SpawnSelectionCompleted, response);
     }
 }

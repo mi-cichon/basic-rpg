@@ -2,5 +2,5 @@
 
 public class LevelsConfig
 {
-    public Dictionary<int, int> LevelSteps { get; set; } = new();
+    public List<int> Levels { get; set; } = null!;
 }
