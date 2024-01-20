@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { ApiResponseType } from "src/app/lib/client-api-service/client-api.model";
 import { NotificationType } from "./notification-helper";
 import { mapApiResponseTypeToNotificationType } from "./notification-helper";
+import { AbstractClientApiService } from "src/app/lib/client-api-service/abstract-client-api.service";
 
 @Injectable({
   providedIn: "root",
@@ -13,6 +14,20 @@ export class NotificationService {
     type: NotificationType;
     message: string;
   };
+
+  constructor(clientApiService: AbstractClientApiService) {
+    clientApiService
+      .registerEvent("ui_showNotification")
+      .subscribe((response) => {
+        if (response.data) {
+          const message = response.data["message" as keyof object] as string;
+          const type = response.data[
+            "type" as keyof object
+          ] as NotificationType;
+          this.showNotification(message, type);
+        }
+      });
+  }
 
   public showNotification(
     message: string,

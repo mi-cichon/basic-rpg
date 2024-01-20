@@ -5,7 +5,7 @@
   </div>
   <form [formGroup]="loginForm" class="col-8" (ngSubmit)="submit()">
     <div class="header">
-      {{ "login.loginTitle" | transloco }}
+      {{ "login.loginTitle" | transloco: { player: "xd", reason: "xd" } }}
     </div>
     <app-input
       controlName="login"

@@ -6,5 +6,8 @@ public static class ClientError
     public const string WrongCredentials = "login.wrongCredentials";
     public const string UserExists = "register.userExists";
     public const string MaxAccounts = "register.maxAccounts";
-
+    public const string UnknownCommand = "errors.unknownCommand";
+    public const string BadCommandArguments = "errors.badCommandArguments";
+    public const string CommandGeneric = "errors.commandGeneric";
+    public const string CommandPlayerNotFound = "errors.commandPlayerNotFound";
 }

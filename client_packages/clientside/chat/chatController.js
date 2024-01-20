@@ -42,5 +42,6 @@ mp.events.add('client_displayMessage', (response) => {
     if(browser == null || mp.storage.data.userSpawned !== true){
         return;
     }
+    mp.console.logInfo(JSON.stringify(response));
     rpc.callBrowser(browser, 'browser_newMessage', response);
 });

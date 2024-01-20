@@ -1,6 +1,4 @@
-﻿using BasicRPG.Client.Api.Commands;
-using GTANetworkAPI;
-using Newtonsoft.Json;
+﻿using GTANetworkAPI;
 
 namespace BasicRPG.Client.Api;
 
@@ -12,9 +10,5 @@ public class Startup : Script
         Console.WriteLine("Server backend started...");
         NAPI.Server.SetDefaultSpawnLocation(new Vector3(0, 0, 1250));
         NAPI.Server.SetGlobalServerChat(false);
-
-
-        CommandProvider.DefineCommands();
-        CommandProvider.StartConsoleInputThread();
     }
 }

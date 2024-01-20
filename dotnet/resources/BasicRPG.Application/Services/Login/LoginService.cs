@@ -4,6 +4,7 @@ using BasicRPG.Domain.DTOs;
 using BasicRPG.Domain.Entities.Users;
 using BasicRPG.Domain.Enums;
 using BasicRPG.Domain.Repositories.Users;
+using BasicRPG.Domain.Services.Chat;
 using BasicRPG.Domain.Services.Login;
 using BasicRPG.Domain.Services.Spawn;
 using BasicRPG.Domain.Services.Users;
@@ -17,6 +18,7 @@ public class LoginService : ILoginService
     private readonly ISpawnService _spawnService;
     private readonly IUserService _userService;
     private readonly IUserRepository _userRepository;
+    private readonly IChatService _chatService;
 
     private const int SpawnDimension = 9999;
     private const int DefaultDimension = 0;
@@ -24,11 +26,13 @@ public class LoginService : ILoginService
     public LoginService(
         ISpawnService spawnService, 
         IUserService userService, 
-        IUserRepository userRepository)
+        IUserRepository userRepository, 
+        IChatService chatService)
     {
         _spawnService = spawnService;
         _userService = userService;
         _userRepository = userRepository;
+        _chatService = chatService;
     }
 
     public ApiResponse Login(Player player, string username, string password)
@@ -101,7 +105,14 @@ public class LoginService : ILoginService
         player.Dimension = 0;
         player.Position = position;
 
-        NAPI.Task.Run(() => { _userService.UpdatePlayersHud(player); }, 1500);
+        NAPI.Task.Run(() =>
+        {
+            _userService.UpdatePlayersHud(player);
+        }, 1500);
+        NAPI.Task.Run(() =>
+        {
+            _chatService.SendInfoMessageToPlayer(player, "messages.welcomeMessage");
+        }, 3000);
         return new ApiResponse(ApiResponseType.Success, string.Empty, null);
     }
 

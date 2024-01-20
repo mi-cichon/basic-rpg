@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { NotificationService } from "./notification.service";
 import { NotificationType } from "./notification-helper";
 

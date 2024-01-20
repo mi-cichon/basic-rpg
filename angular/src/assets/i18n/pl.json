@@ -29,7 +29,11 @@
     "error": "Błąd krytyczny"
   },
   "errors": {
-    "critical": "Wystąpił nieznany błąd. Zgłoś go administracji."
+    "critical": "Wystąpił nieznany błąd. Zgłoś go administracji.",
+    "commandPlayerNotFound": "Gracz o tej nazwie lub ID nie istnieje.",
+    "commandGeneric": "Wystąpił błąd podczas wykonywania komendy.",
+    "badCommandArguments": "Podano nieprawidłowe argumenty.",
+    "unknownCommand": "Ta komenda nie istnieje."
   },
   "chat": {
     "global": "Globalny",
@@ -50,5 +54,8 @@
   "spawnSelection": {
     "clickText": "Naciśnij aby wybrać tę lokację...",
     "lastPosition": "Ostatnia pozycja"
+  },
+  "messages": {
+    "welcomeMessage": "Witaj na BasicRpg!"
   }
 }

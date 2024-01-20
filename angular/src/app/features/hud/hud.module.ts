@@ -13,6 +13,7 @@ import { PrivateMessageComponent } from "./chat/messages/private-message/private
 import { RegularMessageComponent } from "./chat/messages/regular-message/regular-message.component";
 import { GlobalMessageComponent } from "./chat/messages/global-message/global-message.component";
 import { PenaltyMessageComponent } from "./chat/messages/penalty-message/penalty-message.component";
+import { TranslateIfKeyExistsPipe } from "./chat/pipes/translate-if-key-exists.pipe";
 
 @NgModule({
   declarations: [
@@ -27,6 +28,11 @@ import { PenaltyMessageComponent } from "./chat/messages/penalty-message/penalty
     GlobalMessageComponent,
     PenaltyMessageComponent,
   ],
-  imports: [CommonModule, HudRoutingModule, TranslocoModule],
+  imports: [
+    CommonModule,
+    HudRoutingModule,
+    TranslocoModule,
+    TranslateIfKeyExistsPipe,
+  ],
 })
 export class HudModule {}

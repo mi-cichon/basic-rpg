@@ -10,11 +10,13 @@ public class NotificationService : INotificationService
 {
     public void ShowNotification(Player player, string message, NotificationType type)
     {
-        player.TriggerEvent(PlayerEvents.ShowNotification, message, type);
+        var response = new ApiResponse(ApiResponseType.Success, string.Empty, new { message, type });
+        player.TriggerEvent(PlayerEvents.ShowNotification, response);
     }
 
     public void ShowGenericError(Player player)
     {
-        player.TriggerEvent(PlayerEvents.ShowNotification, ClientError.Critical, NotificationType.Bug);
+        var response = new ApiResponse(ApiResponseType.Success, string.Empty, new { message = ClientError.Critical, type = NotificationType.Bug });
+        player.TriggerEvent(PlayerEvents.ShowNotification, response);
     }
 }

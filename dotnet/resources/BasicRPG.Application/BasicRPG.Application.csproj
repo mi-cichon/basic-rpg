@@ -16,6 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Commands\Chat\" />
+    <Folder Include="Services\Commands\" />
     <Folder Include="Services\Notification\" />
   </ItemGroup>
 

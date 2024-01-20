@@ -1,4 +1,4 @@
-﻿namespace BasicRPG.Client.Api.Commands;
+﻿namespace BasicRPG.Domain.DTOs;
 
 public class CommandMessage
 {

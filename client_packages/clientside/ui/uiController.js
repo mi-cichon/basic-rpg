@@ -2,7 +2,7 @@ let player = mp.players.local;
 const rpc = require('ext/rage-rpc.js');
 let uiBrowser = null;
 
-mp.discord.update('👀');
+mp.discord.update("GaysicRpg", "menski serwer");
 
 //Player connected
 uiBrowser = mp.browsers.new("http://package2/index.html");
@@ -18,8 +18,8 @@ setTimeout(async () => {
 }, 0);
 
 
-mp.events.add("client_showNotification", (message, type) => {
-    //rpc.callBrowser(uiBrowser, 'ui_showNotification', {message: message, type: type});
+mp.events.add("client_showNotification", response => {
+    rpc.callBrowser(uiBrowser, 'ui_showNotification', response);
 });
 
 mp.events.add("client_updateHudValues", response => {

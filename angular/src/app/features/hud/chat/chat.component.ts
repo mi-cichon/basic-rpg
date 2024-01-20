@@ -35,6 +35,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.newMessageSub = this.clientApiService
       .registerEvent("browser_newMessage")
       .subscribe((response) => {
+        console.log("data", response);
         if (response.data) {
           this.messages.push(mapObjectToMessage(response.data));
         }

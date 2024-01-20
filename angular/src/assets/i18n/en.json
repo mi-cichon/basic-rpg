@@ -29,13 +29,18 @@
     "error": "Critical error"
   },
   "errors": {
-    "critical": "Unknown error occured. Contact administration."
+    "critical": "Unknown error occured. Contact administration.",
+    "commandPlayerNotFound": "Player with given Id/Name was not found.",
+    "commandGeneric": "There was an error while executing command.",
+    "badCommandArguments": "Given arguments were invalid.",
+    "unknownCommand": "This command does not exist."
+    
   },
   "chat": {
     "global": "Global",
     "transferReceivedTitle": "Transfer",
     "transferReceivedText": "transfers You",
-    "infoTitle": "Information",
+    "infoTitle": "System",
     "privateFrom": "From",
     "privateTo": "To",
     "penaltyTitle": "A player was punished",
@@ -50,5 +55,8 @@
   "spawnSelection": {
     "clickText": "Click to choose this location...",
     "lastPosition": "Last position"
+  },
+  "messages": {
+    "welcomeMessage": "Welcome to BasicRpg!"
   }
 }

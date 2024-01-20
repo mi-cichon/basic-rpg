@@ -108,7 +108,9 @@ public class ChatService : IChatService
             time = null
         };
 
-        player.TriggerEvent(ChatEvents.DisplayMessage, messageDto);
+        var response = new ApiResponse(ApiResponseType.Success, string.Empty, messageDto);
+
+        player.TriggerEvent(ChatEvents.DisplayMessage, response);
     }
 
     public void SendPrivateMessage(Player playerFrom, Player playerTo, string message)

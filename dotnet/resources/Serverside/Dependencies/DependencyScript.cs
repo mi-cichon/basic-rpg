@@ -17,6 +17,7 @@ public abstract class DependencyScript : Script
         var serviceCollection = new ServiceCollection();
 
         serviceCollection.InstantiateServices();
+        serviceCollection.InstantiateCommands();
 
         return serviceCollection.BuildServiceProvider();
     }

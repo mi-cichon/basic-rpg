@@ -4,7 +4,9 @@
       <ng-container [ngSwitch]="message.type">
         <app-regular-message
           *ngSwitchCase="0"
-          [messageText]="message.message"
+          [messageText]="
+            (message.message | translateIfKeyExists | async) ?? message.message
+          "
           [playerId]="message.id"
           [playerName]="message.name"
         />
@@ -21,7 +23,12 @@
           [playerName]="message.name"
           [from]="message.from"
         />
-        <app-info-message *ngSwitchCase="9" [messageText]="message.message" />
+        <app-info-message
+          *ngSwitchCase="9"
+          [messageText]="
+            (message.message | translateIfKeyExists | async) ?? message.message
+          "
+        />
         <app-penalty-message
           *ngSwitchCase="5"
           [messageText]="message.message"

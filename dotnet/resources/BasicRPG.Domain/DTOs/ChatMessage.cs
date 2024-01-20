@@ -1,4 +1,5 @@
 ﻿using BasicRPG.Domain.Enums;
+// ReSharper disable InconsistentNaming
 
 namespace BasicRPG.Domain.DTOs;
 
@@ -11,4 +12,5 @@ public class ChatMessage
     public Permissions? permission { get; set; }
     public bool? from { get; set; }
     public string? time { get; set; }
+    public string? value { get; set; }
 }
