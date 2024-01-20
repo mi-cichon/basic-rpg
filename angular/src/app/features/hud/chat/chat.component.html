@@ -21,7 +21,11 @@
           [playerName]="message.name"
           [from]="message.from"
         />
-        <app-info-message *ngSwitchCase="9" />
+        <app-info-message *ngSwitchCase="9" [messageText]="message.message" />
+        <app-penalty-message
+          *ngSwitchCase="5"
+          [messageText]="message.message"
+        />
         {{ last ? scrollToBottom() : "" }}
       </ng-container>
     </ng-container>
