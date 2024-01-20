@@ -12,6 +12,7 @@ import { InfoMessageComponent } from "./chat/messages/info-message/info-message.
 import { PrivateMessageComponent } from "./chat/messages/private-message/private-message.component";
 import { RegularMessageComponent } from "./chat/messages/regular-message/regular-message.component";
 import { GlobalMessageComponent } from "./chat/messages/global-message/global-message.component";
+import { PenaltyMessageComponent } from "./chat/messages/penalty-message/penalty-message.component";
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { GlobalMessageComponent } from "./chat/messages/global-message/global-me
     PrivateMessageComponent,
     RegularMessageComponent,
     GlobalMessageComponent,
+    PenaltyMessageComponent,
   ],
   imports: [CommonModule, HudRoutingModule, TranslocoModule],
 })

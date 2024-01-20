@@ -1,14 +1,4 @@
-import {
-  AfterContentInit,
-  AfterViewInit,
-  Component,
-  ElementRef,
-  EventEmitter,
-  Output,
-  QueryList,
-  ViewChild,
-  ViewChildren,
-} from "@angular/core";
+import { AfterViewInit, Component, EventEmitter, Output } from "@angular/core";
 import { AbstractClientApiService } from "src/app/lib/client-api-service/abstract-client-api.service";
 import { ChatInputService } from "./chat-input.service";
 
