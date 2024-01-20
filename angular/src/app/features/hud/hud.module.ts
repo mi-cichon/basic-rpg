@@ -14,6 +14,7 @@ import { RegularMessageComponent } from "./chat/messages/regular-message/regular
 import { GlobalMessageComponent } from "./chat/messages/global-message/global-message.component";
 import { PenaltyMessageComponent } from "./chat/messages/penalty-message/penalty-message.component";
 import { TranslateIfKeyExistsPipe } from "./chat/pipes/translate-if-key-exists.pipe";
+import { TransferMessageComponent } from "./chat/messages/transfer-message/transfer-message.component";
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { TranslateIfKeyExistsPipe } from "./chat/pipes/translate-if-key-exists.p
     RegularMessageComponent,
     GlobalMessageComponent,
     PenaltyMessageComponent,
+    TransferMessageComponent,
   ],
   imports: [
     CommonModule,
