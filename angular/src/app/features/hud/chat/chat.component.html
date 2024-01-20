@@ -16,6 +16,14 @@
           [playerId]="message.id"
           [playerName]="message.name"
         />
+        <app-transfer-message
+          *ngSwitchCase="3"
+          [messageText]="message.message"
+          [playerId]="message.id"
+          [playerName]="message.name"
+          [from]="message.from"
+          [value]="message.value!"
+        />
         <app-private-message
           *ngSwitchCase="4"
           [messageText]="message.message"

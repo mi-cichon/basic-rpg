@@ -37,8 +37,8 @@
   },
   "chat": {
     "global": "Globalny",
-    "transferReceivedTitle": "Przelew",
-    "transferReceivedText": "przesyła Ci",
+    "transferReceivedTitle": "Przelew do",
+    "transferReceivedText": "Przelew od",
     "infoTitle": "Informacja",
     "privateFrom": "Od",
     "privateTo": "Do",
@@ -46,7 +46,8 @@
     "penaltyKickText": "Gracz {player} został wyrzucony przez {by}, powód: {reason}.",
     "penaltyBanText": "Gracz {player} został zbanowany ({time}) przez {by}, powód: {reason}.",
     "penaltyLicenceText": "Gracz {player} stacił możliwość prowadzenie pojazdów ({time}) przez {by}, powód: {reason}.",
-    "penaltyMuteText": "Gracz {player} został wyciszony ({time}) przez {by}, powód: {reason}."
+    "penaltyMuteText": "Gracz {player} został wyciszony ({time}) przez {by}, powód: {reason}.",
+    "transferMessage":"Przelew o wartości {{value}}$ o tytule: {{title}}."
   },
   "info": {
     "discordInfo": "Zapraszamy na Discord naszego serwera pod discord.gg/basicrpg"

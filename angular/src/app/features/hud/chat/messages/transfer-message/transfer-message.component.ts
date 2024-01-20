@@ -1,15 +1,16 @@
-import { Component, Input } from "@angular/core";
+import { Input, Component } from "@angular/core";
 @Component({
-  selector: "app-private-message",
-  templateUrl: "./private-message.component.html",
+  selector: "app-transfer-message",
+  templateUrl: "./transfer-message.component.html",
   styleUrls: [
-    "./private-message.component.scss",
+    "./transfer-message.component.scss",
     "./../base-message-style.scss",
   ],
 })
-export class PrivateMessageComponent {
+export class TransferMessageComponent {
   @Input({ required: true }) messageText!: string;
   @Input({ required: true }) playerName!: string;
   @Input({ required: true }) playerId!: number;
   @Input({ required: true }) from!: boolean;
+  @Input({ required: true }) value!: string;
 }

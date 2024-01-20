@@ -38,16 +38,17 @@
   },
   "chat": {
     "global": "Global",
-    "transferReceivedTitle": "Transfer",
-    "transferReceivedText": "transfers You",
     "infoTitle": "System",
+    "transferReceivedTitle": "Transfer to",
+    "transferReceivedText": "Transfer from",
     "privateFrom": "From",
     "privateTo": "To",
     "penaltyTitle": "A player was punished",
     "penaltyKickText": "Player {player} was kicked by {by}, for: {reason}.",
     "penaltyBanText": "Player {player} was banned ({time}) by {by}, for: {reason}.",
     "penaltyLicenceText": "Player {player} has lost the ability to drive a vehicle for ({time}) by {by}, for: {reason}.",
-    "penaltyMuteText": "Player {player} was muted ({time}) by {by}, for: {reason}."
+    "penaltyMuteText": "Player {player} was muted ({time}) by {by}, for: {reason}.",
+    "transferMessage":"Transfer of {{value}}$ titled: {{title}}."
   },
   "info": {
     "discordInfo": "Join our discord using discord.gg/basicrpg"

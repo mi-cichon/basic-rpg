@@ -6,6 +6,7 @@ export type ChatMessage = {
   permission: number;
   from: boolean;
   time: string;
+  value?: string;
 };
 
 export function mapObjectToMessage(data: object): ChatMessage {
@@ -17,5 +18,6 @@ export function mapObjectToMessage(data: object): ChatMessage {
     permission: data["permission" as keyof object],
     from: data["from" as keyof object],
     time: data["time" as keyof object],
+    value: data["value" as keyof object],
   } as ChatMessage;
 }
