@@ -16,6 +16,13 @@
           [playerId]="message.id"
           [playerName]="message.name"
         />
+        <app-group-message
+          *ngSwitchCase="2"
+          [messageText]="message.message"
+          [playerId]="message.id"
+          [playerName]="message.name"
+          [organisation]="message.organisation!"
+        />
         <app-transfer-message
           *ngSwitchCase="3"
           [messageText]="message.message"
@@ -31,15 +38,38 @@
           [playerName]="message.name"
           [from]="message.from"
         />
+        <app-mute-message
+          *ngSwitchCase="5"
+          [messageText]="message.message"
+          [playerName]="message.name"
+          [punishmentLength]="message.punishmentLength!"
+          [additionalName]="message.additionalName!"
+        />
+        <app-licence-message
+          *ngSwitchCase="6"
+          [messageText]="message.message"
+          [playerName]="message.name"
+          [punishmentLength]="message.punishmentLength!"
+          [additionalName]="message.additionalName!"
+        />
+        <app-kick-message
+          *ngSwitchCase="7"
+          [messageText]="message.message"
+          [playerName]="message.name"
+          [additionalName]="message.additionalName!"
+        />
+        <app-ban-message
+          *ngSwitchCase="8"
+          [messageText]="message.message"
+          [playerName]="message.name"
+          [punishmentLength]="message.punishmentLength!"
+          [additionalName]="message.additionalName!"
+        />
         <app-info-message
           *ngSwitchCase="9"
           [messageText]="
             (message.message | translateIfKeyExists | async) ?? message.message
           "
-        />
-        <app-penalty-message
-          *ngSwitchCase="5"
-          [messageText]="message.message"
         />
         {{ last ? scrollToBottom() : "" }}
       </ng-container>
