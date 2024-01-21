@@ -1,4 +1,5 @@
-﻿using BasicRPG.Domain.Entities.Users;
+﻿using BasicRPG.Domain.DTOs;
+using BasicRPG.Domain.Entities.Users;
 using BasicRPG.Domain.Repositories.Users;
 using BasicRPG.Domain.Services.Notification;
 using BasicRPG.Domain.SharedData;
@@ -20,10 +21,9 @@ public class UserRepository : IUserRepository
         _notificationService = notificationService;
     }
 
-
-    public User? GetUserEntity(Player player)
+    public User? GetUserEntity(Player? player)
     {
-        var id = Guid.Parse(player.GetSharedData<string>(PlayerSharedData.Id));
+        var id = Guid.Parse(player?.GetSharedData<string>(PlayerSharedData.Id));
 
         var user = _context.Users.FirstOrDefault(x => x.Id == id);
 
@@ -35,7 +35,6 @@ public class UserRepository : IUserRepository
         _notificationService.ShowGenericError(player);
         return null;
     }
-
 
     public void SaveLastPosition(Player player)
     {
@@ -86,5 +85,47 @@ public class UserRepository : IUserRepository
     {
         _context.Users.Add(user);
         _context.SaveChanges();
+    }
+
+    public double AddMoneyToPlayer(Player player, double money)
+    {
+        var user = GetUserEntity(player);
+        if (user == null)
+        {
+            throw new ArgumentException(
+                ClientError.Critical,
+                new ArgumentException("User was not found"));
+        }
+
+        user.Money += money;
+        _context.SaveChanges();
+        return user.Money;
+    }
+
+    public double SubtractMoneyFromPlayer(Player player, double money)
+    {
+        var user = GetUserEntity(player);
+        if (user == null)
+        {
+            throw new ArgumentException(
+                ClientError.Critical, 
+                new ArgumentException("User was not found"));
+        }
+
+        user.Money -= money;
+        if (user.Money < 0)
+        {
+            throw new ArgumentException(
+                ClientError.Critical,
+                new ArgumentException("User doesn't have enough money to be subtracted"));
+        }
+
+        _context.SaveChanges();
+        return user.Money;
+    }
+
+    public void ReloadUserEntity(User user)
+    {
+        _context.Entry(user).Reload();
     }
 }

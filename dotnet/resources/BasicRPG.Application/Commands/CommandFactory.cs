@@ -16,7 +16,8 @@ public class CommandFactory : ICommandFactory
     {
         var services = _serviceProvider.GetServices<IBaseCommand>();
         var service = services
-            .FirstOrDefault(x => x.Name == commandName);
+            .FirstOrDefault(x => x.Name == commandName || 
+                                 (x.Aliases != null && x.Aliases.Contains(commandName)));
 
         if (service == null)
         {

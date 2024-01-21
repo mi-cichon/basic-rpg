@@ -7,8 +7,8 @@ import { TranslocoRootModule } from "./core/i18n/transloco/transloco-root.module
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NotificationComponent } from "./features/notifications/notification/notification.component";
 import { HashLocationStrategy, LocationStrategy } from "@angular/common";
-import { ClientApiProdService } from "./lib/client-api-service/client-api-prod.service";
 import { ClientApiMockService } from "./lib/client-api-service/client-api-mock.service";
+import { ClientApiProdService } from "./lib/client-api-service/client-api-prod.service";
 
 @NgModule({
   declarations: [AppComponent, NotificationComponent],

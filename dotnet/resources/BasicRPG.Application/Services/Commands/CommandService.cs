@@ -1,4 +1,5 @@
-﻿using BasicRPG.Domain.Commands;
+﻿using System.Text.RegularExpressions;
+using BasicRPG.Domain.Commands;
 using BasicRPG.Domain.DTOs;
 using BasicRPG.Domain.Enums;
 using BasicRPG.Domain.Services.Commands;
@@ -12,6 +13,7 @@ public class CommandService : ICommandService
 {
     private readonly IUserService _userService;
 
+    private const string DoubleRegex = "^(?!.*[.,][.,])(?!.*[eE])[0-9]{1,8}(?:[.,][0-9]{1,2})?$";
     public CommandService(IUserService userService)
     {
         _userService = userService;
@@ -108,7 +110,7 @@ public class CommandService : ICommandService
 
     private List<string> MapToMessageBased(List<string> arguments, int argsCount)
     {
-        var messageBasedArgs = arguments.GetRange(argsCount - 1, arguments.Count - 1);
+        var messageBasedArgs = arguments.GetRange(argsCount - 1, arguments.Count - argsCount + 1);
 
         var regularArgs = arguments.GetRange(0, argsCount - 1);
 
@@ -149,6 +151,7 @@ public class CommandService : ICommandService
     //Generic function that maps an argument to its type - validation core
     public static T MapArgument<T>(string argument, IUserService userService)
     {
+        var doubleRegex = new Regex(DoubleRegex);
         switch (typeof(T))
         {
             case var t when t == typeof(string):
@@ -159,6 +162,11 @@ public class CommandService : ICommandService
                 if (!int.TryParse(argument, out var argInt))
                     throw new ArgumentException(ClientError.BadCommandArguments);
                 return (T)Convert.ChangeType(argInt, typeof(T));
+
+            case var t when t == typeof(double):
+                if (!doubleRegex.IsMatch(argument) || !double.TryParse(argument.Replace(".",","), out var argDouble))
+                    throw new ArgumentException(ClientError.BadCommandArguments);
+                return (T)Convert.ChangeType(argDouble, typeof(T));
 
             case var t when t == typeof(uint):
                 if (!uint.TryParse(argument, out var argUInt))

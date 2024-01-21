@@ -15,6 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Entities\Collectibles\" />
+    <Folder Include="Repositories\LevelRequirements\" />
     <Folder Include="Repositories\Users\" />
     <Folder Include="Services\Notification\" />
     <Folder Include="SharedData\" />

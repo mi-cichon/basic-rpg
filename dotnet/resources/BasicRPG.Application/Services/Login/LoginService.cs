@@ -46,7 +46,19 @@ public class LoginService : ILoginService
             return new ApiResponse(ApiResponseType.Fail, ClientError.WrongCredentials, null);
         }
 
-        AssignPlayersValues(player, user);
+        var alreadyLoggedIn = NAPI.Pools.GetAllPlayers()
+            .Any(x => x != null
+                       && x.HasSharedData(PlayerSharedData.Id)
+                       && Guid.Parse(x.GetSharedData<string>(PlayerSharedData.Id)).Equals(user.Id));
+
+        if (alreadyLoggedIn)
+        {
+            return new ApiResponse(ApiResponseType.Fail, ClientError.AlreadyLoggedIn, null);
+        }
+
+        player.SetSharedData(PlayerSharedData.Id, user.Id);
+
+        _userService.AssignPlayersValues(player);
 
         SetPlayerDimension(player, SpawnDimension);
 
@@ -114,17 +126,6 @@ public class LoginService : ILoginService
             _chatService.SendInfoMessageToPlayer(player, "messages.welcomeMessage");
         }, 3000);
         return new ApiResponse(ApiResponseType.Success, string.Empty, null);
-    }
-
-    private void AssignPlayersValues(Player player, User user)
-    {
-        player.Name = user.Name;
-        player.SetSharedData(PlayerSharedData.Id, user.Id);
-        player.SetSharedData(PlayerSharedData.Money, user.Money);
-        player.SetSharedData(PlayerSharedData.Experience, user.Experience);
-        player.SetSharedData(PlayerSharedData.Level, user.Level);
-        player.SetSharedData(PlayerSharedData.Name, user.Name);
-        player.SetSharedData(PlayerSharedData.RegisteredDate, user.RegisteredDate);
     }
 
     public string ToSha256(string randomString)

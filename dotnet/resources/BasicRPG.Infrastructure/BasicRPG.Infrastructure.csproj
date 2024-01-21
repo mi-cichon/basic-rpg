@@ -23,4 +23,9 @@
     <ProjectReference Include="..\BasicRPG.Domain\BasicRPG.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Configurations\Collectibles\" />
+    <Folder Include="Repositories\LevelRequirements\" />
+  </ItemGroup>
+
 </Project>

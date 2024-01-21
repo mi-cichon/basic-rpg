@@ -57,7 +57,9 @@ export class NotificationService {
       this.hideNotification = true;
       setTimeout(() => {
         this.disappear = true;
-        this.notification = undefined;
+        setTimeout(() => {
+          this.notification = undefined;
+        }, 500);
       }, 500);
     }, 4000);
   }

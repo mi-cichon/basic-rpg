@@ -12,4 +12,7 @@ public interface IUserRepository
     bool UsersWithNameExist(string name);
     int AccountsCreatedBySocialClubId(ulong socialClubId);
     void AddUser(User user);
+    double AddMoneyToPlayer(Player player, double money);
+    double SubtractMoneyFromPlayer(Player player, double money);
+    void ReloadUserEntity(User user);
 }

@@ -8,6 +8,11 @@ namespace BasicRPG.Application.Commands.Chat;
 
 public class PrivateMessageCommand : IBaseCommand
 {
+    public string Name => "pm";
+    public string[]? Aliases => new[] { "w", "pw", "szept" };
+    public Dictionary<string, Type> Args =>
+        new() { { "player", typeof(Player) }, { "message", typeof(CommandMessage) } };
+
     private readonly ICommandService _commandService;
     private readonly IChatService _chatService;
 
@@ -18,11 +23,6 @@ public class PrivateMessageCommand : IBaseCommand
         _commandService = commandService;
         _chatService = chatService;
     }
-
-    public string Name => "pm";
-
-    public Dictionary<string, Type> Args =>
-        new() { { "player", typeof(Player) }, { "message", typeof(CommandMessage) } };
 
     public void Execute(Player player, string? args)
     {

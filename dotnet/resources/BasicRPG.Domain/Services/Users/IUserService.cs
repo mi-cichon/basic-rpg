@@ -1,14 +1,4 @@
-﻿using BasicRPG.Configuration;
-using BasicRPG.Configuration.Models;
-using BasicRPG.Domain.DTOs;
-using BasicRPG.Domain.Entities.Users;
-using BasicRPG.Domain.Enums;
-using BasicRPG.Domain.Events;
-using BasicRPG.Domain.Repositories.Users;
-using BasicRPG.Domain.Services.Notification;
-using BasicRPG.Domain.Services.Spawn;
-using BasicRPG.Domain.SharedData;
-using GTANetworkAPI;
+﻿using GTANetworkAPI;
 
 namespace BasicRPG.Domain.Services.Users;
 
@@ -19,6 +9,10 @@ public interface IUserService
     int? GetPlayersNextLevelExperience(Player player);
     Player? GetPlayerByRemoteIdOrName(string idOrName);
     Vector3? GetPlayersLastPos(Player player);
+    double GetPlayersSharedDataMoney(Player player);
+    void SetPlayersSharedDataMoney(Player player, double money);
     void SpawnPlayerAtClosestHospital(Player player);
     void SavePlayersLastPos(Player player);
+    void TransferMoneyToPlayer(Player playerFrom, Player playerTo, double amount, string title);
+    
 }

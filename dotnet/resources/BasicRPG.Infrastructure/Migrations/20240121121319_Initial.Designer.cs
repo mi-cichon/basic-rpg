@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BasicRPG.Infrastructure.Migrations
 {
     [DbContext(typeof(RageDbContext))]
-    [Migration("20240118230708_AddedLastPosition")]
-    partial class AddedLastPosition
+    [Migration("20240121121319_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,7 +24,7 @@ namespace BasicRPG.Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("BasicRPG.Domain.Entities.Users.HospitalSpawn", b =>
+            modelBuilder.Entity("BasicRPG.Domain.Entities.Spawns.HospitalSpawn", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -33,21 +33,31 @@ namespace BasicRPG.Infrastructure.Migrations
                     b.Property<float>("Heading")
                         .HasColumnType("real");
 
+                    b.Property<Guid>("PositionId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("PositionId");
 
                     b.ToTable("HospitalSpawns");
                 });
 
-            modelBuilder.Entity("BasicRPG.Domain.Entities.Users.PlayerSpawn", b =>
+            modelBuilder.Entity("BasicRPG.Domain.Entities.Spawns.PlayerSpawn", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("PositionId")
                         .HasColumnType("uuid");
 
                     b.Property<int>("SpawnLocation")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PositionId");
 
                     b.ToTable("PlayerSpawns");
                 });
@@ -87,6 +97,48 @@ namespace BasicRPG.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("BasicRPG.Domain.Entities.Utility.VectorEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<float>("X")
+                        .HasColumnType("real");
+
+                    b.Property<float>("Y")
+                        .HasColumnType("real");
+
+                    b.Property<float>("Z")
+                        .HasColumnType("real");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("VectorEntity");
+                });
+
+            modelBuilder.Entity("BasicRPG.Domain.Entities.Spawns.HospitalSpawn", b =>
+                {
+                    b.HasOne("BasicRPG.Domain.Entities.Utility.VectorEntity", "Position")
+                        .WithMany()
+                        .HasForeignKey("PositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Position");
+                });
+
+            modelBuilder.Entity("BasicRPG.Domain.Entities.Spawns.PlayerSpawn", b =>
+                {
+                    b.HasOne("BasicRPG.Domain.Entities.Utility.VectorEntity", "Position")
+                        .WithMany()
+                        .HasForeignKey("PositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Position");
                 });
 #pragma warning restore 612, 618
         }

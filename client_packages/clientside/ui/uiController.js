@@ -2,7 +2,7 @@ let player = mp.players.local;
 const rpc = require('ext/rage-rpc.js');
 let uiBrowser = null;
 
-mp.discord.update("GaysicRpg", "menski serwer");
+mp.discord.update("Gram na FiveLife.pl", "Największe chujstwo z Guziolem!");
 
 //Player connected
 uiBrowser = mp.browsers.new("http://package2/index.html");

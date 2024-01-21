@@ -7,28 +7,30 @@
 }
 .speedometer{
     margin-left: 10rem;
-    width: 20rem;
-    height: 20rem;
-    background-image: url('/assets/images/speedometer.png');
-    background-size: 98%;
+    width: 25rem;
+    height: 25rem;
+    background-image: url('/assets/images/speedometer/speedometer.png');
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
+    font-size: 1.2rem;
 }
 
 .needle-body{
-    width: 94%;
+    width: 100%;
     height: 1.2%;
     position: absolute;
     bottom: 49%;
-    left: 49.9%;
-    transform: translate(-50%) rotate(185deg);
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(185deg);
 }
 
 .needle{
     position: absolute;
+    margin-left: 10%;
     z-index: 999;
-    width: 12.5%;
+    width: 11%;
     left: 0;
     height: 100%;
     background-color: darkred;
@@ -40,7 +42,7 @@
     height: 30%;
     position: absolute;
     left: 50%;
-    top: 20%;
+    top: 25%;
     transform: translateX(-50%)
 }
 
@@ -55,7 +57,7 @@
 
 .speed-kmh{
     display: inline;
-    font-size: 0.9em;
+    font-size: 0.7em;
     height: 30%;
 }
 
@@ -68,55 +70,28 @@
 }
 
 .trip-body{
-    font-family: "Digital Numbers Regular";
-    height: 1.1rem;
-    line-height: 1.1rem;
-    font-size: 0.8rem;
-    background-color: #19233F;
-    background-color: rgba($color: #19233F, $alpha: 0.8)
+    font-family: "Red Hat Mono";
+    background-color: rgba($color: #19233F, $alpha: 0.8);
+    padding: 0rem 0.1rem;
+    display: flex;
 }
 
 .trip-kilometers, .trip-meters{
     display: inline;
+    line-height: 1rem;
+    font-size: 0.9rem;
 }
 
 .trip-meters{
-    color: red;    
-    height: 1.1rem;
-    line-height: 1.1rem;
-    font-size: 0.8rem;
+    color: red;
 }
 
 .petrol-body{
     position: absolute;
-    top: 45%;
-    left: 25%;
-    transform: translate(-50%, -50%);
-    width: 4rem;
-    height: 4rem;
-}
-
-.petrol{
-    width: 3.6rem;
-    height: 3.6rem;
-    position: absolute;
-    transform: rotate(-140deg) translate(-6%);
-}
-
-.petrol-back{
-    width: 4rem;
-    height: 4rem;
-    position: absolute;
-    z-index: -9;
-    transform: rotate(-140deg);
-}
-
-.petrol-body > i{
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 50%;
-    color: white;
-    display: block;
-    font-size: 1.3rem;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('/assets/images/speedometer/petrol-steps/0.png');
 }

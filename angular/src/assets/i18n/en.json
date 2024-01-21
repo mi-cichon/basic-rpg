@@ -10,7 +10,8 @@
     "registerText": "Not registered yet?",
     "registerClick": "Register now!",
     "wrongCredentials": "Incorrect login data!",
-    "loggingIn": "Logging in"
+    "loggingIn": "Logging in",
+    "alreadyLoggedIn": "This account is currently logged in on the server"
   },
   "register": {
     "registerTitle": "Registration",
@@ -33,7 +34,9 @@
     "commandPlayerNotFound": "Player with given Id/Name was not found.",
     "commandGeneric": "There was an error while executing command.",
     "badCommandArguments": "Given arguments were invalid.",
-    "unknownCommand": "This command does not exist."
+    "unknownCommand": "This command does not exist.",
+    "amountNotPositive": "Amount value must be a positive number.",
+    "notEnoughMoney": "You don't have enough money."
     
   },
   "chat": {

@@ -22,8 +22,8 @@ export function mapObjectToMessage(data: object): ChatMessage {
     from: data["from" as keyof object],
     time: data["time" as keyof object],
     value: data["value" as keyof object],
-    organisation: data["value" as keyof object],
-    punishmentLength: data["value" as keyof object],
-    additionalName: data["value" as keyof object],
+    organisation: data["organisation" as keyof object],
+    punishmentLength: data["punishmentLength" as keyof object],
+    additionalName: data["additionalName" as keyof object],
   } as ChatMessage;
 }

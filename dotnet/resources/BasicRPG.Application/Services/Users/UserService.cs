@@ -1,12 +1,16 @@
 ﻿using BasicRPG.Configuration.Models;
 using BasicRPG.Domain.DTOs;
 using BasicRPG.Domain.Events;
+using BasicRPG.Domain.Repositories.LevelRequirements;
 using BasicRPG.Domain.Repositories.Users;
+using BasicRPG.Domain.Services.Chat;
 using BasicRPG.Domain.Services.Notification;
 using BasicRPG.Domain.Services.Spawn;
 using BasicRPG.Domain.Services.Users;
 using BasicRPG.Domain.SharedData;
 using GTANetworkAPI;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions.Options;
 
 namespace BasicRPG.Application.Services.Users;
@@ -16,18 +20,21 @@ public class UserService : IUserService
     private readonly ISpawnService _spawnService;
     private readonly IUserRepository _userRepository;
     private readonly INotificationService _notificationService;
-    private readonly LevelsConfig _levelsConfig;
+    private readonly IChatService _chatService;
+    private readonly ILevelRequirementRepository _levelRequirementRepository;
 
     public UserService(
         ISpawnService spawnService, 
         IUserRepository userRepository, 
         INotificationService notificationService,
-        IOptions<LevelsConfig> levelsConfig)
+        IChatService chatService, 
+        ILevelRequirementRepository levelRequirementRepository)
     {
         _spawnService = spawnService;
         _userRepository = userRepository;
         _notificationService = notificationService;
-        _levelsConfig = levelsConfig.Value;
+        _chatService = chatService;
+        _levelRequirementRepository = levelRequirementRepository;
     }
 
     public void AssignPlayersValues(Player player)
@@ -40,7 +47,9 @@ public class UserService : IUserService
             return;
         }
 
-        player.SetSharedData(PlayerSharedData.Money, user.Money);
+        _userRepository.ReloadUserEntity(user);
+
+        SetPlayersSharedDataMoney(player, user.Money);
         player.SetSharedData(PlayerSharedData.Experience, user.Experience);
         player.SetSharedData(PlayerSharedData.Level, user.Level);
         player.SetSharedData(PlayerSharedData.Name, user.Name);
@@ -50,24 +59,42 @@ public class UserService : IUserService
     public void UpdatePlayersHud(Player player)
     {
         var data = new {
-            money = Convert.ToDouble(player.GetSharedData<float>(PlayerSharedData.Money)),
+            money = GetPlayersSharedDataMoney(player),
             name = player.GetSharedData<string>(PlayerSharedData.Name),
             experience = player.GetSharedData<int>(PlayerSharedData.Experience),
-            nextLevelExperience = player.GetSharedData<int>(PlayerSharedData.Level),
+            nextLevelExperience = GetPlayersNextLevelExperience(player),
             level = player.GetSharedData<int>(PlayerSharedData.Level)
         };
 
         var response = new ApiResponse(ApiResponseType.Success, string.Empty, data);
-        
 
         player.TriggerEvent(PlayerEvents.UpdateHudValues, response);
+    }
+
+    public double GetPlayersSharedDataMoney(Player player)
+    {
+        if (!player.HasSharedData(PlayerSharedData.Money))
+        {
+            throw new ArgumentException(nameof(player));
+        }
+
+        var playerMoney = player.GetSharedData<long>(PlayerSharedData.Money);
+
+        return (double)playerMoney / 100;
+    }
+
+    public void SetPlayersSharedDataMoney(Player player, double money)
+    {
+        var lMoney = (long)(money * 100);
+
+        player.SetSharedData(PlayerSharedData.Money, lMoney);
     }
 
     public int? GetPlayersNextLevelExperience(Player player)
     {
         var currentLevel = player.GetSharedData<int>(PlayerSharedData.Level);
 
-        var levels = _levelsConfig.Levels;
+        var levels = _levelRequirementRepository.Levels;
 
         if (currentLevel >= levels.Count)
         {
@@ -109,6 +136,32 @@ public class UserService : IUserService
     public void SavePlayersLastPos(Player player)
     {
         _userRepository.SaveLastPosition(player);
+    }
+
+    public void TransferMoneyToPlayer(Player playerFrom, Player playerTo, double amount, string title)
+    {
+        if (amount <= 0)
+        {
+            throw new ArgumentException(ClientError.AmountNotPositive);
+        }
+
+        var hasMoney = GetPlayersSharedDataMoney(playerFrom) >= amount;
+
+        if (!hasMoney)
+        {
+            throw new ArgumentException(ClientError.NotEnoughMoney);
+        }
+
+        var playerFromMoney = _userRepository.SubtractMoneyFromPlayer(playerFrom, amount);
+        var playerToMoney = _userRepository.AddMoneyToPlayer(playerTo, amount);
+
+        SetPlayersSharedDataMoney(playerFrom, playerFromMoney);
+        SetPlayersSharedDataMoney(playerTo, playerToMoney);
+
+        _chatService.SendTransferMessage(playerFrom, playerTo, amount, title);
+
+        UpdatePlayersHud(playerTo);
+        UpdatePlayersHud(playerFrom);
     }
 
     public void SpawnPlayerAtClosestHospital(Player player)

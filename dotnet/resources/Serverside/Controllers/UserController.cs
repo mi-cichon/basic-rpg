@@ -36,6 +36,7 @@ public class UserController : DependencyScript
     [ServerEvent(Event.PlayerSpawn)]
     public void OnPlayerSpawn(Player player)
     {
+        player.GiveWeapon(WeaponHash.Parachute, 1);
         if (player.HasSharedData(PlayerSharedData.DeathLocation))
         {
             _userService.SpawnPlayerAtClosestHospital(player);

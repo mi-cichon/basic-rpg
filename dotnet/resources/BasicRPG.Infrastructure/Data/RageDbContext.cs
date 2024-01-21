@@ -1,4 +1,5 @@
-﻿using BasicRPG.Domain.Entities.Spawns;
+﻿using BasicRPG.Domain.Entities.Collectibles;
+using BasicRPG.Domain.Entities.Spawns;
 using BasicRPG.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -10,6 +11,8 @@ public class RageDbContext : DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<HospitalSpawn> HospitalSpawns { get; set; }
     public DbSet<PlayerSpawn> PlayerSpawns { get; set; }
+    public DbSet<Collectible> Collectibles { get; set; }
+    public DbSet<LevelRequirement> LevelRequirements { get; set; }
 
     public RageDbContext()
     {

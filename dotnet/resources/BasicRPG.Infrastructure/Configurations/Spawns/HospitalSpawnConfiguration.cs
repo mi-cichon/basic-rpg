@@ -1,4 +1,5 @@
 ﻿using BasicRPG.Domain.Entities.Spawns;
+using BasicRPG.Domain.Entities.Utility;
 using BasicRPG.Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -12,7 +13,7 @@ public class HospitalSpawnConfiguration : IEntityTypeConfiguration<HospitalSpawn
         builder
             .HasOne(x => x.Position)
             .WithOne()
-            .OnDelete(DeleteBehavior.Cascade)
-            .IsRequired(false);
+            .HasForeignKey<HospitalSpawn>()
+            .IsRequired();
     }
 }

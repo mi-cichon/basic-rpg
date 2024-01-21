@@ -6,5 +6,5 @@ public class HospitalSpawn : BaseEntity
 {
     public float Heading { get; set; }
 
-    public VectorEntity? Position { get; set; }
+    public VectorEntity Position { get; set; } = null!;
 }

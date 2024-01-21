@@ -1,4 +1,5 @@
-﻿using BasicRPG.Domain.DTOs;
+﻿using System.Globalization;
+using BasicRPG.Domain.DTOs;
 using BasicRPG.Domain.Enums;
 using BasicRPG.Domain.Events;
 using BasicRPG.Domain.Services.Chat;
@@ -160,6 +161,64 @@ public class ChatService : IChatService
             permission = permissionFrom,
             from = true,
             time = null
+        };
+
+        var responseTo = new ApiResponse(ApiResponseType.Success, string.Empty, messageDtoPlayerTo);
+        var responseFrom = new ApiResponse(ApiResponseType.Success, string.Empty, messageDtoPlayerFrom);
+
+        playerTo.TriggerEvent(ChatEvents.DisplayMessage, responseTo);
+        playerFrom.TriggerEvent(ChatEvents.DisplayMessage, responseFrom);
+    }
+
+    public void SendTransferMessage(Player playerFrom, Player playerTo, double amount, string title)
+    {
+        var nameTo = string.Empty;
+        if (playerTo.HasSharedData(PlayerSharedData.Name))
+        {
+            nameTo = playerTo.GetSharedData<string>(PlayerSharedData.Name);
+        }
+
+        var permissionTo = Permissions.Player;
+        if (playerTo.HasSharedData(PlayerSharedData.Permissions))
+        {
+            permissionTo = (Permissions)playerTo.GetSharedData<int>(PlayerSharedData.Permissions);
+        }
+
+
+        var nameFrom = string.Empty;
+        if (playerFrom.HasSharedData(PlayerSharedData.Name))
+        {
+            nameFrom = playerFrom.GetSharedData<string>(PlayerSharedData.Name);
+        }
+
+        var permissionFrom = Permissions.Player;
+        if (playerFrom.HasSharedData(PlayerSharedData.Permissions))
+        {
+            permissionFrom = (Permissions)playerFrom.GetSharedData<int>(PlayerSharedData.Permissions);
+        }
+
+        var messageDtoPlayerFrom = new ChatMessage
+        {
+            id = playerTo.Id,
+            name = nameTo,
+            message = title,
+            type = MessageType.Transfer,
+            permission = permissionTo,
+            from = false,
+            time = null,
+            value = amount.ToString(CultureInfo.InvariantCulture),
+        };
+
+        var messageDtoPlayerTo = new ChatMessage
+        {
+            id = playerFrom.Id,
+            name = nameFrom,
+            message = title,
+            type = MessageType.Transfer,
+            permission = permissionFrom,
+            from = true,
+            time = null,
+            value = amount.ToString(CultureInfo.InvariantCulture),
         };
 
         var responseTo = new ApiResponse(ApiResponseType.Success, string.Empty, messageDtoPlayerTo);

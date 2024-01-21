@@ -2,7 +2,7 @@
   <div
     class="circle"
     [style.background-color]="color"
-    [class.hideCircle]="notificationService.disappear"
+    [ngClass]="{ 'hide-circle': notificationService.disappear }"
     [ngSwitch]="type"
   >
     <i

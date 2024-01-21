@@ -17,6 +17,7 @@
     font-size: 2.4rem;
     color: white;
     box-sizing: border-box;
+    opacity: 1;
   }
   
   .circle > i {
@@ -45,10 +46,8 @@
   }
   
   .hide-circle {
-    animation-name: hide-circle;
-    animation-duration: 500ms;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-in-out;
+    opacity: 100%;
+    animation: hide-circle 0.5s;
   }
   
   .notification-wrapper {
@@ -57,7 +56,7 @@
     height: 5rem;
     z-index: -100;
     position: absolute;
-    left: 3rem;
+    left: 2.5rem;
   }
   
   @keyframes show {
@@ -79,11 +78,11 @@
   }
   
   @keyframes hide-circle {
-    0% {
-      opacity: 1;
+    from {
+      opacity: 100%;
     }
-    100% {
-      opacity: 0;
+    to {
+      opacity: 0%;
     }
   }
   
@@ -97,7 +96,7 @@
     color: rgb(203, 203, 203);
     font-size: 1.2rem;
     padding: 1rem;
-    padding-left: 2.5rem;
+    padding-left: 3rem;
     font-family: "Dosis";
     box-sizing: border-box;
     display: flex;

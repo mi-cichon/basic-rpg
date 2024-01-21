@@ -11,7 +11,6 @@ public class PlayerSpawnConfiguration : IEntityTypeConfiguration<PlayerSpawn>
         builder
             .HasOne(x => x.Position)
             .WithOne()
-            .OnDelete(DeleteBehavior.Cascade)
-            .IsRequired(false);
+            .IsRequired();
     }
 }

@@ -7,5 +7,5 @@ public class PlayerSpawn : BaseEntity
 {
     public SpawnLocation SpawnLocation { get; set; }
 
-    public VectorEntity? Position { get; set; }
+    public VectorEntity Position { get; set; } = null!;
 }

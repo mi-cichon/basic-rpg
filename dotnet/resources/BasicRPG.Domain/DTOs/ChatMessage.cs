@@ -13,4 +13,7 @@ public class ChatMessage
     public bool? from { get; set; }
     public string? time { get; set; }
     public string? value { get; set; }
+    public string? additionalName { get; set; }
+    public string? punishmentLength { get; set; }
+    public string? organisation { get; set; }
 }

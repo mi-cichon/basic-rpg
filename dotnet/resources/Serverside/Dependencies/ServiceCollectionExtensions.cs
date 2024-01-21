@@ -21,6 +21,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using BasicRPG.Application.Commands;
 using BasicRPG.Domain.Commands;
+using BasicRPG.Domain.Repositories.LevelRequirements;
+using BasicRPG.Infrastructure.Repositories.LevelRequirements;
 
 namespace BasicRPG.Client.Api.Dependencies;
 
@@ -44,8 +46,7 @@ public static class ServiceCollectionExtensions
         serviceCollection.AddTransient<ICommandService, CommandService>();
 
         serviceCollection.AddTransient<IUserRepository, UserRepository>();
-
-        serviceCollection.Configure<LevelsConfig>(config => configuration.GetSection(nameof(LevelsConfig)).Bind(config));
+        serviceCollection.AddTransient<ILevelRequirementRepository, LevelRequirementRepository>();
 
         return serviceCollection;
     }

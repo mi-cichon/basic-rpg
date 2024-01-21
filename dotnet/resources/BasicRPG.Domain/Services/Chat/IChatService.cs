@@ -9,4 +9,5 @@ public interface IChatService
     void SendInfoMessageToEveryone(string message);
     void SendInfoMessageToPlayer(Player player, string message);
     void SendPrivateMessage(Player playerFrom, Player playerTo, string message);
+    void SendTransferMessage(Player playerFrom, Player playerTo, double amount, string title);
 }

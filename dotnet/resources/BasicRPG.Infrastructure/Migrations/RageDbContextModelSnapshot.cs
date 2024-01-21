@@ -22,6 +22,22 @@ namespace BasicRPG.Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("BasicRPG.Domain.Entities.Collectibles.Collectible", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("PositionId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PositionId");
+
+                    b.ToTable("Collectibles");
+                });
+
             modelBuilder.Entity("BasicRPG.Domain.Entities.Spawns.HospitalSpawn", b =>
                 {
                     b.Property<Guid>("Id")
@@ -31,7 +47,7 @@ namespace BasicRPG.Infrastructure.Migrations
                     b.Property<float>("Heading")
                         .HasColumnType("real");
 
-                    b.Property<Guid?>("PositionId")
+                    b.Property<Guid>("PositionId")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
@@ -47,7 +63,7 @@ namespace BasicRPG.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("PositionId")
+                    b.Property<Guid>("PositionId")
                         .HasColumnType("uuid");
 
                     b.Property<int>("SpawnLocation")
@@ -58,6 +74,23 @@ namespace BasicRPG.Infrastructure.Migrations
                     b.HasIndex("PositionId");
 
                     b.ToTable("PlayerSpawns");
+                });
+
+            modelBuilder.Entity("BasicRPG.Domain.Entities.Users.LevelRequirement", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("RequiredExp")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("RequiredLevel")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LevelRequirements");
                 });
 
             modelBuilder.Entity("BasicRPG.Domain.Entities.Users.User", b =>
@@ -117,11 +150,24 @@ namespace BasicRPG.Infrastructure.Migrations
                     b.ToTable("VectorEntity");
                 });
 
+            modelBuilder.Entity("BasicRPG.Domain.Entities.Collectibles.Collectible", b =>
+                {
+                    b.HasOne("BasicRPG.Domain.Entities.Utility.VectorEntity", "Position")
+                        .WithMany()
+                        .HasForeignKey("PositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Position");
+                });
+
             modelBuilder.Entity("BasicRPG.Domain.Entities.Spawns.HospitalSpawn", b =>
                 {
                     b.HasOne("BasicRPG.Domain.Entities.Utility.VectorEntity", "Position")
                         .WithMany()
-                        .HasForeignKey("PositionId");
+                        .HasForeignKey("PositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Position");
                 });
@@ -130,7 +176,9 @@ namespace BasicRPG.Infrastructure.Migrations
                 {
                     b.HasOne("BasicRPG.Domain.Entities.Utility.VectorEntity", "Position")
                         .WithMany()
-                        .HasForeignKey("PositionId");
+                        .HasForeignKey("PositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Position");
                 });
