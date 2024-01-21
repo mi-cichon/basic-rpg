@@ -7,9 +7,10 @@
       <div class="tag tag-tofrom ms-0">
         {{ (from ? "chat.privateFrom" : "chat.privateTo") | transloco }}:
       </div>
-      <div class="message-name">[{{ playerId }}] {{ playerName }}</div>
+      <div class="message-name">[{{ playerId }}]{{ playerName }}</div>
       <div class="tag tag-private">
         <i class="fa-solid fa-envelope"></i>
+        <i class="additonal-text"> {{ "chat.whisper" | transloco }}</i>
       </div>
     </div>
     <div class="message-text">{{ messageText }}</div>

@@ -43,11 +43,12 @@
     "privateFrom": "Od",
     "privateTo": "Do",
     "penaltyTitle": "Ukarano gracza",
-    "penaltyKickText": "Gracz {player} został wyrzucony przez {by}, powód: {reason}.",
-    "penaltyBanText": "Gracz {player} został zbanowany ({time}) przez {by}, powód: {reason}.",
-    "penaltyLicenceText": "Gracz {player} stacił możliwość prowadzenie pojazdów ({time}) przez {by}, powód: {reason}.",
-    "penaltyMuteText": "Gracz {player} został wyciszony ({time}) przez {by}, powód: {reason}.",
-    "transferMessage":"Przelew o wartości {{value}}$ o tytule: {{title}}."
+    "penaltyKickText": "Gracz {{player}} został wyrzucony przez {{by}}, powód: {{reason}}.",
+    "penaltyBanText": "Gracz {{player}} został zbanowany na ({{time}}s) przez {{by}}, powód: {{reason}}.",
+    "penaltyLicenceText": "Gracz {{player}} stacił możliwość prowadzenie pojazdów na ({{time}}s) przez {{by}}, powód: {{reason}}.",
+    "penaltyMuteText": "Gracz {{player}} został wyciszony na ({{time}}s) przez {{by}}, powód: {{reason}}.",
+    "transferMessage":"Przelew o wartości {{value}}$ o tytule: {{title}}.",
+    "whisper":"Szept"   
   },
   "info": {
     "discordInfo": "Zapraszamy na Discord naszego serwera pod discord.gg/basicrpg"

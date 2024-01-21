@@ -1,11 +1,11 @@
 .avatar-background{
-    border: 1px solid rgb(208, 31, 125);
+    border: 2px solid rgb(208, 31, 125);
 }
 
 .tag-private{
     color: rgb(208, 31, 125) !important;
-    font-size: 0.9rem !important;
-    line-height: 1.2rem !important;
+    font-size: 0.7rem !important;
+    line-height: 1rem !important;
 }
 
 .tag-tofrom{
@@ -18,4 +18,8 @@
 .message-name{
     border-top-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
+}
+.additonal-text{
+    font-style: normal;
+    font-size: 0.7rem;
 }

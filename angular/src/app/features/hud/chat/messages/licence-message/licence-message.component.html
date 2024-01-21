@@ -1,0 +1,22 @@
+<div class="message d-flex justify-start">
+  <div class="avatar-background">
+    <div class="avatar"></div>
+  </div>
+  <div class="message-body d-flex flex-column ms-1">
+    <div class="message-tags d-flex justify-start">
+      <div class="message-name">{{ "chat.infoTitle" | transloco }}</div>
+    </div>
+    <div class="message-text">
+      {{
+        "chat.penaltyLicenceText"
+          | transloco
+            : {
+                player: playerName,
+                reason: messageText,
+                time: punishmentLength,
+                by: additionalName
+              }
+      }}
+    </div>
+  </div>
+</div>

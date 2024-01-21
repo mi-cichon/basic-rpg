@@ -12,9 +12,13 @@ import { InfoMessageComponent } from "./chat/messages/info-message/info-message.
 import { PrivateMessageComponent } from "./chat/messages/private-message/private-message.component";
 import { RegularMessageComponent } from "./chat/messages/regular-message/regular-message.component";
 import { GlobalMessageComponent } from "./chat/messages/global-message/global-message.component";
-import { PenaltyMessageComponent } from "./chat/messages/penalty-message/penalty-message.component";
 import { TranslateIfKeyExistsPipe } from "./chat/pipes/translate-if-key-exists.pipe";
 import { TransferMessageComponent } from "./chat/messages/transfer-message/transfer-message.component";
+import { GroupMessageComponent } from "./chat/messages/group-message/group-message.component";
+import { MuteMessageComponent } from "./chat/messages/mute-message/mute-message.component";
+import { LicenceMessageComponent } from "./chat/messages/licence-message/licence-message.component";
+import { KickMessageComponent } from "./chat/messages/kick-message/kick-message.component";
+import { BanMessageComponent } from "./chat/messages/ban-message/ban-message.component";
 
 @NgModule({
   declarations: [
@@ -27,8 +31,12 @@ import { TransferMessageComponent } from "./chat/messages/transfer-message/trans
     PrivateMessageComponent,
     RegularMessageComponent,
     GlobalMessageComponent,
-    PenaltyMessageComponent,
     TransferMessageComponent,
+    GroupMessageComponent,
+    MuteMessageComponent,
+    LicenceMessageComponent,
+    KickMessageComponent,
+    BanMessageComponent,
   ],
   imports: [
     CommonModule,
