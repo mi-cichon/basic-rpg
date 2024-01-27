@@ -19,6 +19,8 @@ import { MuteMessageComponent } from "./chat/messages/mute-message/mute-message.
 import { LicenceMessageComponent } from "./chat/messages/licence-message/licence-message.component";
 import { KickMessageComponent } from "./chat/messages/kick-message/kick-message.component";
 import { BanMessageComponent } from "./chat/messages/ban-message/ban-message.component";
+import { ProgressBarComponent } from "../shared/components/progress-bar/progress-bar.component";
+import { SpeedometerControlComponent } from "./speedometer/speedometer-control/speedometer-control.component";
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { BanMessageComponent } from "./chat/messages/ban-message/ban-message.com
     HudRoutingModule,
     TranslocoModule,
     TranslateIfKeyExistsPipe,
+    ProgressBarComponent,
+    SpeedometerControlComponent,
   ],
 })
 export class HudModule {}

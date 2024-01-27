@@ -1,97 +1,84 @@
 :host{
     display: block;
     position: absolute;
-    right: 3rem;
-    bottom: 5rem;
-    transform: translateY(50%)
-}
-.speedometer{
-    margin-left: 10rem;
-    width: 25rem;
-    height: 25rem;
-    background-image: url('/assets/images/speedometer/speedometer.png');
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-    font-size: 1.2rem;
+    font-size: 20px;
+    right: 1em;
+    bottom: 0.8em;
+    width: 13em;
+    transition: bottom 0.6s ease-in-out;
 }
 
-.needle-body{
-    width: 100%;
-    height: 1.2%;
-    position: absolute;
-    bottom: 49%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(185deg);
+:host.show-controls{
+    bottom: 2.5em;
 }
 
-.needle{
-    position: absolute;
-    margin-left: 10%;
-    z-index: 999;
-    width: 11%;
-    left: 0;
-    height: 100%;
-    background-color: darkred;
-    border-radius: 2px;
+:host.show-controls .controls-row {
+    bottom: -45%;
 }
 
-.speed-body{
-    width: 40%;
-    height: 30%;
-    position: absolute;
-    left: 50%;
-    top: 25%;
-    transform: translateX(-50%)
+.speed-icons-row {
+    padding-left: 0.5em;
 }
 
-.speed-body{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.speed{
     color: white;
+    font-size: 4em;
+    font-weight: lighter;
+    height: 4rem;
+    line-height: 4rem;
     font-family: 'Rajdhani';
-    padding: 1%;
 }
 
-.speed-kmh{
-    display: inline;
-    font-size: 0.7em;
-    height: 30%;
+.icon{
+    width: 2em;
+    height: 2em;
+    background-position: center;
+    background-size: 70%;
+    background-repeat: no-repeat;
 }
 
-.speed-main{
-    display: inline;
-    box-sizing: border-box;
-    margin-top: 3%;
-    font-size: 3.4rem;
-    height: 40%;
+.suspension{
+    background-image: url('/assets/images/speedometer/icons/suspension-damaged.png')
 }
 
-.trip-body{
-    font-family: "Red Hat Mono";
-    background-color: rgba($color: #19233F, $alpha: 0.8);
-    padding: 0rem 0.1rem;
-    display: flex;
+.engine{
+    background-image: url('/assets/images/speedometer/icons/engine-damaged.png')
 }
 
-.trip-kilometers, .trip-meters{
-    display: inline;
-    line-height: 1rem;
-    font-size: 0.9rem;
+.petrol{
+    background-image: url('/assets/images/speedometer/icons/gas.png');
+    background-position-y: 100%;
 }
 
-.trip-meters{
-    color: red;
+.petrol-row{
+    padding: 0 0.3em;
 }
 
-.petrol-body{
+.petrol-bar{
+    height: 0.5em;
+    width: 100%;
+}
+
+.rpm-row{
+    padding: 0 0.3em;
+    margin-top: 0.1em;
+}
+
+.rpm-bar{
+    height: 1em;
+    width: 100%;
+}
+
+.controls-row{
+    margin-top: 0.4em;
+    gap: 0.4em;
+    padding: 0 0.5em;
     position: absolute;
     width: 100%;
-    height: 100%;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-image: url('/assets/images/speedometer/petrol-steps/0.png');
+    bottom: -100%;
+    transition: bottom 0.6s ease-in-out;
+}
+
+.speedometer{
+    position: relative;
 }

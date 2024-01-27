@@ -16,7 +16,16 @@ mp.events.add("render", () => {
         const trip = 213.7;
         // let currentStreet = mp.game.pathfind.getStreetNameAtCoord(player.position.x, player.position.y, player.position.z, 0, 0);
         // let streetName = mp.game.ui.getStreetNameFromHashKey(currentStreet.streetName);]
-        const speedometerData = {speed: speed, rpm: rpm, petrol: petrol, trip: trip};
+        const damagedSuspension = player.vehicle.getBodyHealth() < 500;
+        const damagedEngine = player.vehicle.getEngineHealth() < 500;
+        const speedometerData = {
+            speed: speed, 
+            rpm: rpm, 
+            petrol: petrol, 
+            trip: trip, 
+            damagedSuspension: damagedSuspension, 
+            damagedEngine: damagedEngine
+        };
         
         rpc.callBrowser(browser, 'browser_updateSpeedometer', {ResponseType: 0, Message: '', Data: speedometerData});
     }
@@ -36,6 +45,14 @@ mp.events.add("playerLeaveVehicle", (vehicle, seat) => {
 
 mp.events.add("client_destroySpeedometer", () => {
     destroySpeedometer();
+});
+
+mp.events.add("client_switchSpeedometerControls", () => {
+    let browser = getBrowser();
+    if(browser == null){
+        return;
+    }
+    rpc.callBrowser(browser, 'browser_switchSpeedometerControls', {ResponseType: 0, Message: '', Data: {}});
 });
 
 function destroySpeedometer(){

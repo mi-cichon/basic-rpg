@@ -1,14 +1,36 @@
-<div class="speedometer">
-  <div #petrolBodyElement class="petrol-body"></div>
-  <div #rpmElement class="needle-body">
-    <div class="needle"></div>
-  </div>
-  <div class="speed-body">
-    <div class="speed-kmh">km/h</div>
-    <div #speedElement class="speed-main"></div>
-    <div class="trip-body">
-      <div #tripKilometerElement class="trip-kilometers"></div>
-      <div #tripMeterElement class="trip-meters"></div>
+<div *ngIf="speedometerData" class="speedometer">
+  <div class="speed-icons-row d-flex justify-content-between align-items-end">
+    <span class="speed">
+      {{ speedometerData.speed }}
+    </span>
+    <div class="icons d-flex">
+      <div
+        *ngIf="speedometerData.damagedSuspension"
+        class="icon suspension"
+      ></div>
+      <div *ngIf="speedometerData.damagedEngine" class="icon engine"></div>
+      <div class="icon petrol"></div>
     </div>
+  </div>
+  <div class="petrol-row">
+    <app-progress-bar class="petrol-bar" [value]="speedometerData.petrol" />
+  </div>
+  <div class="rpm-row">
+    <app-progress-bar class="rpm-bar" [value]="speedometerData.rpm" />
+  </div>
+  <div class="controls-row d-flex justify-content-end">
+    <app-speedometer-control [active]="true" iconFileName="engine.png" />
+    <app-speedometer-control
+      [active]="true"
+      activeColor="red"
+      iconFileName="handbrake.png"
+    />
+    <app-speedometer-control
+      [active]="true"
+      activeColor="red"
+      iconFileName="lock.png"
+    />
+    <app-speedometer-control [active]="true" iconFileName="seatbelt.png" />
+    <app-speedometer-control [active]="false" iconFileName="carkick.png" />
   </div>
 </div>

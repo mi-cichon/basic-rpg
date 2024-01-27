@@ -3,6 +3,8 @@ export type SpeedometerData = {
   rpm: number;
   petrol: number;
   trip: number;
+  damagedSuspension: boolean;
+  damagedEngine: boolean;
 };
 
 export function mapObjectToSpeedometerData(data: object) {
@@ -11,6 +13,8 @@ export function mapObjectToSpeedometerData(data: object) {
     rpm: data["rpm" as keyof object],
     petrol: data["petrol" as keyof object],
     trip: data["trip" as keyof object],
+    damagedSuspension: data["damagedSuspension" as keyof object],
+    damagedEngine: data["damagedEngine" as keyof object],
   } as SpeedometerData;
 }
 

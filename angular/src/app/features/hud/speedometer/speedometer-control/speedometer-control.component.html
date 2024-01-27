@@ -1,0 +1,14 @@
+<div
+  class="body"
+  [ngClass]="{
+    'active-red': active && activeColor === 'red',
+    'active-green': active && activeColor === 'green'
+  }"
+>
+  <div
+    class="icon"
+    [ngStyle]="{
+      'background-image': 'url(' + iconBaseUrl + iconFileName + ')'
+    }"
+  ></div>
+</div>

@@ -8,6 +8,7 @@ import { AbstractClientApiService } from "src/app/lib/client-api-service/abstrac
 })
 export class MainHudComponent {
   public showSpeedometer = false;
+  public showSpeedometerControls = false;
 
   constructor(clientApiService: AbstractClientApiService) {
     clientApiService
@@ -19,6 +20,13 @@ export class MainHudComponent {
 
         const state = response.data["state" as keyof object] as boolean;
         this.showSpeedometer = state;
+        this.showSpeedometerControls = false;
+      });
+
+    clientApiService
+      .registerEvent("browser_switchSpeedometerControls")
+      .subscribe(() => {
+        this.showSpeedometerControls = !this.showSpeedometerControls;
       });
   }
 }

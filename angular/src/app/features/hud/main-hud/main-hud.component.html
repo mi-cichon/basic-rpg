@@ -1,3 +1,15 @@
 <app-player-info />
 <app-chat />
-<app-speedometer [style.visibility]="showSpeedometer ? 'visible' : 'hidden'" />
+<app-speedometer
+  [ngStyle]="{
+    visibility: showSpeedometer ? 'visible' : 'hidden'
+  }"
+  [ngClass]="{ 'show-controls': showSpeedometerControls }"
+/>
+
+<!-- <app-speedometer
+  [ngStyle]="{
+    visibility: true ? 'visible' : 'hidden'
+  }"
+  [ngClass]="{ 'show-controls': showSpeedometerControls }"
+/> -->
